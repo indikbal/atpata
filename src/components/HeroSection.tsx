@@ -8,7 +8,7 @@ const HeroSection = () => {
     threshold: 0.2,
   });
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative h-screen flex items-start pt-40 2xl:pt-52 justify-center overflow-hidden">
       {/* Background with spice-inspired pattern */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-stone-900 z-0">
         <div className="absolute inset-0 opacity-20">
@@ -47,8 +47,8 @@ const HeroSection = () => {
         >
           
           <GradientText 
-            children="atpata"
-            className='text-7xl md:text-[7rem] font-extrabold font-comfortaa'
+            children="We are atpata"
+            className='text-5xl md:text-[5rem] lg:text-[5rem] 2xl:text-[7rem] font-extrabold font-comfortaa'
           />
           </motion.div>      
 
@@ -56,7 +56,7 @@ const HeroSection = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-2xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto font-light font-comfortaa"
+          className="text-2xl md:text-2xl lg:text-xl 2xl:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto font-light font-comfortaa"
         >
           Instant flavors that transform <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-600 to-red-600">ordinary meals </span> into extraordinary culinary experiences
         </motion.p>
@@ -99,8 +99,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
-          whileHover={{ scale: 1.05, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
           <img src="../src/img/jar1.png" alt="Jar" className="w-full" />
         </motion.div>
@@ -109,9 +109,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35, type: 'spring' }}
-          whileHover={{ scale: 1.05, rotate: -5 }}
-          whileTap={{ scale: 0.95 }}
-          className='mt-8'
+          whileHover={{ scale: 1.15, rotate: -10, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+          className='mt-16'
         >
           <img src="../src/img/jar2.png" alt="Jar" className="w-full" />
         </motion.div>
@@ -120,8 +120,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, type: 'spring' }}
-          whileHover={{ scale: 1.05, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
           <img src="../src/img/jar3.png" alt="Jar" className="w-full" />
         </motion.div>
@@ -130,9 +130,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65, type: 'spring' }}
-          whileHover={{ scale: 1.05, rotate: -5 }}
-          whileTap={{ scale: 0.95 }}
-          className='mt-8'
+          whileHover={{ scale: 1.15, rotate: -5, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+          className='mt-16'
         >
           <img src="../src/img/jar4.png" alt="Jar" className="w-full" />
         </motion.div>
@@ -141,8 +141,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, type: 'spring' }}
-          whileHover={{ scale: 1.05, rotate: 5 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
           <img src="../src/img/jar5.png" alt="Jar" className="w-full" />
         </motion.div>

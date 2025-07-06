@@ -1,113 +1,268 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import Particles from '../blocks/Backgrounds/Particles/Particles';
 
-export default function StorySection() {
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
+// ATPATA timeline data
+const TIMELINE_EVENTS = [
+  {
+    date: '2022-01',
+    title: 'The Turning Point – A Life-Altering Accident',
+    description: 'Romi Kulthia, a successful entrepreneur, faced a spinal injury that changed everything. During recovery, food became therapy — not just for the body, but for the soul. The idea of making cooking easy, soulful, and full of flavor was born during this time.',
+    imageUrl: '../src/img/step1.jpg'
+  },
+  {
+    date: '2022-04',
+    title: 'Discovering the Problem',
+    description: 'Realized how many people struggled with daily cooking: No time, no skill, no consistency, no fun. Most readymade mixes tasted artificial or lacked soul. There was no brand making cooking feel homely, fun, and gourmet — all at once.',
+    imageUrl: '../src/img/step2.jpg'
+  },
+  {
+    date: '2022-07',
+    title: 'Conceptualizing ATPATA',
+    description: 'Started experimenting with homemade curry powders and unique spice blends. The goal: "Make anyone cook like a pro — without spending hours in the kitchen." Focused on pure vegetarian, no preservatives, and Indian flavors with a twist.',
+    imageUrl: '../src/img/step3.jpg'
+  },
+  {
+    date: '2022-10',
+    title: 'Building the Brand',
+    description: 'Chose the name ATPATA — quirky, bold, unusual — just like our products. Created early test batches and started getting feedback from real users. The results were clear: "This isn\'t just tasty — it\'s life-changing."',
+    imageUrl: '../src/img/step4.jpg'
+  },
+  {
+    date: '2023-02',
+    title: 'Product Development',
+    description: 'Launched a range of Premix Curry Powders, Signature Sprinklers, and Artisan Seasonings. Made sure each product had: Great shelf life, Authentic ingredients, Fuss-free cooking steps, and Room for creativity.',
+    imageUrl: '../src/img/step5.jpg'
+  },
+  {
+    date: '2023-06',
+    title: 'Serving a Bigger Purpose',
+    description: 'More than a food brand — ATPATA became a healing movement. For people living alone, professionals, students, and health-conscious families. Also started personalized tiffin services for people with specific needs.',
+    imageUrl: '../src/img/step6.jpg'
+  },
+  {
+    date: '2024-01',
+    title: 'Gaining Recognition',
+    description: 'Invited to World Food Expo 2024 to showcase our vision and products. Met key global and Indian stakeholders — ATPATA\'s story struck a chord. Recognition followed from food critics, startups, and wellness communities.',
+    imageUrl: '../src/img/step7.jpg'
+  },
+  {
+    date: '2024-05',
+    title: 'Preparing to Scale',
+    description: 'Formed Bloomrush Foods Pvt. Ltd. as the parent company. Started building a Shopify-based D2C store for ATPATA. Planning exports, collaborations, and retail presence in India & beyond.',
+    imageUrl: '../src/img/step8.jpg'
+  },
+  {
+    date: '2024-09',
+    title: 'Community & Innovation',
+    description: 'Launched contests to find India\'s most innovative home chefs. Working on new product lines (protein soups, gourmet khichdis, etc.) Tied brand values to sustainability, local sourcing, and tree plantation ideas.',
+    imageUrl: '../src/img/step9.jpg'
+  },
+  {
+    date: '2025-01',
+    title: 'The Journey Ahead',
+    description: 'ATPATA aims to become a global kitchen companion brand from India. On a mission to make everyday cooking — fun, soulful, and full of "ATPATA-ness".',
+    imageUrl: '../src/img/step10.jpg'
+  }
+];
+
+// Timeline connector component
+const TimelineConnector = ({ isActive }: { isActive: boolean }) => {
+  return (
+    <div className="w-1 h-full absolute left-[15px] flex flex-col items-center">
+      <div 
+        className={`w-1 h-full ${isActive ? 'bg-orange-900' : 'bg-orange-900/20'}`}
+        style={{
+          transition: 'background-color 0.5s ease',
+        }}
+      ></div>
+    </div>
+  );
+};
+
+// Timeline dot component
+const TimelineDot = ({ isActive }: { isActive: boolean }) => {
+  return (
+    <div className="relative z-10 flex items-center justify-center">
+      <motion.div 
+        initial={{ scale: 0.8 }}
+        animate={{ 
+          scale: isActive ? 1.2 : 0.8,
+          backgroundColor: isActive ? '#512300' : '#512300'
+        }}
+        transition={{ duration: 0.5 }}
+        className={`w-8 h-8 rounded-full flex items-center justify-center border-2 ${isActive ? 'border-orange-400 shadow-lg shadow-orange-500/30' : 'border-orange-600'}`}
+      >
+        <motion.div 
+          initial={{ scale: 0.6 }}
+          animate={{ scale: isActive ? 1 : 0.6 }}
+          transition={{ duration: 0.5 }}
+          className="w-3 h-3 bg-white rounded-full"
+        />
+      </motion.div>
+    </div>
+  );
+};
+
+// Timeline item component
+const TimelineItem = ({ event, index }: { event: typeof TIMELINE_EVENTS[0], index: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
+  const [isHovered, setIsHovered] = useState(false);
+  
+  const formattedDate = new Date(event.date).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long'
   });
 
-  const storyPoints = [
-    {
-      year: "Tradition",
-      title: "Ancient Culinary Heritage",
-      description: "Our journey begins with centuries of culinary tradition, passed down through generations of spice masters who understood the delicate balance of flavors."
-    },
-    {
-      year: "Discovery",
-      title: "The Spice Expedition",
-      description: "We traveled across regions known for their distinctive spice profiles, learning from local experts and documenting authentic preparation methods."
-    },
-    {
-      year: "Craft",
-      title: "Perfecting the Blend",
-      description: "Years were spent in our test kitchen, perfecting each blend through countless iterations until we achieved the perfect balance of flavors."
-    },
-    {
-      year: "Innovation",
-      title: "Modern Transformation",
-      description: "We pioneered techniques to transform these traditional blends into instant mixes that preserve their authentic flavors while meeting the needs of modern kitchens."
-    }
-  ];
-
   return (
-    <section id="story" className="relative py-24 bg-[#0f0705] overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0302] via-[#0f0705] to-[#0a0302]"></div>
-      
-      {/* Decorative spice powder splash */}
-      <motion.div 
-        className="absolute -right-40 top-40 w-96 h-96 bg-gradient-to-br from-amber-600/20 to-red-800/10 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.5, 1], 
-          opacity: [0.5, 0.7, 0.5] 
-        }}
-        transition={{ 
-          duration: 6, 
-          repeat: Infinity, 
-          ease: "easeInOut" 
-        }}
-      ></motion.div>
-      <motion.div 
-        className="absolute -left-40 bottom-40 w-96 h-96 bg-gradient-to-br from-red-800/10 to-amber-600/20 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.5, 1], 
-          opacity: [0.5, 0.8, 0.5] 
-        }}
-        transition={{ 
-          duration: 7, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 1.5 
-        }}
-      ></motion.div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-red-600">
-              The Atpata Story
-            </span>
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A journey through time, tradition, and taste that brought us to create
-            the perfect spice blends for the modern culinary explorer.
-          </p>
-          <div className="h-1 w-24 bg-gradient-to-r from-amber-600 to-red-600 mx-auto mt-6"></div>
-        </motion.div>
-        
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-amber-600/50 via-red-600/50 to-amber-600/50"></div>
-          
-          {/* Story points */}
-          {storyPoints.map((point, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`relative mb-24 ${index % 2 === 0 ? 'md:pr-[50%] text-right' : 'md:pl-[50%] md:text-left'} px-12`}
-            >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-amber-500 to-red-600 shadow-lg shadow-amber-900/30 z-10"></div>
-              
-              <div className={`relative ${index % 2 === 0 ? 'md:mr-12' : 'md:ml-12'}`}>
-                <span className="inline-block px-4 py-1 rounded-full bg-amber-900/30 text-amber-400 text-sm font-semibold mb-2">{point.year}</span>
-                <h3 className="text-2xl font-bold text-white mb-2">{point.title}</h3>
-                <p className="text-gray-300">{point.description}</p>
-              </div>
-            </motion.div>
-          ))}
+    <div 
+      ref={ref}
+      className="relative pl-10 pb-14 last:pb-0"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className="absolute left-0 top-0 h-full">
+        {index < TIMELINE_EVENTS.length - 1 && <TimelineConnector isActive={isInView} />}
+        <div className="absolute top-0 left-0">
+          <TimelineDot isActive={isInView || isHovered} />
         </div>
       </div>
+      
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ 
+          opacity: isInView ? 1 : 0.3, 
+          x: isInView ? 0 : 30,
+        }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="pt-1"
+      >
+        <motion.div 
+          className="text-sm font-medium text-indigo-400 mb-2"
+          animate={{ color: isInView ? '#fff' : '#fff' }}
+          transition={{ duration: 0.5 }}
+        >
+          {formattedDate}
+        </motion.div>
+        
+        <motion.div 
+          className="bg-orange-950/20 backdrop-blur-sm border border-orange-800 rounded-xl overflow-hidden shadow-xl hover:shadow-orange-500/10 transition-all duration-500"
+          whileHover={{ scale: 1.02 }}
+          animate={{ 
+            borderColor: isInView ? 'rgba(218, 104, 52, 0.3)' : 'rgba(55, 33, 31, 0.5)',
+            y: isHovered ? -5 : 0
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <div className="md:flex md:items-center">
+            <motion.div 
+              className="md:w-2/5 h-60 md:h-auto relative overflow-hidden"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.img 
+                src={event.imageUrl} 
+                alt={event.title} 
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.2 }}
+                animate={{ scale: isInView ? 1 : 1.2 }}
+                transition={{ duration: 0.8 }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60"></div>
+            </motion.div>
+            
+            <div className="p-6 md:w-3/5">
+              <motion.h3 
+                className="text-xl md:text-2xl font-bold mb-3 text-white"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: isInView ? 1 : 0.5, 
+                  y: isInView ? 0 : 20 
+                }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                {event.title}
+              </motion.h3>
+              
+              <motion.p 
+                className="text-gray-300 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: isInView ? 1 : 0.5, 
+                  y: isInView ? 0 : 20 
+                }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                {event.description}
+              </motion.p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
+
+// Main Timeline component
+export default function Timeline() {
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.5, 1, 1, 0.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.95, 1, 1, 0.95]);
+  
+  return (
+    <section id="story" className="relative">
+    <motion.div 
+      ref={containerRef}
+      style={{ opacity, scale }}
+      className="relative max-w-5xl mx-auto px-4 py-20"
+    >
+      <div className="fixed top-0 right-0 w-[100vw] h-[100vh] z-0 opacity-30" >
+        <Particles
+          particleColors={['#fb923c', '#fb923c']}
+          particleCount={5000}
+          particleSpread={50}
+          speed={0.02}
+          particleBaseSize={200}
+          moveParticlesOnHover={false}
+          alphaParticles={false}
+          disableRotation={false}
+          className="w-full h-full" 
+        />
+      </div>
+      {/* Timeline glow effect */}
+      <div className="absolute -inset-40 bg-indigo-500/5 blur-[100px] rounded-full"></div>
+      
+      {/* Timeline header */}
+      <motion.div 
+        className="text-center mb-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h2 
+          className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-red-600"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          ATPATA'S INSPIRING JOURNEY
+        </motion.h2>
+        <div className="w-20 h-1 bg-gradient-to-r from-red-900 to-orange-500 mx-auto rounded-full mb-8"></div>
+      </motion.div>
+      
+      {/* Timeline items */}
+      <div className="relative">
+        {TIMELINE_EVENTS.map((event, index) => (
+          <TimelineItem key={event.date} event={event} index={index} />
+        ))}
+      </div>
+    </motion.div>
     </section>
   );
 }

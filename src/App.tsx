@@ -11,6 +11,7 @@ import StorySection from './components/StorySection';
 import GallerySection from './components/GallerySection';
 import Footer from './components/Footer';
 import BulkOrderSection from './components/BulkOrderSection';
+import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
 
 export function App() {
   useEffect(() => {
@@ -37,13 +38,21 @@ export function App() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-black text-white overflow-x-hidden"
+      className="min-h-screen bg-black text-white overflow-x-hidden bg-gradient-to-t from-red-950/10  to-orange-950/40"
     >
+      <SplashCursor />
+
       <Navbar />
       <HeroSection />
       <AboutSection />
+      <motion.div className="">
+       
+      </motion.div>
       <ProductsSection />
       <StorySection />
+      <section id="products" className="relative">
+        <img src="../src/img/spices-bowl.png" alt="" className="w-full h-full object-cover opacity-90"/>
+        </section>
       <GallerySection />
       <BulkOrderSection />
       <Footer />

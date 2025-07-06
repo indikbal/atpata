@@ -1,6 +1,6 @@
 const BulkOrderSection = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-br from-red-950/10 via-orange-950/50 to-orange-950/10 relative">
+    <section className="py-20 px-4  relative" id="contact">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-32 h-32 bg-orange-900 rounded-full blur-3xl"></div>
@@ -9,7 +9,7 @@ const BulkOrderSection = () => {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-amber-400">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-red-600">
             Partner With Atpata
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-amber-600 mx-auto mb-8"></div>

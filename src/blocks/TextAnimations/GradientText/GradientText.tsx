@@ -19,11 +19,9 @@ const GradientText = ({
     "#E91E63", // Pink
     "#9C27B0", // Purple
     "#673AB7", // Deep Purple
-    "#3F51B5", // Indigo
-    "#2196F3", // Blue
-    "#03A9F4", // Light Blue
-    "#00BCD4", // Cyan
-    "#009688"  // Teal
+    "#F57C00", // Indigo
+    "#F5A623", // Cyan
+    "#F59E0B"  // Teal
   ],
   animationSpeed = 10,
 }: GradientTextProps) => {

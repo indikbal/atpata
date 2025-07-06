@@ -1,17 +1,26 @@
-import { motion } from 'framer-motion';
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+
+import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react'; 
+import Aurora from '../blocks/Backgrounds/Aurora/Aurora';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-950 text-gray-400">
-      <div className="container mx-auto px-4 md:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer className="bg-orange-950/20 backdrop-blur-md text-gray-400">
+      <div className="absolute inset-0 transform rotate-180 -z-10 opacity-30">
+      <Aurora
+        colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={2}
+      />
+      </div>
+      <div className="container mx-auto px-4 md:px-8 py-12 z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Column 1: Logo & About */}
           <div>
             <div className="mb-4">
-              <h2 className="text-2xl font-bold text-white mb-1">ATPATA</h2>
+             <img src="../src/img/logo.svg" alt="Logo" className="w-32 mb-4"/>
               <div className="w-12 h-1 bg-gradient-to-r from-amber-500 to-red-500"></div>
             </div>
             <p className="mb-4">
@@ -30,23 +39,7 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Column 2: Quick Links */}
-          <div>
-            <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {['Home', 'About', 'Products', 'Story', 'Gallery', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
-                    className="hover:text-amber-500 transition-colors duration-300"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
+                
           {/* Column 3: Contact Info */}
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Contact Us</h3>
@@ -90,7 +83,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center">
+        <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p>&copy; {currentYear} Atpata Spices. All rights reserved.</p>
         </div>
       </div>
