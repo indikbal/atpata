@@ -3,7 +3,7 @@ import GradientText from '../blocks/TextAnimations/GradientText/GradientText';
 import { useInView } from 'react-intersection-observer';
 
 const HeroSection = () => {
-  const [ref, inView] = useInView({
+  const [] = useInView({
     triggerOnce: false,
     threshold: 0.2,
   });
