@@ -2,6 +2,9 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Aurora from '../blocks/Backgrounds/Aurora/Aurora';
 
+// Import image
+import abtImg from '../img/abt.png';
+
 const AboutSection = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -79,7 +82,7 @@ const AboutSection = () => {
             >
               <div className="relative w-full relative z-10">
                 <img 
-                  src="../src/img/abt.png" 
+                  src={abtImg} 
                   alt="Spices" 
                   className="w-full h-full object-cover"
                 />

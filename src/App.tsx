@@ -13,6 +13,8 @@ import Footer from './components/Footer';
 import BulkOrderSection from './components/BulkOrderSection';
 import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
 
+import spicesBowl from './img/spices-bowl.png';
+
 export function App() {
   useEffect(() => {
     // Add Google Fonts
@@ -51,7 +53,7 @@ export function App() {
       <ProductsSection />
       <StorySection />
       <section id="products" className="relative">
-        <img src="../src/img/spices-bowl.png" alt="" className="w-full h-full object-cover opacity-90"/>
+        <img src={spicesBowl} alt="" className="w-full h-full object-cover opacity-90"/>
         </section>
       <GallerySection />
       <BulkOrderSection />

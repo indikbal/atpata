@@ -2,67 +2,79 @@ import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import Particles from '../blocks/Backgrounds/Particles/Particles';
 
+// Import timeline images
+import step1 from '../img/step1.jpg';
+import step2 from '../img/step2.jpg';
+import step3 from '../img/step3.jpg';
+import step4 from '../img/step4.jpg';
+import step5 from '../img/step5.jpg';
+import step6 from '../img/step6.jpg';
+import step7 from '../img/step7.jpg';
+import step8 from '../img/step8.jpg';
+import step9 from '../img/step9.jpg';
+import step10 from '../img/step10.jpg';
+
 // ATPATA timeline data
 const TIMELINE_EVENTS = [
   {
     date: '2022-01',
     title: 'The Turning Point – A Life-Altering Accident',
     description: 'Romi Kulthia, a successful entrepreneur, faced a spinal injury that changed everything. During recovery, food became therapy — not just for the body, but for the soul. The idea of making cooking easy, soulful, and full of flavor was born during this time.',
-    imageUrl: '../src/img/step1.jpg'
+    imageUrl: step1
   },
   {
     date: '2022-04',
     title: 'Discovering the Problem',
     description: 'Realized how many people struggled with daily cooking: No time, no skill, no consistency, no fun. Most readymade mixes tasted artificial or lacked soul. There was no brand making cooking feel homely, fun, and gourmet — all at once.',
-    imageUrl: '../src/img/step2.jpg'
+    imageUrl: step2
   },
   {
     date: '2022-07',
     title: 'Conceptualizing ATPATA',
     description: 'Started experimenting with homemade curry powders and unique spice blends. The goal: "Make anyone cook like a pro — without spending hours in the kitchen." Focused on pure vegetarian, no preservatives, and Indian flavors with a twist.',
-    imageUrl: '../src/img/step3.jpg'
+    imageUrl: step3
   },
   {
     date: '2022-10',
     title: 'Building the Brand',
     description: 'Chose the name ATPATA — quirky, bold, unusual — just like our products. Created early test batches and started getting feedback from real users. The results were clear: "This isn\'t just tasty — it\'s life-changing."',
-    imageUrl: '../src/img/step4.jpg'
+    imageUrl: step4
   },
   {
     date: '2023-02',
     title: 'Product Development',
     description: 'Launched a range of Premix Curry Powders, Signature Sprinklers, and Artisan Seasonings. Made sure each product had: Great shelf life, Authentic ingredients, Fuss-free cooking steps, and Room for creativity.',
-    imageUrl: '../src/img/step5.jpg'
+    imageUrl: step5
   },
   {
     date: '2023-06',
     title: 'Serving a Bigger Purpose',
     description: 'More than a food brand — ATPATA became a healing movement. For people living alone, professionals, students, and health-conscious families. Also started personalized tiffin services for people with specific needs.',
-    imageUrl: '../src/img/step6.jpg'
+    imageUrl: step6
   },
   {
     date: '2024-01',
     title: 'Gaining Recognition',
     description: 'Invited to World Food Expo 2024 to showcase our vision and products. Met key global and Indian stakeholders — ATPATA\'s story struck a chord. Recognition followed from food critics, startups, and wellness communities.',
-    imageUrl: '../src/img/step7.jpg'
+    imageUrl: step7
   },
   {
     date: '2024-05',
     title: 'Preparing to Scale',
     description: 'Formed Bloomrush Foods Pvt. Ltd. as the parent company. Started building a Shopify-based D2C store for ATPATA. Planning exports, collaborations, and retail presence in India & beyond.',
-    imageUrl: '../src/img/step8.jpg'
+    imageUrl: step8
   },
   {
     date: '2024-09',
     title: 'Community & Innovation',
     description: 'Launched contests to find India\'s most innovative home chefs. Working on new product lines (protein soups, gourmet khichdis, etc.) Tied brand values to sustainability, local sourcing, and tree plantation ideas.',
-    imageUrl: '../src/img/step9.jpg'
+    imageUrl: step9
   },
   {
     date: '2025-01',
     title: 'The Journey Ahead',
     description: 'ATPATA aims to become a global kitchen companion brand from India. On a mission to make everyday cooking — fun, soulful, and full of "ATPATA-ness".',
-    imageUrl: '../src/img/step10.jpg'
+    imageUrl: step10
   }
 ];
 

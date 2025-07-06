@@ -2,61 +2,72 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
+
+import jar1 from '../img/jar1.png';
+import jar2 from '../img/jar2.png';
+import jar3 from '../img/jar3.png';
+import jar4 from '../img/jar4.png';
+import jar5 from '../img/jar5.png';
+import jar6 from '../img/jar6.png';
+import jar7 from '../img/jar7.png';
+import jar8 from '../img/jar8.png';
+
+
 const products = [
   {
     id: 1,
     name: 'Achari Aloo Dum',
     description: 'A tangy and spicy blend that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar1.png',
+    image: jar1,
     color: 'from-amber-500 to-red-500',
   },
   {
     id: 2,
     name: 'Eggplant Preserve',
     description: 'A Eggplant Preserve that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar2.png',
+    image: jar2,
     color: 'from-green-500 to-amber-500',
   },
   {
     id: 3,
     name: 'Kali Mirch Paneer',
     description: 'A Kali Mirch Paneer that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar3.png',
+    image:  jar3,
     color: 'from-red-600 to-red-800',
   },
   {
     id: 4,
     name: 'Saucy Papad Premix',
     description: 'A Saucy Papad Premix that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar4.png',
+    image: jar4,
     color: 'from-amber-400 to-yellow-600',
   },
   {
     id: 5,
     name: 'Moringa Paneer',
     description: 'A Moringa Paneer that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar5.png',
+    image: jar5,
     color: 'from-red-500 to-red-900',
   },
   {
     id: 6,
     name: 'Bihari Litti Premix',
     description: 'A Bihari Litti Premix that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar6.png',
+    image: jar6,
     color: 'from-yellow-500 to-amber-600',
   },
   {
     id: 7,
     name: 'Bitter Melon Preserve',
     description: 'A Bitter Melon Preserve that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar7.png',
+    image: jar7,
     color: 'from-yellow-500 to-amber-600',
   },
   {
     id: 8,
     name: 'Navratna Kadhi Premix',
     description: 'A Navratna Kadhi Premix that transforms potatoes into a pickle-flavored delight.',
-    image: '../src/img/jar8.png',
+    image: jar8,
     color: 'from-yellow-500 to-amber-600',
   },
 ];

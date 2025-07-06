@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
+
+import Logo from '../img/logo.svg';
+
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,7 +37,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="text-white font-bold text-2xl"
           >
-            <img src="../src/img/logo.svg" alt="Atpata Logo" className="w-32 mx-auto mb-4" />
+            <img src={Logo} alt="Atpata Logo" className="w-32 mx-auto mb-4" />
           </motion.div>
 
           {/* Desktop Menu */}

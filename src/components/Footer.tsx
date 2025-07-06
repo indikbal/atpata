@@ -2,6 +2,9 @@
 import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react'; 
 import Aurora from '../blocks/Backgrounds/Aurora/Aurora';
 
+
+import Logo from '../img/logo.svg';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -20,7 +23,7 @@ const Footer = () => {
           {/* Column 1: Logo & About */}
           <div>
             <div className="mb-4">
-             <img src="../src/img/logo.svg" alt="Logo" className="w-32 mb-4"/>
+             <img src={Logo} alt="Logo" className="w-32 mb-4"/>
               <div className="w-12 h-1 bg-gradient-to-r from-amber-500 to-red-500"></div>
             </div>
             <p className="mb-4">

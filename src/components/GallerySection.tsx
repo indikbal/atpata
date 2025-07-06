@@ -3,52 +3,62 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { X } from 'lucide-react';
 
+// Import gallery images
+import gallery1 from '../img/gallery1.jpg';
+import gallery2 from '../img/gallery2.jpg';
+import gallery3 from '../img/gallery3.jpg';
+import gallery4 from '../img/gallery4.jpg';
+import gallery5 from '../img/gallery5.jpg';
+import gallery6 from '../img/gallery6.jpg';
+import gallery7 from '../img/gallery7.jpg';
+import gallery8 from '../img/gallery8.jpg';
+
 const galleryImages = [
   {
     id: 1,
-    src: '../src/img/gallery1.jpg',
+    src: gallery1,
     alt: 'Spicy curry dish',
     title: 'Achari Aloo Curry',
   },
   {
     id: 2,
-    src: '../src/img/gallery2.jpg',
+    src: gallery2,
     alt: 'Paneer dish with greens',
     title: 'Moringa Paneer Delight',
   },
   {
     id: 3,
-    src: '../src/img/gallery3.jpg',
+    src: gallery3,
     alt: 'Spicy vegetable dish',
     title: 'Bhut Jolokia Vegetables',
   },
   {
     id: 4,
-    src: '../src/img/gallery4.jpg',
+    src: gallery4,
     alt: 'South Indian curry',
     title: 'Coconut Chettinad Curry',
   },
   {
     id: 5,
-    src: '../src/img/gallery5.jpg',
+    src: gallery5,
     alt: 'Rich meat curry',
     title: 'Kashmiri Rogan Josh',
   },
   {
     id: 6,
-    src: '../src/img/gallery6.jpg',
+    src: gallery6,
     alt: 'Fish curry dish',
     title: 'Bengali Mustard Fish',
   },
   {
     id: 7,
-    src: '../src/img/gallery7.jpg',
+    src: gallery7,
     alt: 'Fish curry dish',
     title: 'Bengali Mustard Fish',
   },
   {
     id: 8,
-    src: '../src/img/gallery8.jpg',
+    src: gallery8,
     alt: 'Fish curry dish',
     title: 'Bengali Mustard Fish',
   },

@@ -2,6 +2,13 @@ import { motion } from 'framer-motion';
 import GradientText from '../blocks/TextAnimations/GradientText/GradientText';
 import { useInView } from 'react-intersection-observer';
 
+// Import images
+import jar1 from '../img/jar1.png';
+import jar2 from '../img/jar2.png';
+import jar3 from '../img/jar3.png';
+import jar4 from '../img/jar4.png';
+import jar5 from '../img/jar5.png';
+
 const HeroSection = () => {
   const [] = useInView({
     triggerOnce: false,
@@ -102,7 +109,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src="../src/img/jar1.png" alt="Jar" className="w-full" />
+          <img src={jar1} alt="Jar" className="w-full" />
         </motion.div>
         
         <motion.div
@@ -113,7 +120,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src="../src/img/jar2.png" alt="Jar" className="w-full" />
+          <img src={jar2} alt="Jar" className="w-full" />
         </motion.div>
         
         <motion.div
@@ -123,7 +130,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src="../src/img/jar3.png" alt="Jar" className="w-full" />
+          <img src={jar3} alt="Jar" className="w-full" />
         </motion.div>
         
         <motion.div
@@ -134,7 +141,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src="../src/img/jar4.png" alt="Jar" className="w-full" />
+          <img src={jar4} alt="Jar" className="w-full" />
         </motion.div>
         
         <motion.div
@@ -144,7 +151,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src="../src/img/jar5.png" alt="Jar" className="w-full" />
+          <img src={jar5} alt="Jar" className="w-full" />
         </motion.div>
      </div>
     </section>
