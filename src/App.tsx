@@ -27,7 +27,7 @@ export function App() {
     document.body.style.fontFamily = 'Poppins, sans-serif';
     
     // Set dark mode background
-    document.body.style.backgroundColor = '#121212';
+    document.body.style.backgroundColor = '#000';
     document.body.style.color = '#ffffff';
     
     return () => {
@@ -40,7 +40,7 @@ export function App() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-black text-white overflow-x-hidden bg-gradient-to-t from-red-950/10  to-orange-950/40"
+      className="min-h-screen bg-black text-white overflow-x-hidden"
     >
       <SplashCursor />
 

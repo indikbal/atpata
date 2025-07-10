@@ -8,6 +8,8 @@ import jar2 from '../img/jar2.png';
 import jar3 from '../img/jar3.png';
 import jar4 from '../img/jar4.png';
 import jar5 from '../img/jar5.png';
+import jar6 from '../img/jar6.png';
+import jar7 from '../img/jar7.png';
 
 const HeroSection = () => {
   const [] = useInView({
@@ -15,9 +17,9 @@ const HeroSection = () => {
     threshold: 0.2,
   });
   return (
-    <section id="home" className="relative h-screen flex items-start pt-40 2xl:pt-52 justify-center overflow-hidden">
+    <section id="home" className="relative 2xl:h-screen xl:h-screen lg:h-[85vh] md:h-[85vh] flex flex-col items-center justify-between pt-40 2xl:pt-52 ">
       {/* Background with spice-inspired pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-stone-900 z-0">
+      <div className="absolute inset-0  z-0">
         <div className="absolute inset-0 opacity-20">
           {[...Array(40)].map((_, i) => (
             <motion.div
@@ -45,7 +47,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 z-10 text-center">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 z-10 text-center">
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -82,35 +84,10 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scrolling indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-        }}
-      >
-        <div className="w-8 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-white/60 rounded-full"></div>
-        </div>
-      </motion.div>
 
 
-
-
-     <div className='absolute right-[50%] transform translate-x-1/2 -bottom-36 w-[80%] grid grid-cols-5 gap-4'>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
-          whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
-          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
-        >
-          <img src={jar1} alt="Jar" className="w-full" />
-        </motion.div>
+     <div className='w-[80%] grid grid-cols-7 gap-4'>
+        
         
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -120,7 +97,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar2} alt="Jar" className="w-full" />
+          <img src={jar2} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
         </motion.div>
         
         <motion.div
@@ -130,7 +107,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar3} alt="Jar" className="w-full" />
+          <img src={jar3} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
         </motion.div>
         
         <motion.div
@@ -141,7 +118,28 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar4} alt="Jar" className="w-full" />
+          <img src={jar4} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50, }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
+          whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+        >
+          <img src={jar1} alt="Jar" className="rotate-12 scale-150" />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.65, type: 'spring' }}
+          whileHover={{ scale: 1.15, rotate: -5, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+          className='mt-16'
+        >
+          <img src={jar6} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
         </motion.div>
         
         <motion.div
@@ -151,7 +149,20 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar5} alt="Jar" className="w-full" />
+          <img src={jar5} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+        </motion.div>
+
+       
+
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.65, type: 'spring' }}
+          whileHover={{ scale: 1.15, rotate: -5, transition: { duration: 0.2 } }}
+          whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
+           className='mt-16'
+        >
+          <img src={jar7} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
         </motion.div>
      </div>
     </section>
