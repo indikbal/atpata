@@ -49,15 +49,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-1 flex-shrink-0 text-amber-500" />
-                <span>123 Spice Market, Culinary District, Flavortown 56789</span>
+                <span>#165, AGS layout, Ground floor, Bengaluru - 560094, Karnataka, India</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 flex-shrink-0 text-amber-500" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 8123597473</span>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0 text-amber-500" />
-                <span>info@atpata.com</span>
+                <span>hello@atpata.in</span>
               </li>
             </ul>
           </div>
