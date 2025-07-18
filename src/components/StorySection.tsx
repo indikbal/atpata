@@ -234,7 +234,7 @@ export default function Timeline() {
       style={{ opacity, scale }}
       className="relative max-w-5xl mx-auto px-4 py-20"
     >
-      <div className="fixed top-0 right-0 w-[100vw] h-[100vh] z-0 opacity-30" >
+      {/* <div className="fixed top-0 right-0 w-[100vw] h-[100vh] z-0 opacity-30" >
         <Particles
           particleColors={['#fb923c', '#fb923c']}
           particleCount={5000}
@@ -247,8 +247,7 @@ export default function Timeline() {
           className="w-full h-full" 
         />
       </div>
-      {/* Timeline glow effect */}
-      <div className="absolute -inset-40 bg-indigo-500/5 blur-[100px] rounded-full"></div>
+      <div className="absolute -inset-40 bg-indigo-500/5 blur-[100px] rounded-full"></div> */}
       
       {/* Timeline header */}
       <motion.div 

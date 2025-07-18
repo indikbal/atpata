@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Aurora from '../blocks/Backgrounds/Aurora/Aurora';
 
 
 const AboutSection = () => {
@@ -31,15 +30,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="pb-20 pt-24 relative">
-       <div className='opacity-30 absolute bottom-0 z-0 rotate-180 pointer-events-none'>
-         <Aurora
-              colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
-              blend={0.5}
-              amplitude={1.0}
-              speed={1.5}
-            />
-         </div>
+    <section id="about" className="pb-20 pt-0 md:pt-24 relative">      
         
       <div className="container mx-auto px-4 md:px-8">
         <motion.div

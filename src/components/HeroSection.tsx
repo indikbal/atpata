@@ -86,8 +86,7 @@ const HeroSection = () => {
 
 
 
-     <div className='w-[80%] grid grid-cols-7 gap-4'>
-        
+     <div className='w-[80%] grid grid-cols-1 md:grid-cols-7 gap-4 '>        
         
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -95,7 +94,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.35, type: 'spring' }}
           whileHover={{ scale: 1.15, rotate: -10, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
-          className='mt-16'
+          className='mt-16 hidden md:block'
         >
           <img src={jar2} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
         </motion.div>
@@ -107,7 +106,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar3} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <img src={jar3} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
         </motion.div>
         
         <motion.div
@@ -118,7 +117,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar4} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <img src={jar4} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
         </motion.div>
 
         <motion.div
@@ -128,7 +127,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar1} alt="Jar" className="rotate-12 scale-150" />
+          <img src={jar1} alt="Jar" className="rotate-12 scale-80 md:scale-150" />
         </motion.div>
 
         <motion.div
@@ -139,7 +138,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar6} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <img src={jar6} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
         </motion.div>
         
         <motion.div
@@ -149,7 +148,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar5} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <img src={jar5} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
         </motion.div>
 
        
@@ -162,7 +161,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
            className='mt-16'
         >
-          <img src={jar7} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <img src={jar7} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
         </motion.div>
      </div>
     </section>
