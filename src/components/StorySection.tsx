@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import Particles from '../blocks/Backgrounds/Particles/Particles';
 
 // Import timeline images
 import step1 from '../img/step1.jpg';
@@ -228,7 +227,7 @@ export default function Timeline() {
   const scale = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.95, 1, 1, 0.95]);
   
   return (
-    <section id="story" className="relative">
+    <section className="relative">
     <motion.div 
       ref={containerRef}
       style={{ opacity, scale }}

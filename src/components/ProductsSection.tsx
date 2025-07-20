@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -80,7 +81,7 @@ const ProductsSection = () => {
   });
 
   return (
-    <section id="products" className="py-20 relative bg-[url('../src/img/spices-bg.jpg')] bg-cover bg-center bg-no-repeat">
+    <section className="py-20 relative bg-[url('../src/img/spices-bg.jpg')] bg-cover bg-center bg-no-repeat">
        <motion.div 
         className="absolute -left-40 top-40 w-96 h-96 bg-gradient-to-br from-amber-600/50 to-red-800/10 rounded-full blur-3xl z-10"
         animate={{ 
@@ -110,37 +111,39 @@ const ProductsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
-            <motion.div
-              key={product.id}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-orange-950/20 backdrop-blur-md backdrop-filter rounded-xl overflow-hidden border border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-              onMouseEnter={() => setActiveProduct(product.id)}
-              onMouseLeave={() => setActiveProduct(null)}
-            >
-              <div className="relative h-64 overflow-hidden">
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 mix-blend-multiply`}
-                ></div>
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-contain transform transition-transform duration-700 hover:scale-110"
-                />
-              </div>
-              
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2 text-white opacity-80">{product.name}</h3>
-                <p className="text-white text-sm mb-4 opacity-60">{product.description}</p>
-                <motion.div
-                  className={`w-full h-1 bg-gradient-to-r ${product.color} rounded-full origin-left`}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: activeProduct === product.id ? 1 : 0.3 }}
-                  transition={{ duration: 0.5 }}
-                ></motion.div>
-              </div>
-            </motion.div>
+            <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
+              <motion.div
+                key={product.id}
+                initial={{ opacity: 0, y: 50 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-orange-950/20 backdrop-blur-md backdrop-filter rounded-xl overflow-hidden border border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                onMouseEnter={() => setActiveProduct(product.id)}
+                onMouseLeave={() => setActiveProduct(null)}
+              >
+                <div className="relative h-64 overflow-hidden">
+                  <div 
+                    className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 mix-blend-multiply`}
+                  ></div>
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-full object-contain transform transition-transform duration-700 hover:scale-110"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 text-white opacity-80">{product.name}</h3>
+                  <p className="text-white text-sm mb-4 opacity-60">{product.description}</p>
+                  <motion.div
+                    className={`w-full h-1 bg-gradient-to-r ${product.color} rounded-full origin-left`}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: activeProduct === product.id ? 1 : 0.3 }}
+                    transition={{ duration: 0.5 }}
+                  ></motion.div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>

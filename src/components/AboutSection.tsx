@@ -30,7 +30,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="pb-20 pt-0 md:pt-24 relative">      
+    <section  className="pb-20 pt-0 md:pt-24 relative">      
         
       <div className="container mx-auto px-4 md:px-8">
         <motion.div

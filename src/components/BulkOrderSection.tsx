@@ -1,6 +1,6 @@
 const BulkOrderSection = () => {
   return (
-    <section className="py-20 px-4  relative" id="contact">
+    <section className="py-20 px-4  relative">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-20 w-32 h-32 bg-orange-900 rounded-full blur-3xl"></div>

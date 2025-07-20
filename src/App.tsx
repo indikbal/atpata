@@ -1,64 +1,39 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import './index.css';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AchariAlooDumPage from './pages/Product/AchariAlooDumPage';
+import EggplantPreservePage from './pages/Product/EggplantPreservePage';
+import KaliMirchPaneerPage from './pages/Product/KaliMirchPaneerPage';
+import SaucyPapadPremixPage from './pages/Product/SaucyPapadPremixPage';
+import MoringaPaneerPage from './pages/Product/MoringaPaneerPage';
+import BihariLittiPremixPage from './pages/Product/BihariLittiPremixPage';
+import BitterMelonPreservePage from './pages/Product/BitterMelonPreservePage';
+import NavratnaKadhiPremixPage from './pages/Product/NavratnaKadhiPremixPage';
+import AboutPage from './pages/AboutPage';
+import Products from './pages/Product/Products';
+import StoryPage from './pages/Story';
+import GalleryPage from './pages/Gallery';
+import ContactPage from './pages/Contact';
+import OurTeamPage from './pages/OurTean';
 
-// Components
-import Navbar from './components/Navbar';
-import HeroSection from './components/HeroSection';
-import AboutSection from './components/AboutSection';
-import ProductsSection from './components/ProductsSection';
-import StorySection from './components/StorySection';
-import GallerySection from './components/GallerySection';
-import Footer from './components/Footer';
-import BulkOrderSection from './components/BulkOrderSection';
-import SplashCursor from './blocks/Animations/SplashCursor/SplashCursor';
-
-import spicesBowl from './img/spices-bowl.png';
-
-export function App() {
-  useEffect(() => {
-    // Add Google Fonts
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-
-    // Apply fonts to body
-    document.body.style.fontFamily = 'Poppins, sans-serif';
-    
-    // Set dark mode background
-    document.body.style.backgroundColor = '#000';
-    document.body.style.color = '#ffffff';
-    
-    return () => {
-      document.head.removeChild(link);
-    };
-  }, []);
-
+function App() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-black text-white overflow-x-hidden"
-    >
-      <SplashCursor />
-
-      <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <motion.div className="">
-       
-      </motion.div>
-      <ProductsSection />
-      <StorySection />
-      <section id="products" className="relative">
-        <img src={spicesBowl} alt="" className="w-full h-full object-cover opacity-90"/>
-        </section>
-      <GallerySection />
-      <BulkOrderSection />
-      <Footer />
-    </motion.div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/products" element={<Products />} />
+      <Route path="/story" element={<StoryPage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/ourteam" element={<OurTeamPage />} />
+      <Route path="/product/achari-aloo-dum" element={<AchariAlooDumPage />} />
+      <Route path="/product/eggplant-preserve" element={<EggplantPreservePage />} />
+      <Route path="/product/kali-mirch-paneer" element={<KaliMirchPaneerPage />} />
+      <Route path="/product/saucy-papad-premix" element={<SaucyPapadPremixPage />} />
+      <Route path="/product/moringa-paneer" element={<MoringaPaneerPage />} />
+      <Route path="/product/bihari-litti-premix" element={<BihariLittiPremixPage />} />
+      <Route path="/product/bitter-melon-preserve" element={<BitterMelonPreservePage />} />
+      <Route path="/product/navratna-kadhi-premix" element={<NavratnaKadhiPremixPage />} />
+    </Routes>
   );
 }
 

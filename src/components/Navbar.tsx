@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 import Logo from '../img/logo.svg';
@@ -37,24 +38,71 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="text-white font-bold text-2xl"
           >
-            <img src={Logo} alt="Atpata Logo" className="w-32 mx-auto mb-4" />
+            <Link to="/"><img src={Logo} alt="Atpata Logo" className="w-32 mx-auto mb-4" /></Link>
           </motion.div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
-            {['Home', 'About', 'Products', 'Story', 'Gallery', 'Contact'].map((item) => (
-              <motion.a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+            <motion.a
+                href="/"
                 className="text-white hover:text-amber-500 transition-colors duration-300 "
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
               >
-                {item}
-              </motion.a>
-            ))}
+               Home
+              </motion.a> 
+              <motion.a
+                href={`/about`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               About
+              </motion.a> 
+                <motion.a
+                href={`/products`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               Products
+              </motion.a> 
             <motion.a
-              href="#contact"
+                href={`/story`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               Story
+              </motion.a> 
+              <motion.a
+                href={`/ourteam`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               Our Team
+              </motion.a> 
+
+            <motion.a
+                href={`/gallery`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               Gallery
+              </motion.a> 
+              <motion.a
+                href={`/contact`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+               Contact
+              </motion.a> 
+
+            <motion.a
+              href={`/contact`}
               className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all"
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}
@@ -94,6 +142,14 @@ const Navbar = () => {
                 {item}
               </a>
             ))}
+            <motion.a
+                href={`#contact`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 "
+                whileHover={{ y: -2 }}
+                whileTap={{ y: 0 }}
+              >
+                Contact
+              </motion.a>
           </div>
         </motion.div>
       )}

@@ -17,7 +17,7 @@ const HeroSection = () => {
     threshold: 0.2,
   });
   return (
-    <section id="home" className="relative 2xl:h-screen xl:h-screen lg:h-[85vh] md:h-[85vh] flex flex-col items-center justify-between pt-40 2xl:pt-52 ">
+    <section  className="relative 2xl:h-screen xl:h-screen lg:h-[85vh] md:h-[85vh] flex flex-col items-center justify-between pt-40 2xl:pt-52 ">
       {/* Background with spice-inspired pattern */}
       <div className="absolute inset-0  z-0">
         <div className="absolute inset-0 opacity-20">

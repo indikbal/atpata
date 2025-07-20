@@ -77,7 +77,7 @@ const GallerySection = () => {
   const selectedImageData = galleryImages.find(img => img.id === selectedImage);
 
   return (
-    <section id="gallery" className="py-20">
+    <section className="py-20">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
           ref={ref}
