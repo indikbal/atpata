@@ -102,7 +102,7 @@ const Navbar = () => {
               </motion.a> 
 
             <motion.a
-              href={`/contact`}
+              href={`/bulkorder`}
               className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all"
               whileHover={{ y: -2 }}
               whileTap={{ y: 0 }}

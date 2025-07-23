@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { CircleCheck, Package } from 'lucide-react';
+import { CircleCheck } from 'lucide-react';
 
 const CTASection = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -45,46 +45,11 @@ const CTASection = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto"
         >
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
-                Ready to Spice Up Your Business?
-              </h2>
-              <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-red-500 mb-6"></div>
-              <p className="text-gray-300 mb-8">
-                We offer bulk ordering options for restaurants, catering services, and retail stores. Get in touch to discuss how Atpata can add a burst of flavor to your culinary offerings.
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <CircleCheck className="text-amber-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-gray-300">Custom packaging available for business partners</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CircleCheck className="text-amber-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-gray-300">Volume discounts for regular bulk orders</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CircleCheck className="text-amber-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-gray-300">Chef consultations for menu integration</p>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <CircleCheck className="text-amber-500 mt-1 flex-shrink-0" size={20} />
-                  <p className="text-gray-300">Fast and reliable nationwide shipping</p>
-                </div>
-              </div>
-              
-              <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700">
-                <div className="flex items-center space-x-3 mb-3">
-                  <Package className="text-amber-500" size={24} />
-                  <h3 className="text-xl font-medium text-white">Minimum Order: 50 Units</h3>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  We specialize in fulfilling large orders for businesses. For smaller quantities, please check our retail partners or online store.
-                </p>
-              </div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9221.562385477737!2d77.56764177572377!3d13.034060013504535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17e77e851981%3A0xa7e0122b48635653!2sAtpata!5e1!3m2!1sen!2sin!4v1753270121344!5m2!1sen!2sin" width="100%" height="550" style={{border:0}} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
             
             <div className="bg-gray-900 rounded-lg p-6 md:p-8 shadow-xl border border-gray-800">
@@ -180,7 +145,7 @@ const CTASection = () => {
                         type="submit"
                         className="w-full py-3 px-6 bg-gradient-to-r from-amber-500 to-red-600 hover:from-amber-600 hover:to-red-700 text-white font-medium rounded-md transition-all duration-300 shadow-lg hover:shadow-amber-500/20"
                       >
-                        Send Inquiry
+                        Contact Us
                       </button>
                     </div>
                   </form>

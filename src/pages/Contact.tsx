@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 // Components
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BulkOrderSection from '../components/BulkOrderSection';
 import SplashCursor from '../blocks/Animations/SplashCursor/SplashCursor';
 import { ChevronRight } from 'lucide-react';
+import CTASection from '../components/CTASection';
 
 const ContactPage = () => {
   useEffect(() => {
@@ -62,7 +62,7 @@ const ContactPage = () => {
           </motion.div>
         </div>
       </section>
-      <BulkOrderSection />
+      <CTASection />
       <Footer />
     </motion.div>
   );

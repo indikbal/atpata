@@ -4,12 +4,11 @@ import { motion } from 'framer-motion';
 // Components
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import BulkOrderSection from '../components/BulkOrderSection';
-import TeamSection from '../components/TeamSection';
 import SplashCursor from '../blocks/Animations/SplashCursor/SplashCursor';
 import { ChevronRight } from 'lucide-react';
+import BulkOrderSection from '../components/BulkOrderSection';
 
-const OurTeamPage = () => {
+const BulkOrderPage = () => {
   useEffect(() => {
     // Add Google Fonts
     const link = document.createElement('link');
@@ -49,7 +48,7 @@ const OurTeamPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            The brain behind atpata
+            Bulk Order
           </motion.h1>
           <motion.div 
             className="flex items-center justify-center space-x-2 text-gray-300"
@@ -59,18 +58,14 @@ const OurTeamPage = () => {
           >
             <span>Home</span>
             <ChevronRight size={18} />
-            <span>Our Team</span>
+            <span>Bulk Order</span>
           </motion.div>
         </div>
       </section>
-
-
-
-      <TeamSection />
       <BulkOrderSection />
       <Footer />
     </motion.div>
   );
 };
 
-export default OurTeamPage;
+export default BulkOrderPage;

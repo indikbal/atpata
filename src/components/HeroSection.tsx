@@ -76,7 +76,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
         >
           <a
-            href="#products"
+            href={'/products'}
             className="px-12 py-3 bg-gradient-to-r from-amber-600 to-red-600 rounded-2xl text-white text-lg hover:from-amber-500 hover:to-red-500 transition-all duration-300 inline-block"
           >
             Explore Flavors
@@ -96,7 +96,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16 hidden md:block'
         >
-          <img src={jar2} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" />
+          <a href={'/product/eggplant-preserve'}><img src={jar2} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none" /></a>
         </motion.div>
         
         <motion.div
@@ -106,7 +106,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar3} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
+          <a href={'/product/kali-mirch-paneer'}><img src={jar3} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" /></a>
         </motion.div>
         
         <motion.div
@@ -117,7 +117,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar4} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
+          <a href={'/product/saucy-papad-premix'}><img src={jar4} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" /></a>
         </motion.div>
 
         <motion.div
@@ -127,7 +127,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 10, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar1} alt="Jar" className="rotate-12 scale-80 md:scale-150" />
+          <a href={'/product/achari-aloo-dum'}><img src={jar1} alt="Jar" className="rotate-12 scale-80 md:scale-150" /></a>
         </motion.div>
 
         <motion.div
@@ -138,7 +138,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
           className='mt-16'
         >
-          <img src={jar6} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
+          <a href={'/product/bihari-litti-premix'}><img src={jar6} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" /></a>
         </motion.div>
         
         <motion.div
@@ -148,7 +148,7 @@ const HeroSection = () => {
           whileHover={{ scale: 1.15, rotate: 5, transition: { duration: 0.2 } }}
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
         >
-          <img src={jar5} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
+          <a href={'/product/moringa-paneer'}><img src={jar5} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" /></a>
         </motion.div>
 
        
@@ -161,7 +161,7 @@ const HeroSection = () => {
           whileTap={{ scale: 0.95, transition: { duration: 0.2 } }}
            className='mt-16'
         >
-          <img src={jar7} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" />
+          <a href={'/product/bitter-melon-preserve'}><img src={jar7} alt="Jar" className="w-full blur-[4px] transition-all duration-300 hover:blur-none hidden md:block" /></a>
         </motion.div>
      </div>
     </section>

@@ -1,46 +1,47 @@
 import { motion } from 'framer-motion';
-import { Twitter, Linkedin, Github } from 'lucide-react';
+import team1Image from '../img/team1.jpg';
+import team2Image from '../img/team2.jpg';
+import team3Image from '../img/team3.jpg';
+import team4Image from '../img/team4.jpg';
+import team5Image from '../img/team5.jpg';
+import team6Image from '../img/team6.jpg';
+import team7Image from '../img/team7.jpg';
 
 const teamMembers = [
   {
-    name: 'Jane Doe',
+    name: 'Romi Kulthia',
     role: 'Founder & CEO',
-    image: 'https://i.pravatar.cc/150?img=1',
+    image: team1Image,
   },
   {
-    name: 'John Smith',
-    role: 'Head of Product',
-    image: 'https://i.pravatar.cc/150?img=2',
+    name: 'Mr Shivkumar',
+    role: 'Legal Advisor',
+    image: team2Image,
   },
   {
-    name: 'Emily White',
-    role: 'Lead Chef',
-    image: 'https://i.pravatar.cc/150?img=3',
+    name: 'Mr Santosh',
+    role: 'Legal Advisor',
+    image: team3Image,
   },
   {
-    name: 'Michael Brown',
-    role: 'Marketing Director',
-    image: 'https://i.pravatar.cc/150?img=4',
+    name: 'Souvik',
+    role: 'Content creator',
+    image: team4Image,
   },
   {
-    name: 'Jane Doe',
-    role: 'Founder & CEO',
-    image: 'https://i.pravatar.cc/150?img=1',
+    name: 'Yeshwant',
+    role: 'Content creator',
+    image: team5Image,
   },
   {
-    name: 'John Smith',
-    role: 'Head of Product',
-    image: 'https://i.pravatar.cc/150?img=2',
+    name: 'Yashas',
+    role: 'Content creator',
+    image: team6Image,
   },
   {
-    name: 'Emily White',
-    role: 'Lead Chef',
-    image: 'https://i.pravatar.cc/150?img=3',
-  },
-  {
-    name: 'Michael Brown',
-    role: 'Marketing Director',
-    image: 'https://i.pravatar.cc/150?img=4',
+    name: 'Manan',
+    role: 'Content creator',
+    image: team7Image,
   },
 ];
 
@@ -62,16 +63,16 @@ const TeamSection = () => {
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-64 h-64 object-cover border-4 border-amber-500/50"
+                  className="w-64 h-80 object-cover border-4 border-amber-500/50"
                 />
               </div>
               <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
               <p className="text-amber-400 mb-4">{member.role}</p>
-              <div className="flex justify-center space-x-4 text-gray-400">
+              {/* <div className="flex justify-center space-x-4 text-gray-400">
                 <a href="#" className="hover:text-amber-500 transition-colors"><Twitter size={20} /></a>
                 <a href="#" className="hover:text-amber-500 transition-colors"><Linkedin size={20} /></a>
                 <a href="#" className="hover:text-amber-500 transition-colors"><Github size={20} /></a>
-              </div>
+              </div> */}
             </motion.div>
           ))}
         </div>
