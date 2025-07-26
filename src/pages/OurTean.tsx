@@ -49,7 +49,7 @@ const OurTeamPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            The brain behind atpata
+            Our Team
           </motion.h1>
           <motion.div 
             className="flex items-center justify-center space-x-2 text-gray-300"

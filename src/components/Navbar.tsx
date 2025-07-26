@@ -81,7 +81,7 @@ const Navbar = () => {
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
               >
-               Our Team
+               The brain behind atpata
               </motion.a> 
 
             <motion.a

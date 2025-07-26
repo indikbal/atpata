@@ -6,6 +6,7 @@ import team4Image from '../img/team4.jpg';
 import team5Image from '../img/team5.jpg';
 import team6Image from '../img/team6.jpg';
 import team7Image from '../img/team7.jpg';
+import team8Image from '../img/team8.jpg';
 
 const teamMembers = [
   {
@@ -20,8 +21,13 @@ const teamMembers = [
   },
   {
     name: 'Mr Santosh',
-    role: 'Legal Advisor',
+    role: 'Advisor',
     image: team3Image,
+  },
+  {
+    name: 'Sharath',
+    role: 'Advisor',
+    image: team8Image,
   },
   {
     name: 'Souvik',
@@ -30,7 +36,7 @@ const teamMembers = [
   },
   {
     name: 'Yeshwant',
-    role: 'Content creator',
+    role: 'Operation Manager',
     image: team5Image,
   },
   {
@@ -40,7 +46,7 @@ const teamMembers = [
   },
   {
     name: 'Manan',
-    role: 'Content creator',
+    role: 'Intern',
     image: team7Image,
   },
 ];
