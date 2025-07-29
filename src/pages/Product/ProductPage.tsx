@@ -18,9 +18,10 @@ interface Product {
 
 interface ProductPageProps {
   product: Product;
+  steps?: { title: string; description: string }[];
 }
 
-const ProductPage: React.FC<ProductPageProps> = ({ product }) => {
+const ProductPage: React.FC<ProductPageProps> = ({ product, steps }) => {
   useEffect(() => {
     // Add Google Fonts
     const link = document.createElement('link');
@@ -92,13 +93,13 @@ const ProductPage: React.FC<ProductPageProps> = ({ product }) => {
               <h2 className="text-3xl font-bold mb-4 text-white">About This Product</h2>
               <div className={`w-20 h-1 bg-gradient-to-r ${product.color} mb-6`}></div>
               <p className="text-gray-300 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </p>
-              <p className="text-gray-300">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p className="text-gray-300">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              {product.description
+                .split(/\n\s*\n/) // Split by double line breaks (paragraphs)
+                .map((para, idx) => (
+                  <p className="text-gray-300 mb-4" key={idx}>
+                    {para}
+                  </p>
+                ))}
               </p>
             </motion.div>
           </div>
@@ -119,19 +120,23 @@ const ProductPage: React.FC<ProductPageProps> = ({ product }) => {
             <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-red-500 mx-auto"></div>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[1, 2, 3].map((step) => (
+            {(steps ?? [
+              { title: `Step 1`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
+              { title: `Step 2`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
+              { title: `Step 3`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
+            ]).map((step, idx) => (
               <motion.div 
-                key={step}
+                key={idx}
                 className="bg-orange-950/20 p-8 rounded-lg border border-gray-800/50"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: step * 0.2 }}
+                transition={{ duration: 0.5, delay: (idx + 1) * 0.2 }}
               >
-                <div className="text-4xl font-bold text-amber-500 mb-4">{`0${step}`}</div>
-                <h3 className="text-xl font-semibold mb-2 text-white">Step {step}</h3>
+                <div className="text-4xl font-bold text-amber-500 mb-4">{`0${idx + 1}`}</div>
+                <h3 className="text-xl font-semibold mb-2 text-white">{step.title}</h3>
                 <p className="text-gray-400">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.
+                  {step.description}
                 </p>
               </motion.div>
             ))}
