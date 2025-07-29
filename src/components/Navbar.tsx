@@ -81,7 +81,7 @@ const Navbar = () => {
                 whileHover={{ y: -2 }}
                 whileTap={{ y: 0 }}
               >
-               The brain behind atpata
+               The brains behind atpata
               </motion.a> 
 
             <motion.a
