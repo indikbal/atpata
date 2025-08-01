@@ -132,24 +132,62 @@ const Navbar = () => {
           className="md:hidden bg-black/95 backdrop-blur-md"
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {['Home', 'About', 'Products', 'Story', 'Gallery', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+               <a
+                href={"/"}
                 className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item}
+                Home
               </a>
-            ))}
-            <motion.a
+              <a
+                href={"/about"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <a
+                href={"/products"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Products
+              </a>
+              <a
+                href={"/story"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Story
+              </a>
+              <a
+                href={"/ourteam"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                The brains behind atpata
+              </a>
+              <a
+                href={"/gallery"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Gallery
+              </a>
+              <a
+                href={"/bulkorder"}
+                className="text-white hover:text-amber-500 py-2 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Bulk Order
+              </a>
+            <a
                 href={`#contact`}
                 className="text-white hover:text-amber-500 transition-colors duration-300 "
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
-              </motion.a>
+              </a>
           </div>
         </motion.div>
       )}

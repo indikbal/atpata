@@ -6,6 +6,7 @@ import { ChevronRight } from 'lucide-react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import BulkOrderSection from '../../components/BulkOrderSection';
+import LightRays from '../../blocks/Backgrounds/LightRays/LightRays';
 
 // Assuming you have a type definition for your product
 interface Product {
@@ -73,9 +74,24 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, steps }) => {
       </section>
 
       {/* About This Product Section */}
-      <section className="py-20">
+      <section className="py-40 relative">
+      <div style={{ width: '100%', height: '800px', position: 'absolute', top: '0', left: '0' }}>
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#fff"
+            raysSpeed={1}
+            lightSpread={2}
+            rayLength={1}
+            followMouse={true}
+            mouseInfluence={0.2}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          />
+        </div>
         <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+       
+          <div className="grid md:grid-cols-2 gap-12 items-center z-10 relative">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -120,11 +136,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, steps }) => {
             <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-red-500 mx-auto"></div>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            {(steps ?? [
-              { title: `Step 1`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
-              { title: `Step 2`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
-              { title: `Step 3`, description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum.' },
-            ]).map((step, idx) => (
+            {(steps ?? []).map((step, idx) => (
               <motion.div 
                 key={idx}
                 className="bg-orange-950/20 p-8 rounded-lg border border-gray-800/50"
