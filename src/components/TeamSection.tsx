@@ -7,6 +7,9 @@ import team5Image from '../img/team5.jpg';
 import team6Image from '../img/team6.jpg';
 import team7Image from '../img/team7.jpg';
 import team8Image from '../img/team8.jpg';
+import team9Image from '../img/team9.jpg';
+import team10Image from '../img/team10.jpg';
+
 
 const teamMembers = [
   {
@@ -49,6 +52,17 @@ const teamMembers = [
     role: 'Intern',
     image: team7Image,
   },
+  {
+    name: 'Nidhi',
+    role: 'NPD',
+    image: team9Image,
+  },
+  {
+    name: 'Monika',
+    role: 'Innovation Specialist',
+    image: team10Image,
+  },
+  
 ];
 
 const TeamSection = () => {
