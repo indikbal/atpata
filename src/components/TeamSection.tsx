@@ -3,8 +3,6 @@ import team1Image from '../img/team1.jpg';
 import team2Image from '../img/team2.jpg';
 import team3Image from '../img/team3.jpg';
 import team4Image from '../img/team4.jpg';
-import team5Image from '../img/team5.jpg';
-import team6Image from '../img/team6.jpg';
 import team7Image from '../img/team7.jpg';
 import team8Image from '../img/team8.jpg';
 import team9Image from '../img/team9.jpg';
