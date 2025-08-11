@@ -37,16 +37,16 @@ const teamMembers = [
     role: 'Content creator',
     image: team4Image,
   },
-  {
-    name: 'Yeshwant',
-    role: 'Operation Manager',
-    image: team5Image,
-  },
-  {
-    name: 'Yashas',
-    role: 'Content creator',
-    image: team6Image,
-  },
+  // {
+  //   name: 'Yeshwant',
+  //   role: 'Operation Manager',
+  //   image: team5Image,
+  // },
+  // {
+  //   name: 'Yashas',
+  //   role: 'Content creator',
+  //   image: team6Image,
+  // },
   {
     name: 'Manan',
     role: 'Intern',
