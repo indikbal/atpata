@@ -15,6 +15,8 @@ import GalleryPage from './pages/Gallery';
 import ContactPage from './pages/Contact';
 import OurTeamPage from './pages/OurTean';
 import BulkOrderPage from './pages/BukOrder';
+import CartPage from './pages/CartPage';
+import OrderSuccessPage from './pages/OrderSuccessPage';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/ourteam" element={<OurTeamPage />} />
       <Route path="/bulkorder" element={<BulkOrderPage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/order-success" element={<OrderSuccessPage />} />
       <Route path="/product/achari-aloo-dum" element={<AchariAlooDumPage />} />
       <Route path="/product/eggplant-preserve" element={<EggplantPreservePage />} />
       <Route path="/product/kali-mirch-paneer" element={<KaliMirchPaneerPage />} />

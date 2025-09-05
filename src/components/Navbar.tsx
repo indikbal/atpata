@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../contexts/CartContext';
 
 
 import Logo from '../img/logo.svg';
@@ -10,6 +12,11 @@ import Logo from '../img/logo.svg';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { state } = useCart();
+
+  // Debug: Log cart state in navbar
+  console.log('Navbar - Cart state:', state);
+  console.log('Navbar - Total items:', state.totalItems);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -109,6 +116,19 @@ const Navbar = () => {
             >
               Bulk Order
             </motion.a>
+            <motion.a
+              href={`/cart`}
+              className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all relative"
+              whileHover={{ y: -2 }}
+              whileTap={{ y: 0 }}
+            >
+              <ShoppingCart size={20} />
+              {state.totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                  {state.totalItems}
+                </span>
+              )}
+            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -187,6 +207,19 @@ const Navbar = () => {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
+              </a>
+              <a
+                href={`/cart`}
+                className="text-white hover:text-amber-500 transition-colors duration-300 relative flex items-center"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <ShoppingCart size={20} />
+                {state.totalItems > 0 && (
+                  <span className="ml-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                    {state.totalItems}
+                  </span>
+                )}
+                <span className="ml-2">Cart</span>
               </a>
           </div>
         </motion.div>
