@@ -30,14 +30,8 @@ const Footer = () => {
               Bringing the authentic flavors of India to your kitchen with our premium instant masalas. Each blend tells a story of tradition and innovation.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
+              <a href="https://www.instagram.com/atpatabytaste/" target="_blank" className="text-gray-400 hover:text-amber-500 transition-colors">
                 <Instagram size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                <Twitter size={20} />
               </a>
             </div>
           </div>

@@ -21,6 +21,7 @@ const products = [
     description: 'Spice up your potatoes with bold, tangy achari magic — in just one step',
     image: jar1,
     color: 'from-amber-500 to-red-500',
+    price: '₹ 299',
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const products = [
     description: 'Smoky, spiced brinjal pickle that transforms any simple meal.',
     image: jar2,
     color: 'from-green-500 to-amber-500',
+    price: '₹ 299',
   },
   {
     id: 3,
@@ -35,42 +37,48 @@ const products = [
     description: 'Peppery, creamy paneer — gourmet-style and effortlessly made. ',
     image:  jar3,
     color: 'from-red-600 to-red-800',
-  },
+    price: '₹ 299',
+    },
   {
     id: 4,
     name: 'Saucy Papad Premix',
     description: 'Your papad’s spicy, tangy upgrade — ready in seconds! ',
     image: jar4,
     color: 'from-amber-400 to-yellow-600',
-  },
+    price: '₹ 299',
+      },
   {
     id: 5,
     name: 'Moringa Paneer',
     description: 'Healthy meets tasty with this moringa-powered paneer blend. ',
     image: jar5,
     color: 'from-red-500 to-red-900',
-  },
+    price: '₹ 299',
+    },
   {
     id: 6,
     name: 'Bihari Litti Premix',
     description: 'Authentic litti flavour, no grinding, roasting, or hassle',
     image: jar6,
     color: 'from-yellow-500 to-amber-600',
-  },
+    price: '₹ 299',
+    },
   {
     id: 7,
     name: 'Bitter Melon Preserve',
     description: 'Karela like never before — sweet, bitter, bold, and addictive. ',
     image: jar7,
     color: 'from-yellow-500 to-amber-600',
-  },
+    price: '₹ 299',
+    },
   {
     id: 8,
     name: 'Navratna Kadhi Premix',
     description: 'Nine spices, one soul-soothing kadhi — comfort in a spoon. ',
     image: jar8,
     color: 'from-yellow-500 to-amber-600',
-  },
+    price: '₹ 299',
+    },
 ];
 
 const ProductsSection = () => {
@@ -135,6 +143,7 @@ const ProductsSection = () => {
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 text-white opacity-80">{product.name}</h3>
                   <p className="text-white text-sm mb-4 opacity-60">{product.description}</p>
+                  <p className="text-amber-500 text-xl font-bold mb-4 opacity-60">Price: {product.price}</p>
                   <motion.div
                     className={`w-full h-1 bg-gradient-to-r ${product.color} rounded-full origin-left`}
                     initial={{ scaleX: 0 }}
