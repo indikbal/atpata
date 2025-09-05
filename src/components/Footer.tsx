@@ -1,5 +1,5 @@
 
-import { Facebook, Instagram, Mail, MapPin, Phone, Twitter } from 'lucide-react'; 
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react'; 
 import Aurora from '../blocks/Backgrounds/Aurora/Aurora';
 
 
