@@ -18,6 +18,8 @@ import BulkOrderPage from './pages/BukOrder';
 import TermsAndConditions from './pages/TermsAndConditions';
 import CancellationRefundPolicy from './pages/CancellationRefundPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import CartPage from './pages/CartPage';
+import OrderSuccessPage from './pages/OrderSuccessPage';
 
 function App() {
   return (
