@@ -15,6 +15,9 @@ import GalleryPage from './pages/Gallery';
 import ContactPage from './pages/Contact';
 import OurTeamPage from './pages/OurTean';
 import BulkOrderPage from './pages/BukOrder';
+import TermsAndConditions from './pages/TermsAndConditions';
+import CancellationRefundPolicy from './pages/CancellationRefundPolicy';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
@@ -35,6 +38,9 @@ function App() {
       <Route path="/product/bihari-litti-premix" element={<BihariLittiPremixPage />} />
       <Route path="/product/bitter-melon-preserve" element={<BitterMelonPreservePage />} />
       <Route path="/product/navratna-kadhi-premix" element={<NavratnaKadhiPremixPage />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      <Route path="/cancellation-refund-policy" element={<CancellationRefundPolicy />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     </Routes>
   );
 }

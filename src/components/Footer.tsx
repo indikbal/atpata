@@ -81,6 +81,26 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 mb-4">
+            <a 
+              href="/terms-and-conditions" 
+              className="text-gray-400 hover:text-amber-500 transition-colors text-sm"
+            >
+              Terms and Conditions
+            </a>
+            <a 
+              href="/cancellation-refund-policy" 
+              className="text-gray-400 hover:text-amber-500 transition-colors text-sm"
+            >
+              Cancellation & Refund Policy
+            </a>
+            <a 
+              href="/privacy-policy" 
+              className="text-gray-400 hover:text-amber-500 transition-colors text-sm"
+            >
+              Privacy Policy
+            </a>
+          </div>
           <p>&copy; {currentYear} Atpata Spices. All rights reserved.</p>
         </div>
       </div>
