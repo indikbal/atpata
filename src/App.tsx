@@ -13,13 +13,16 @@ import Products from './pages/Product/Products';
 import StoryPage from './pages/Story';
 import GalleryPage from './pages/Gallery';
 import ContactPage from './pages/Contact';
-import OurTeamPage from './pages/OurTean';
-import BulkOrderPage from './pages/BukOrder';
 import TermsAndConditions from './pages/TermsAndConditions';
 import CancellationRefundPolicy from './pages/CancellationRefundPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CartPage from './pages/CartPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
+import './index.css';
+import { initializeEmailJS } from './services/emailService';
+
+// Initialize EmailJS on app start
+initializeEmailJS();
 
 function App() {
   return (
@@ -30,8 +33,6 @@ function App() {
       <Route path="/story" element={<StoryPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/ourteam" element={<OurTeamPage />} />
-      <Route path="/bulkorder" element={<BulkOrderPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/order-success" element={<OrderSuccessPage />} />
       <Route path="/product/achari-aloo-dum" element={<AchariAlooDumPage />} />

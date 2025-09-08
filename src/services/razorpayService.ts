@@ -1,5 +1,6 @@
 import { CartItem } from '../contexts/CartContext';
 import { saveOrderToFirebase } from './firebaseService';
+import { sendOrderEmails } from './emailService';
 
 // Razorpay configuration
 const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
@@ -122,6 +123,9 @@ const handlePaymentSuccess = async (response: RazorpayResponse, orderData: Order
 
     // Save order to Firebase
     await saveOrderToFirebase(firebaseOrderData);
+    
+    // Send order confirmation emails
+    await sendOrderEmails(firebaseOrderData);
     
     // Redirect to success page with payment ID
     window.location.href = `/order-success?paymentId=${response.razorpay_payment_id}`;
