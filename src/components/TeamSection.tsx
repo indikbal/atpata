@@ -17,7 +17,7 @@ const teamMembers = [
   },
   {
     name: 'Mr Shivkumar',
-    role: 'Legal Advisor',
+    role: 'Director',
     image: team2Image,
   },
   {
@@ -45,11 +45,6 @@ const teamMembers = [
   //   role: 'Content creator',
   //   image: team6Image,
   // },
-  {
-    name: 'Manan',
-    role: 'Intern',
-    image: team7Image,
-  },
   {
     name: 'Nidhi',
     role: 'NPD',
