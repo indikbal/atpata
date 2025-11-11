@@ -29,11 +29,11 @@ const teamMembers = [
     role: 'Advisor',
     image: team8Image,
   },
-  {
-    name: 'Souvik',
-    role: 'Content creator',
-    image: team4Image,
-  },
+  // {
+  //   name: 'Souvik',
+  //   role: 'Content creator',
+  //   image: team4Image,
+  // },
   // {
   //   name: 'Yeshwant',
   //   role: 'Operation Manager',
@@ -44,11 +44,11 @@ const teamMembers = [
   //   role: 'Content creator',
   //   image: team6Image,
   // },
-  {
-    name: 'Nidhi',
-    role: 'NPD',
-    image: team9Image,
-  },
+  // {
+  //   name: 'Nidhi',
+  //   role: 'NPD',
+  //   image: team9Image,
+  // },
   {
     name: 'Monika',
     role: 'Innovation Specialist',
