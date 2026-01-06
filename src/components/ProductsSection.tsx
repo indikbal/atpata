@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../contexts/CartContext';
 
 
 import jar1 from '../img/jar1.png';
@@ -83,10 +85,21 @@ const products = [
 
 const ProductsSection = () => {
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
+  const { addToCart } = useCart();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
+
+  const handleAddToCart = (product: typeof products[0]) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      description: product.description,
+      image: product.image,
+      price: product.price,
+    });
+  };
 
   return (
     <section className="py-20 relative bg-[url('../src/img/spices-bg.jpg')] bg-cover bg-center bg-no-repeat">
@@ -119,16 +132,16 @@ const ProductsSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
-            <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-orange-950/20 backdrop-blur-md backdrop-filter rounded-xl overflow-hidden border border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
-                onMouseEnter={() => setActiveProduct(product.id)}
-                onMouseLeave={() => setActiveProduct(null)}
-              >
+            <motion.div
+              key={product.id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-orange-950/20 backdrop-blur-md backdrop-filter rounded-xl overflow-hidden border border-gray-800/50 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              onMouseEnter={() => setActiveProduct(product.id)}
+              onMouseLeave={() => setActiveProduct(null)}
+            >
+              <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
                 <div className="relative h-64 overflow-hidden">
                   <div 
                     className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 mix-blend-multiply`}
@@ -139,20 +152,38 @@ const ProductsSection = () => {
                     className="w-full h-full object-contain transform transition-transform duration-700 hover:scale-110"
                   />
                 </div>
-                
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 text-white opacity-80">{product.name}</h3>
+              </Link>
+              
+              <div className="p-6">
+                <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
+                  <h3 className="text-xl font-bold mb-2 text-white opacity-80 hover:text-amber-400 transition-colors">{product.name}</h3>
                   <p className="text-white text-sm mb-4 opacity-60">{product.description}</p>
                   <p className="text-amber-500 text-xl font-bold mb-4 opacity-60">Price: {product.price}</p>
+                </Link>
+                
+                <div className="flex items-center justify-between">
                   <motion.div
-                    className={`w-full h-1 bg-gradient-to-r ${product.color} rounded-full origin-left`}
+                    className={`flex-1 h-1 bg-gradient-to-r ${product.color} rounded-full origin-left mr-4`}
                     initial={{ scaleX: 0 }}
                     animate={{ scaleX: activeProduct === product.id ? 1 : 0.3 }}
                     transition={{ duration: 0.5 }}
                   ></motion.div>
+                  
+                  <motion.button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleAddToCart(product);
+                    }}
+                    className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all duration-300 flex items-center gap-2 shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <ShoppingCart size={16} />
+                    Add to Cart
+                  </motion.button>
                 </div>
-              </motion.div>
-            </Link>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
