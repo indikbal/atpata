@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Mail, Phone, MapPin, CreditCard, AlertCircle } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
-import { initiatePayment, validateCustomerInfo, OrderData } from '../services/razorpayService';
+import { initiatePayment, validateCustomerInfo, OrderData, isPaymentProcessing } from '../services/razorpayService';
 
 interface CheckoutFormProps {
   onClose: () => void;
@@ -36,8 +36,14 @@ const CheckoutForm = ({ onClose }: CheckoutFormProps) => {
   };
 
   const handlePayment = async () => {
-    // Validate customer information
-    const validationErrors = validateCustomerInfo(customerInfo);
+    // Prevent duplicate payment attempts
+    if (isPaymentProcessing()) {
+      setErrors(['Payment is already in progress. Please wait.']);
+      return;
+    }
+
+    // Validate customer information with subtotal for minimum order check
+    const validationErrors = validateCustomerInfo(customerInfo, subtotal);
     if (validationErrors.length > 0) {
       setErrors(validationErrors);
       return;
@@ -50,14 +56,16 @@ const CheckoutForm = ({ onClose }: CheckoutFormProps) => {
       const orderData: OrderData = {
         items: state.items,
         totalAmount: total,
+        subtotal: subtotal,
+        tax: tax,
         customerInfo,
       };
 
-      await initiatePayment(orderData);
-      
-      // Clear cart after successful payment initiation
-      clearCart();
-      onClose();
+      // Pass onSuccess callback - cart will be cleared only after successful payment
+      await initiatePayment(orderData, () => {
+        clearCart();
+        onClose();
+      });
       
     } catch (error) {
       console.error('Payment initiation failed:', error);

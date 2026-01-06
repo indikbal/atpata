@@ -16,11 +16,6 @@ const CartPage = () => {
     threshold: 0.2,
   });
 
-  // Debug: Log cart state
-  console.log('CartPage - Cart state:', state);
-  console.log('CartPage - Total items:', state.totalItems);
-  console.log('CartPage - Cart items:', state.items);
-
   const handleQuantityChange = (id: number, newQuantity: number) => {
     if (newQuantity <= 0) {
       removeFromCart(id);

@@ -31,15 +31,22 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+// Maximum quantity per item
+const MAX_QUANTITY_PER_ITEM = 10;
+
 const cartReducer = (state: CartState, action: CartAction): CartState => {
   switch (action.type) {
     case 'ADD_TO_CART': {
       const existingItem = state.items.find(item => item.id === action.payload.id);
       
       if (existingItem) {
+        // Check max quantity limit
+        if (existingItem.quantity >= MAX_QUANTITY_PER_ITEM) {
+          return state; // Don't add more if at max
+        }
         const updatedItems = state.items.map(item =>
           item.id === action.payload.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: Math.min(item.quantity + 1, MAX_QUANTITY_PER_ITEM) }
             : item
         );
         
@@ -73,9 +80,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
     }
     
     case 'UPDATE_QUANTITY': {
+      // Enforce max quantity limit
+      const clampedQuantity = Math.min(Math.max(0, action.payload.quantity), MAX_QUANTITY_PER_ITEM);
       const updatedItems = state.items.map(item =>
         item.id === action.payload.id
-          ? { ...item, quantity: action.payload.quantity }
+          ? { ...item, quantity: clampedQuantity }
           : item
       ).filter(item => item.quantity > 0);
       

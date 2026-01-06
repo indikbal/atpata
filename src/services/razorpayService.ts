@@ -38,6 +38,8 @@ export interface RazorpayResponse {
 export interface OrderData {
   items: CartItem[];
   totalAmount: number;
+  subtotal: number;
+  tax: number;
   customerInfo: {
     name: string;
     email: string;
@@ -57,8 +59,20 @@ export const loadRazorpayScript = (): Promise<boolean> => {
   });
 };
 
+// Track payment state to prevent duplicate payments
+let isPaymentInProgress = false;
+
+export const isPaymentProcessing = (): boolean => isPaymentInProgress;
+
 // Initialize Razorpay payment
-export const initiatePayment = async (orderData: OrderData): Promise<void> => {
+export const initiatePayment = async (
+  orderData: OrderData,
+  onSuccess: () => void
+): Promise<void> => {
+  // Prevent duplicate payments
+  if (isPaymentInProgress) {
+    throw new Error('Payment is already in progress. Please wait.');
+  }
   const isScriptLoaded = await loadRazorpayScript();
   
   if (!isScriptLoaded) {
@@ -69,6 +83,8 @@ export const initiatePayment = async (orderData: OrderData): Promise<void> => {
     throw new Error('Razorpay key not configured. Please check environment variables.');
   }
 
+  isPaymentInProgress = true;
+
   const options: RazorpayOptions = {
     key: RAZORPAY_KEY_ID,
     amount: Math.round(orderData.totalAmount * 100), // Amount in paise
@@ -76,6 +92,8 @@ export const initiatePayment = async (orderData: OrderData): Promise<void> => {
     name: 'Atpata Spices',
     description: `Order for ${orderData.items.length} items`,
     handler: (response: RazorpayResponse) => {
+      isPaymentInProgress = false;
+      onSuccess(); // Clear cart only after successful payment
       handlePaymentSuccess(response, orderData);
     },
     prefill: {
@@ -91,6 +109,7 @@ export const initiatePayment = async (orderData: OrderData): Promise<void> => {
     },
     modal: {
       ondismiss: () => {
+        isPaymentInProgress = false;
         console.log('Payment modal dismissed');
       },
     },
@@ -103,7 +122,7 @@ export const initiatePayment = async (orderData: OrderData): Promise<void> => {
 // Handle successful payment
 const handlePaymentSuccess = async (response: RazorpayResponse, orderData: OrderData) => {
   try {
-    // Prepare order data for Firebase
+    // Prepare order data for Firebase - use pre-calculated values for precision
     const firebaseOrderData = {
       paymentId: response.razorpay_payment_id,
       // Only include orderId if it exists, otherwise omit it
@@ -113,8 +132,8 @@ const handlePaymentSuccess = async (response: RazorpayResponse, orderData: Order
       items: orderData.items,
       customerInfo: orderData.customerInfo,
       orderSummary: {
-        subtotal: orderData.totalAmount / 1.18, // Remove tax to get subtotal
-        tax: orderData.totalAmount - (orderData.totalAmount / 1.18),
+        subtotal: orderData.subtotal,
+        tax: orderData.tax,
         total: orderData.totalAmount,
         totalItems: orderData.items.reduce((sum, item) => sum + item.quantity, 0),
       },
@@ -149,28 +168,47 @@ export const calculateOrderTotal = (subtotal: number, taxRate: number = 0.18): n
   return subtotal * (1 + taxRate);
 };
 
+// Minimum order amount in INR
+const MINIMUM_ORDER_AMOUNT = 100;
+
 // Validate customer information
-export const validateCustomerInfo = (customerInfo: OrderData['customerInfo']): string[] => {
+export const validateCustomerInfo = (
+  customerInfo: OrderData['customerInfo'],
+  subtotal?: number
+): string[] => {
   const errors: string[] = [];
+  
+  // Minimum order validation
+  if (subtotal !== undefined && subtotal < MINIMUM_ORDER_AMOUNT) {
+    errors.push(`Minimum order amount is ₹${MINIMUM_ORDER_AMOUNT}`);
+  }
   
   if (!customerInfo.name.trim()) {
     errors.push('Name is required');
+  } else if (customerInfo.name.trim().length < 2) {
+    errors.push('Name must be at least 2 characters');
   }
   
   if (!customerInfo.email.trim()) {
     errors.push('Email is required');
-  } else if (!/\S+@\S+\.\S+/.test(customerInfo.email)) {
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(customerInfo.email)) {
     errors.push('Please enter a valid email address');
   }
   
   if (!customerInfo.phone.trim()) {
     errors.push('Phone number is required');
-  } else if (!/^\d{10}$/.test(customerInfo.phone.replace(/\D/g, ''))) {
-    errors.push('Please enter a valid 10-digit phone number');
+  } else {
+    const digitsOnly = customerInfo.phone.replace(/\D/g, '');
+    // Accept 10-digit Indian numbers or international numbers (10-15 digits)
+    if (digitsOnly.length < 10 || digitsOnly.length > 15) {
+      errors.push('Please enter a valid phone number (10-15 digits)');
+    }
   }
   
   if (!customerInfo.address.trim()) {
     errors.push('Address is required');
+  } else if (customerInfo.address.trim().length < 10) {
+    errors.push('Please enter a complete delivery address (at least 10 characters)');
   }
   
   return errors;
