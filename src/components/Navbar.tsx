@@ -14,10 +14,6 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { state } = useCart();
 
-  // Debug: Log cart state in navbar
-  console.log('Navbar - Cart state:', state);
-  console.log('Navbar - Total items:', state.totalItems);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -45,7 +41,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="text-white font-bold text-2xl"
           >
-            <Link to="/"><img src={Logo} alt="Atpata Logo" className="w-32 mx-auto mb-4" /></Link>
+            <Link to="/"><img src={Logo} alt="Atpata Logo" className="w-32 mx-auto " /></Link>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -131,8 +127,22 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Menu Button + Cart */}
+          <div className="md:hidden flex items-center gap-2">
+            {/* Cart Icon - Always visible on mobile */}
+            <Link 
+              to="/cart"
+              className="bg-gradient-to-r from-amber-600 to-red-600 text-white p-2 rounded-md hover:from-amber-500 hover:to-red-500 transition-all relative"
+            >
+              <ShoppingCart size={20} />
+              {state.totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
+                  {state.totalItems}
+                </span>
+              )}
+            </Link>
+            
+            {/* Hamburger Menu Button */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-white p-2"
@@ -208,20 +218,7 @@ const Navbar = () => {
               >
                 Contact
               </a>
-              <a
-                href={`/cart`}
-                className="text-white hover:text-amber-500 transition-colors duration-300 relative flex items-center"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <ShoppingCart size={20} />
-                {state.totalItems > 0 && (
-                  <span className="ml-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold">
-                    {state.totalItems}
-                  </span>
-                )}
-                <span className="ml-2">Cart</span>
-              </a>
-          </div>
+                        </div>
         </motion.div>
       )}
     </nav>

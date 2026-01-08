@@ -30,7 +30,7 @@ const CartPage = () => {
 
   if (state.items.length === 0) {
     return (
-      <>
+      <div className="min-h-screen bg-black text-white overflow-x-hidden">
         <Navbar />
         <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-20">
           <div className="container mx-auto px-4 md:px-8 py-20">
@@ -61,12 +61,12 @@ const CartPage = () => {
           </div>
         </div>
         <Footer />
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
       <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-20">
         <div className="container mx-auto px-4 md:px-8 py-20">
@@ -230,15 +230,15 @@ const CartPage = () => {
             </motion.div>
           </div>
         </div>
+        </div>
       </div>
+      <Footer />
+      
+      {/* Checkout Modal */}
+      {showCheckout && (
+        <CheckoutForm onClose={() => setShowCheckout(false)} />
+      )}
     </div>
-    <Footer />
-    
-    {/* Checkout Modal */}
-    {showCheckout && (
-      <CheckoutForm onClose={() => setShowCheckout(false)} />
-    )}
-    </>
   );
 };
 

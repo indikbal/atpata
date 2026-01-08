@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingCart, Plus, Minus } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 
 
@@ -85,7 +85,13 @@ const products = [
 
 const ProductsSection = () => {
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
-  const { addToCart } = useCart();
+  const { state, addToCart, updateQuantity } = useCart();
+
+  // Get quantity of item in cart
+  const getCartQuantity = (productId: number) => {
+    const item = state.items.find(item => item.id === productId);
+    return item?.quantity || 0;
+  };
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -169,18 +175,55 @@ const ProductsSection = () => {
                     transition={{ duration: 0.5 }}
                   ></motion.div>
                   
-                  <motion.button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleAddToCart(product);
-                    }}
-                    className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all duration-300 flex items-center gap-2 shadow-lg"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <ShoppingCart size={16} />
-                    Add to Cart
-                  </motion.button>
+                  {getCartQuantity(product.id) > 0 ? (
+                    <motion.div
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      className="flex items-center gap-1 bg-gray-800/80 rounded-lg p-1"
+                    >
+                      <motion.button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const currentQty = getCartQuantity(product.id);
+                          updateQuantity(product.id, currentQty - 1);
+                        }}
+                        className="bg-gradient-to-r from-amber-600 to-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center hover:from-amber-500 hover:to-red-500 transition-all"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Minus size={14} />
+                      </motion.button>
+                      
+                      <span className="text-white font-bold w-8 text-center text-sm">
+                        {getCartQuantity(product.id)}
+                      </span>
+                      
+                      <motion.button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleAddToCart(product);
+                        }}
+                        className="bg-gradient-to-r from-amber-600 to-red-600 text-white w-8 h-8 rounded-lg flex items-center justify-center hover:from-amber-500 hover:to-red-500 transition-all"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Plus size={14} />
+                      </motion.button>
+                    </motion.div>
+                  ) : (
+                    <motion.button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleAddToCart(product);
+                      }}
+                      className="bg-gradient-to-r from-amber-600 to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-amber-500 hover:to-red-500 transition-all duration-300 flex items-center gap-2 shadow-lg"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <ShoppingCart size={16} />
+                      Add to Cart
+                    </motion.button>
+                  )}
                 </div>
               </div>
             </motion.div>
