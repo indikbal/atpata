@@ -18,6 +18,7 @@ import CancellationRefundPolicy from './pages/CancellationRefundPolicy';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CartPage from './pages/CartPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
+import OurTeamPage from './pages/OurTean';
 import './index.css';
 import { initializeEmailJS } from './services/emailService';
 
@@ -33,6 +34,7 @@ function App() {
       <Route path="/story" element={<StoryPage />} />
       <Route path="/gallery" element={<GalleryPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/ourteam" element={<OurTeamPage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/order-success" element={<OrderSuccessPage />} />
       <Route path="/product/achari-aloo-dum" element={<AchariAlooDumPage />} />
