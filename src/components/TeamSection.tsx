@@ -4,6 +4,8 @@ import team2Image from '../img/team2.jpg';
 import team3Image from '../img/team3.jpg';
 import team8Image from '../img/team8.jpg';
 import team10Image from '../img/team10.jpg';
+import team11Image from '../img/team11.jpg';
+
 
 
 const teamMembers = [
@@ -51,6 +53,11 @@ const teamMembers = [
     name: 'Monika',
     role: 'Innovation Specialist',
     image: team10Image,
+  },
+  {
+    name: 'Karan',
+    role: 'Ops Manager',
+    image: team11Image,
   },
   
 ];
