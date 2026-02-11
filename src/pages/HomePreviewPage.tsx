@@ -51,33 +51,34 @@ const HomePreviewPage = () => {
       {/* ===== HERO SECTION — Spice Discovery Portal ===== */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
 
- <div className="absolute inset-0  z-0">
-        <div className="absolute inset-0 opacity-20">
-          {[...Array(40)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-40 h-40 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                backgroundColor: ['#FF4500', '#8B0000', '#FF8C00', '#B22222'][Math.floor(Math.random() * 2)],
-                mixBlendMode: 'color-dodge',
-              }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{
-                scale: [0, 1.5, 1],
-                opacity: [0, 0.3, 0.1],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                repeatType: 'reverse',
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+        {/* Background particles — fewer on mobile */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 opacity-20">
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-40 h-40 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  backgroundColor: ['#FF4500', '#8B0000', '#FF8C00', '#B22222'][Math.floor(Math.random() * 2)],
+                  mixBlendMode: 'color-dodge',
+                }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{
+                  scale: [0, 1.5, 1],
+                  opacity: [0, 0.3, 0.1],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                  delay: Math.random() * 2,
+                }}
+              />
+            ))}
+          </div>
         </div>
-      </div>
         {/* Layer 0: Subtle tech grid background */}
         <div
           className="absolute inset-0 z-0 opacity-[0.04]"
@@ -90,37 +91,31 @@ const HomePreviewPage = () => {
           }}
         />
 
-        {/* Layer 0.5: Light spread behind the map */}
+        {/* Layer 0.5: Light spread behind the map — static, no animation */}
         <div className="absolute z-[4] pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
           {/* Core bright glow */}
-          <motion.div
-            className="absolute rounded-full"
+          <div
+            className="absolute rounded-full w-[250px] h-[250px] md:w-[500px] md:h-[500px]"
             style={{
-              width: 500,
-              height: 500,
-              left: -250,
-              top: -250,
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
               background: 'radial-gradient(circle, rgba(255,120,0,0.2) 0%, rgba(255,69,0,0.1) 40%, transparent 70%)',
             }}
-            animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-            transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
           />
           {/* Wide ambient spread */}
-          <motion.div
-            className="absolute rounded-full"
+          <div
+            className="absolute rounded-full w-[400px] h-[400px] md:w-[900px] md:h-[900px]"
             style={{
-              width: 900,
-              height: 900,
-              left: -450,
-              top: -450,
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
               background: 'radial-gradient(ellipse at center, rgba(255,100,0,0.12) 0%, rgba(200,50,0,0.06) 35%, rgba(139,0,0,0.03) 55%, transparent 75%)',
             }}
-            animate={{ scale: [1, 1.08, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
           />
-          {/* Vertical light streak */}
-          <motion.div
-            className="absolute"
+          {/* Vertical light streak — desktop only */}
+          <div
+            className="absolute hidden md:block"
             style={{
               width: 300,
               height: 800,
@@ -128,12 +123,10 @@ const HomePreviewPage = () => {
               top: -400,
               background: 'radial-gradient(ellipse at center, rgba(255,150,0,0.08) 0%, transparent 70%)',
             }}
-            animate={{ opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
           />
-          {/* Horizontal light streak */}
-          <motion.div
-            className="absolute"
+          {/* Horizontal light streak — desktop only */}
+          <div
+            className="absolute hidden md:block"
             style={{
               width: 800,
               height: 300,
@@ -141,16 +134,14 @@ const HomePreviewPage = () => {
               top: -150,
               background: 'radial-gradient(ellipse at center, rgba(255,80,0,0.06) 0%, transparent 70%)',
             }}
-            animate={{ opacity: [0.4, 0.7, 0.4] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
           />
         </div>
 
        
 
-        {/* Layer 1: Floating spice dust particles */}
-        <div className="absolute inset-0 z-[1] pointer-events-none">
-          {[...Array(50)].map((_, i) => (
+        {/* Layer 1: Floating spice dust particles — hidden on mobile */}
+        <div className="absolute inset-0 z-[1] pointer-events-none hidden md:block">
+          {[...Array(25)].map((_, i) => (
             <motion.div
               key={`dust-${i}`}
               className="absolute rounded-full"
@@ -177,8 +168,8 @@ const HomePreviewPage = () => {
           ))}
         </div>
 
-        {/* Layer 2: Orbiting rings around the map */}
-        <div className="absolute z-[2] pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
+        {/* Layer 2: Orbiting rings around the map — hidden on mobile */}
+        <div className="absolute z-[2] pointer-events-none hidden md:block" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
           {/* Ring 1 — Large outer orbit */}
           <motion.div
             className="absolute rounded-full"
@@ -351,9 +342,9 @@ const HomePreviewPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Horizontal scan line effect */}
+        {/* Horizontal scan line effect — hidden on mobile */}
         <motion.div
-          className="absolute left-0 w-full h-[1px] z-[3] pointer-events-none"
+          className="absolute left-0 w-full h-[1px] z-[3] pointer-events-none hidden md:block"
           style={{
             background: 'linear-gradient(90deg, transparent, rgba(255,165,0,0.15), rgba(255,69,0,0.1), transparent)',
           }}
