@@ -19,6 +19,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CartPage from './pages/CartPage';
 import OrderSuccessPage from './pages/OrderSuccessPage';
 import OurTeamPage from './pages/OurTean';
+import ExplorePage from './pages/ExplorePage';
+import HomePreviewPage from './pages/HomePreviewPage';
 import './index.css';
 import { initializeEmailJS } from './services/emailService';
 
@@ -29,6 +31,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/explore" element={<ExplorePage />} />
+      <Route path="/home-preview" element={<HomePreviewPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/products" element={<Products />} />
       <Route path="/story" element={<StoryPage />} />
