@@ -11,14 +11,23 @@ interface IndiaMapExplorerProps {
   className?: string;
 }
 
+// Reusable offscreen SVG for bbox calculations — avoids live DOM reflows
+let _offscreenSvg: SVGSVGElement | null = null;
+let _offscreenPath: SVGPathElement | null = null;
+
 const getPathBBox = (pathData: string): { x: number; y: number; width: number; height: number; centerX: number; centerY: number } => {
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  path.setAttribute('d', pathData);
-  svg.appendChild(path);
-  document.body.appendChild(svg);
-  const bbox = path.getBBox();
-  document.body.removeChild(svg);
+  if (!_offscreenSvg) {
+    _offscreenSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    _offscreenSvg.style.position = 'absolute';
+    _offscreenSvg.style.width = '0';
+    _offscreenSvg.style.height = '0';
+    _offscreenSvg.style.overflow = 'hidden';
+    _offscreenPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    _offscreenSvg.appendChild(_offscreenPath);
+    document.body.appendChild(_offscreenSvg);
+  }
+  _offscreenPath!.setAttribute('d', pathData);
+  const bbox = _offscreenPath!.getBBox();
   return {
     x: bbox.x,
     y: bbox.y,
@@ -132,26 +141,25 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
           transition={{ duration: 0.8, ease: 'easeInOut' }}
           className="relative w-full h-full flex items-center justify-center p-4"
         >
-          {/* Ground glow */}
-          <motion.div
-            animate={{ opacity: selectedState ? 0 : [0.1, 0.25, 0.1] }}
-            transition={selectedState ? { duration: 0.5 } : { duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[60%] h-16 rounded-full blur-3xl pointer-events-none"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(255,107,0,0.35) 0%, rgba(255,69,0,0.15) 40%, transparent 70%)',
-            }}
-          />
+          {/* Ground glow — static, no infinite animation */}
+          {!selectedState && (
+            <div
+              className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[60%] h-16 rounded-full blur-3xl pointer-events-none opacity-20"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(255,107,0,0.35) 0%, rgba(255,69,0,0.15) 40%, transparent 70%)',
+              }}
+            />
+          )}
 
-          <motion.svg
+          <svg
             viewBox={indiaMap.viewBox}
             className="w-full h-full max-w-none"
-            style={{ maxHeight: '95vh', objectFit: 'contain' }}
-            animate={{
-              filter: selectedState
-                ? 'drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2)) blur(1px)'
-                : 'none',
+            style={{
+              maxHeight: '95vh',
+              objectFit: 'contain',
+              filter: selectedState ? 'drop-shadow(0 5px 15px rgba(0,0,0,0.2)) blur(1px)' : 'none',
+              transition: 'filter 0.5s',
             }}
-            transition={{ duration: 0.5 }}
           >
             <defs>
               <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -159,7 +167,7 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                 <stop offset="50%" stopColor="rgba(255,255,255,0)" />
               </linearGradient>
 
-              {/* Sweeping spotlight gradient — bright spot moves around */}
+              {/* Single sweep gradient with CSS rotation */}
               <linearGradient id="sweepGlow1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stopColor="transparent" />
                 <stop offset="35%" stopColor="transparent" />
@@ -171,46 +179,23 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                 <animateTransform attributeName="gradientTransform" type="rotate" from="0 0.5 0.5" to="360 0.5 0.5" dur="6s" repeatCount="indefinite" />
               </linearGradient>
 
-              {/* Second sweep — offset timing, counter direction */}
-              <linearGradient id="sweepGlow2" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stopColor="transparent" />
-                <stop offset="35%" stopColor="transparent" />
-                <stop offset="45%" stopColor="#FF4500" />
-                <stop offset="50%" stopColor="#FFA500" />
-                <stop offset="55%" stopColor="#FF4500" />
-                <stop offset="65%" stopColor="transparent" />
-                <stop offset="100%" stopColor="transparent" />
-                <animateTransform attributeName="gradientTransform" type="rotate" from="360 0.5 0.5" to="0 0.5 0.5" dur="8s" repeatCount="indefinite" />
-              </linearGradient>
-
-              {/* Subtle static base glow */}
+              {/* Static base glow */}
               <linearGradient id="baseGlow" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stopColor="rgba(255,107,0,0.15)" />
                 <stop offset="50%" stopColor="rgba(255,69,0,0.08)" />
                 <stop offset="100%" stopColor="rgba(255,107,0,0.15)" />
               </linearGradient>
 
-              {/* Blur filters */}
-              <filter id="glowWide" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" />
-              </filter>
+              {/* Single blur filter */}
               <filter id="glowTight" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2" />
+                <feGaussianBlur stdDeviation="3" />
               </filter>
-
-              {/* Mask: glow only outside India */}
-              <mask id="indiaOuterMask">
-                <rect x="-500" y="-500" width="5000" height="5000" fill="white" />
-                {indiaMap.locations.map((location: any) => (
-                  <path key={`mask-${location.id}`} d={location.path} fill="black" />
-                ))}
-              </mask>
             </defs>
 
-            {/* Moving edge light — iPhone-style sweep */}
+            {/* Edge glow — reduced to 2 layers (was 5) */}
             {!selectedState && (
-              <g mask="url(#indiaOuterMask)" className="pointer-events-none">
-                {/* Layer 1: Faint static base outline */}
+              <g className="pointer-events-none">
+                {/* Layer 1: Static base outline */}
                 {indiaMap.locations.map((location: any) => (
                   <path
                     key={`glow-base-${location.id}`}
@@ -221,51 +206,16 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                     opacity={0.5}
                   />
                 ))}
-                {/* Layer 2: Sweep 1 — soft wide glow moving */}
+                {/* Layer 2: Single sweep glow */}
                 {indiaMap.locations.map((location: any) => (
                   <path
-                    key={`glow-sweep1-${location.id}`}
+                    key={`glow-sweep-${location.id}`}
                     d={location.path}
                     fill="none"
                     stroke="url(#sweepGlow1)"
-                    strokeWidth={5}
-                    opacity={0.25}
-                    style={{ filter: 'url(#glowWide)' }}
-                  />
-                ))}
-                {/* Layer 3: Sweep 1 — sharp bright core */}
-                {indiaMap.locations.map((location: any) => (
-                  <path
-                    key={`glow-sweep1-sharp-${location.id}`}
-                    d={location.path}
-                    fill="none"
-                    stroke="url(#sweepGlow1)"
-                    strokeWidth={1.5}
-                    opacity={0.5}
-                    style={{ filter: 'url(#glowTight)' }}
-                  />
-                ))}
-                {/* Layer 4: Sweep 2 — counter-direction soft */}
-                {indiaMap.locations.map((location: any) => (
-                  <path
-                    key={`glow-sweep2-${location.id}`}
-                    d={location.path}
-                    fill="none"
-                    stroke="url(#sweepGlow2)"
-                    strokeWidth={4}
-                    opacity={0.2}
-                    style={{ filter: 'url(#glowWide)' }}
-                  />
-                ))}
-                {/* Layer 5: Sweep 2 — sharp core */}
-                {indiaMap.locations.map((location: any) => (
-                  <path
-                    key={`glow-sweep2-sharp-${location.id}`}
-                    d={location.path}
-                    fill="none"
-                    stroke="url(#sweepGlow2)"
-                    strokeWidth={1}
+                    strokeWidth={2}
                     opacity={0.4}
+                    style={{ filter: 'url(#glowTight)' }}
                   />
                 ))}
               </g>
@@ -279,45 +229,37 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
 
               return (
                 <g key={location.id}>
-                  <motion.path
+                  <path
                     d={location.path}
-                    className={`${
-                      stateHasProducts && !selectedState ? 'cursor-pointer' : 'cursor-default'
-                    }`}
+                    className={stateHasProducts && !selectedState ? 'cursor-pointer' : 'cursor-default'}
+                    fill={isHovered && stateHasProducts ? stateColor : '#100501'}
+                    stroke="rgba(255,255,255,0.08)"
+                    strokeWidth={0.5}
+                    opacity={selectedState ? (isSelected ? 0.3 : 0.5) : 1}
                     style={{
-                      filter: stateHasProducts && !selectedState && isHovered
-                        ? `drop-shadow(0 0 10px ${stateColor}90) drop-shadow(0 0 25px ${stateColor}50)`
+                      transition: 'fill 0.3s, opacity 0.3s',
+                      filter: isHovered && stateHasProducts
+                        ? `drop-shadow(0 0 8px ${stateColor}70)`
                         : 'none',
                     }}
-                    animate={{
-                      fill: isHovered && !selectedState && stateHasProducts ? stateColor : '#100501',
-                      stroke: isHovered && !selectedState && stateHasProducts
-                        ? '#FCD34D'
-                        : 'rgba(255,255,255,0.12)',
-                      strokeWidth: isHovered && stateHasProducts ? 2.5 : 0.5,
-                      opacity: selectedState ? (isSelected ? 0.3 : 0.5) : 1,
-                    }}
-                    whileHover={stateHasProducts && !selectedState ? { scale: 1.02 } : {}}
-                    transition={{ duration: 0.4 }}
                     onClick={() => !selectedState && handleStateClick(location.id)}
                     onMouseEnter={() => !selectedState && setHoveredState(location.id)}
                     onMouseLeave={() => setHoveredState(null)}
                   />
 
-                  {stateHasProducts && !selectedState && isHovered && (
-                    <motion.path
+                  {stateHasProducts && isHovered && !selectedState && (
+                    <path
                       d={location.path}
                       fill="url(#highlightGradient)"
                       pointerEvents="none"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 0.4 }}
+                      opacity={0.4}
                     />
                   )}
                 </g>
               );
             })}
 
-          </motion.svg>
+          </svg>
         </motion.div>
       </div>
 
@@ -404,25 +346,18 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                     </filter>
                   </defs>
 
-                  {/* Glow layer */}
-                  <motion.path
+                  {/* Glow layer — static, no infinite animation */}
+                  <path
                     d={selectedStatePath.path}
                     fill={selectedStateData.themeColor}
                     opacity={0.3}
                     style={{ filter: 'blur(15px)' }}
-                    animate={{ opacity: [0.2, 0.4, 0.2] }}
-                    transition={{ duration: 3, repeat: Infinity }}
                   />
 
                   {/* Main state */}
-                  <motion.path
+                  <path
                     d={selectedStatePath.path}
                     fill="url(#stateGradient)"
-                    stroke="#FCD34D"
-                    strokeWidth={3}
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.5, delay: 0.5 }}
                   />
 
                   {/* Highlight */}
@@ -440,13 +375,11 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                   transition={{ delay: 0.8, type: 'spring', stiffness: 200 }}
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                 >
-                  <motion.img
+                  <img
                     src={jarIcon}
                     alt=""
-                    className="w-16 h-20 lg:w-20 lg:h-28"
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                    style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))' }}
+                    className="w-16 h-20 lg:w-20 lg:h-28 animate-bounce"
+                    style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))', animationDuration: '3s' }}
                   />
                 </motion.div>
               </motion.div>
@@ -532,12 +465,10 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                           background: `linear-gradient(135deg, ${selectedStateData.themeColor}30, ${selectedStateData.themeColor}10)`,
                         }}
                       >
-                        <motion.img
+                        <img
                           src={product.image}
                           alt={product.name}
-                          className="w-20 h-28 lg:w-24 lg:h-32 object-contain relative z-10"
-                          whileHover={{ scale: 1.1, rotate: 5 }}
-                          transition={{ type: 'spring', stiffness: 300 }}
+                          className="w-20 h-28 lg:w-24 lg:h-32 object-contain relative z-10 transition-transform duration-300 hover:scale-110 hover:rotate-[5deg]"
                         />
                       </Link>
 

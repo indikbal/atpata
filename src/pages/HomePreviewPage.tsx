@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import Navbar from '../components/Navbar';
@@ -15,11 +15,51 @@ import { allProducts } from '../data/stateProducts';
 
 import spicesBowl from '../img/spices-bowl.png';
 
-const floatingProductNames = allProducts.map((p) => p.name);
+const floatingProductNames = allProducts.slice(0, 15).map((p) => p.name);
+
+const preloaderLines = [
+  'Taste the Tradition',
+  'Soul in Spices',
+  'Flavors Come Alive',
+  'Welcome to Atpata',
+];
 
 const HomePreviewPage = () => {
   const [showContent, setShowContent] = useState(false);
+  const [preloaderDone, setPreloaderDone] = useState(false);
+  const [currentLine, setCurrentLine] = useState(0);
+  const [lineVisible, setLineVisible] = useState(true);
 
+  // Preloader sequencing — always plays on every page load
+  useEffect(() => {
+    const DISPLAY_MS = 1400;
+    const FADE_OUT_MS = 400;
+    const LAST_LINE_EXTRA = 600;
+
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const advanceLine = (index: number) => {
+      if (index >= preloaderLines.length) {
+        setPreloaderDone(true);
+        return;
+      }
+      setCurrentLine(index);
+      setLineVisible(true);
+
+      const hold = index === preloaderLines.length - 1 ? DISPLAY_MS + LAST_LINE_EXTRA : DISPLAY_MS;
+
+      timeout = setTimeout(() => {
+        setLineVisible(false);
+        timeout = setTimeout(() => advanceLine(index + 1), FADE_OUT_MS);
+      }, hold);
+    };
+
+    timeout = setTimeout(() => advanceLine(0), 400);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Load fonts & styles
   useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap';
@@ -30,21 +70,169 @@ const HomePreviewPage = () => {
     document.body.style.backgroundColor = '#000';
     document.body.style.color = '#ffffff';
 
-    const timer = setTimeout(() => setShowContent(true), 300);
-
     return () => {
       document.head.removeChild(link);
-      clearTimeout(timer);
     };
   }, []);
 
+  // Only show landing page content AFTER preloader is fully done
+  useEffect(() => {
+    if (preloaderDone) {
+      const t = setTimeout(() => setShowContent(true), 400);
+      return () => clearTimeout(t);
+    }
+  }, [preloaderDone]);
+
+  const isLastLine = currentLine === preloaderLines.length - 1;
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="min-h-screen bg-black text-white overflow-x-hidden"
-    >
+    <>
+      {/* ===== PRELOADER ===== */}
+      <AnimatePresence>
+        {!preloaderDone && (
+          <motion.div
+            key="preloader"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8, ease: 'easeInOut' }}
+          >
+            {/* Ambient glow behind text */}
+            <div
+              className="absolute rounded-full"
+              style={{
+                width: 500,
+                height: 500,
+                background: 'radial-gradient(circle, rgba(255,100,0,0.08) 0%, transparent 70%)',
+              }}
+            />
+
+            {/* Floating spice particles */}
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={`pl-particle-${i}`}
+                className="absolute rounded-full"
+                style={{
+                  width: Math.random() * 3 + 1,
+                  height: Math.random() * 3 + 1,
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  backgroundColor: ['#FF6B00', '#FFD700', '#FF4500', '#FFA500'][i % 4],
+                }}
+                animate={{
+                  y: [0, -(Math.random() * 150 + 50)],
+                  opacity: [0, 0.6, 0],
+                }}
+                transition={{
+                  duration: Math.random() * 4 + 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 3,
+                  ease: 'easeOut',
+                }}
+              />
+            ))}
+
+            {/* Subtle rotating ring */}
+            <motion.div
+              className="absolute rounded-full border border-amber-500/10"
+              style={{ width: 300, height: 300 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            />
+            <motion.div
+              className="absolute rounded-full border border-orange-500/5"
+              style={{ width: 450, height: 450 }}
+              animate={{ rotate: -360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+            />
+
+            {/* Punchline text */}
+            <AnimatePresence mode="wait">
+              {lineVisible && (
+                <motion.div
+                  key={currentLine}
+                  className="relative z-10 flex flex-col items-center gap-4 px-6"
+                  initial={{ opacity: 0, y: 30, scale: 0.9, filter: 'blur(10px)' }}
+                  animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, y: -20, scale: 1.05, filter: 'blur(6px)' }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  {/* Decorative line above */}
+                  <motion.div
+                    className="h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
+                    initial={{ width: 0 }}
+                    animate={{ width: isLastLine ? 200 : 120 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  />
+
+                  <h1
+                    className="text-center font-bold tracking-wide"
+                    style={{
+                      fontFamily: 'Outfit, sans-serif',
+                      fontSize: isLastLine ? 'clamp(1.8rem, 6vw, 3.5rem)' : 'clamp(1.5rem, 5vw, 3rem)',
+                      background: isLastLine
+                        ? 'linear-gradient(135deg, #FFD700, #FF8C00, #FF4500, #FF6B00)'
+                        : 'linear-gradient(135deg, #fff, #f5f5f5, #e0e0e0)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      textShadow: 'none',
+                    }}
+                  >
+                    {preloaderLines[currentLine]}
+                  </h1>
+
+                  {/* Decorative line below */}
+                  <motion.div
+                    className="h-[1px] bg-gradient-to-r from-transparent via-amber-500/50 to-transparent"
+                    initial={{ width: 0 }}
+                    animate={{ width: isLastLine ? 200 : 120 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  />
+
+                  {/* Subtle glow pulse on last line */}
+                  {isLastLine && (
+                    <motion.div
+                      className="absolute rounded-full"
+                      style={{
+                        width: 300,
+                        height: 300,
+                        background: 'radial-gradient(circle, rgba(255,120,0,0.15) 0%, transparent 60%)',
+                      }}
+                      animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Bottom progress dots */}
+            <div className="absolute bottom-12 flex gap-3">
+              {preloaderLines.map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="rounded-full"
+                  style={{
+                    width: 6,
+                    height: 6,
+                    backgroundColor: i <= currentLine ? '#FF8C00' : 'rgba(255,255,255,0.15)',
+                  }}
+                  animate={i === currentLine ? { scale: [1, 1.4, 1] } : {}}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ===== MAIN PAGE — only mounts after preloader completes ===== */}
+      {preloaderDone && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="min-h-screen bg-black text-white overflow-x-hidden"
+      >
       <SplashCursor />
       <Navbar />
 
@@ -352,17 +540,9 @@ const HomePreviewPage = () => {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
       </section>
-
-      <AboutSection />
-      <motion.div className="" />
-      <ProductsSection />
-      <section id="products" className="relative">
-        <img src={spicesBowl} alt="" className="w-full h-full object-cover opacity-90" />
-      </section>
-      <GallerySection />
-      <BulkOrderSection />
-      <Footer />
     </motion.div>
+      )}
+    </>
   );
 };
 
