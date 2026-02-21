@@ -152,9 +152,11 @@ const ProductsSection = () => {
                   <div 
                     className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 mix-blend-multiply`}
                   ></div>
-                  <img 
-                    src={product.image} 
-                    alt={product.name} 
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-contain transform transition-transform duration-700 hover:scale-110"
                   />
                 </div>

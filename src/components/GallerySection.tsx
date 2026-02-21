@@ -104,9 +104,11 @@ const GallerySection = () => {
               onClick={() => openLightbox(image.id)}
             >
               <div className="aspect-w-1 aspect-h-1 w-full h-64">
-                <img 
-                  src={image.src} 
+                <img
+                  src={image.src}
                   alt={image.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
               </div>

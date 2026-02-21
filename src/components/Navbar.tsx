@@ -59,7 +59,7 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
             >
               <Link to="/">
-                <img src={Logo} alt="Atpata Logo" className="w-32" />
+                <img src={Logo} alt="Atpata Logo" className="w-24 md:w-32" />
               </Link>
             </motion.div>
 
