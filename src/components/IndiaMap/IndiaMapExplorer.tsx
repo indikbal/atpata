@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { ArrowLeft, ShoppingCart, Plus, Minus, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -43,6 +44,7 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const [isMapReady, setIsMapReady] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
+  const [isMobile] = useState(() => window.innerWidth < 768);
 
   const { state: cartState, addToCart, updateQuantity } = useCart();
 
@@ -55,6 +57,16 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
     const timer = setTimeout(() => setIsMapReady(true), 500);
     return () => clearTimeout(timer);
   }, []);
+
+  // Lock body scroll when popup is open on mobile
+  useEffect(() => {
+    if (selectedState && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [selectedState, isMobile]);
 
   const stateBBoxes = useMemo(() => {
     const boxes: Record<string, ReturnType<typeof getPathBBox>> = {};
@@ -283,7 +295,8 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
         )}
       </AnimatePresence>
 
-      {/* Split Screen - State Details (Left: State Shape, Right: Products) */}
+      {/* Split Screen - State Details — rendered via portal to escape stacking context */}
+      {createPortal(
       <AnimatePresence>
         {selectedState && selectedStateData && selectedStatePath && selectedStateBBox && (
           <motion.div
@@ -291,14 +304,14 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 z-20 flex flex-col lg:flex-row"
+            className="fixed inset-0 z-[9998] bg-black flex flex-col lg:flex-row"
           >
             {/* Back Button */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="absolute top-4 left-20 sm:left-24 z-30"
+              className={`absolute z-30 ${isMobile ? 'top-3 left-3' : 'top-4 left-6'}`}
             >
               <motion.button
                 onClick={handleBackToMap}
@@ -311,12 +324,46 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
               </motion.button>
             </motion.div>
 
-            {/* Left Side - State Shape */}
+            {/* Mobile compact header — state name + tags, replaces the full left panel */}
+            {isMobile && (
+              <motion.div
+                initial={{ opacity: 0, y: -16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="flex-shrink-0 flex flex-col items-center pt-14 pb-3 px-4 border-b border-white/10"
+                style={{ backgroundColor: `${selectedStateData.themeColor}18` }}
+              >
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <MapPin style={{ color: selectedStateData.themeColor }} size={16} />
+                  <h2 className="text-lg font-bold text-white">{selectedStateData.name}</h2>
+                </div>
+                <p className="text-xs mb-2.5" style={{ color: selectedStateData.themeColor }}>
+                  {selectedStateData.tagline}
+                </p>
+                <div className="flex flex-wrap gap-1.5 justify-center">
+                  {selectedStateData.famousFor.map((item) => (
+                    <span
+                      key={item}
+                      className="px-2.5 py-0.5 rounded-full text-[10px] font-medium"
+                      style={{
+                        backgroundColor: `${selectedStateData.themeColor}25`,
+                        color: selectedStateData.themeColor,
+                        border: `1px solid ${selectedStateData.themeColor}40`,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Left Side - State Shape — hidden on mobile, shown on desktop */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="w-full lg:w-1/2 h-[40vh] lg:h-full flex flex-col items-center justify-center p-6 lg:p-12"
+              className="hidden lg:flex w-full lg:w-1/2 lg:h-full flex-col items-center justify-center p-6 lg:p-12"
             >
               {/* State SVG */}
               <motion.div
@@ -430,18 +477,18 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
 
             {/* Right Side - Products */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: isMobile ? 0 : 50, y: isMobile ? 12 : 0 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-full lg:w-1/2 h-[60vh] lg:h-full overflow-y-auto p-4 lg:p-8 bg-gradient-to-l from-black/80 via-black/60 to-transparent"
+              className="w-full lg:w-1/2 flex-1 lg:h-full overflow-y-auto p-4 lg:p-8 bg-gradient-to-l from-black/80 via-black/60 to-transparent"
             >
               <motion.h3
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="text-xl lg:text-2xl font-bold text-white mb-4 lg:mb-6 sticky top-0 bg-black/50 backdrop-blur-md py-2 px-4 rounded-xl -mx-2"
+                className="text-lg lg:text-2xl font-bold text-white mb-3 lg:mb-6 sticky top-0 bg-black/80 backdrop-blur-md py-2 px-4 rounded-xl -mx-2"
               >
-                Products from {selectedStateData.name}
+                {isMobile ? 'Products' : `Products from ${selectedStateData.name}`}
               </motion.h3>
 
               <div className="space-y-4">
@@ -460,7 +507,7 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                       {/* Product Image */}
                       <Link
                         to={`/product/${product.slug}`}
-                        className="w-1/3 p-4 flex items-center justify-center relative overflow-hidden"
+                        className="w-1/3 p-2 lg:p-4 flex items-center justify-center relative overflow-hidden"
                         style={{
                           background: `linear-gradient(135deg, ${selectedStateData.themeColor}30, ${selectedStateData.themeColor}10)`,
                         }}
@@ -468,24 +515,24 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-20 h-28 lg:w-24 lg:h-32 object-contain relative z-10 transition-transform duration-300 hover:scale-110 hover:rotate-[5deg]"
+                          className="w-16 h-22 lg:w-24 lg:h-32 object-contain relative z-10 transition-transform duration-300 hover:scale-110 hover:rotate-[5deg]"
                         />
                       </Link>
 
                       {/* Product Info */}
-                      <div className="flex-1 p-4 lg:p-5">
+                      <div className="flex-1 p-3 lg:p-5">
                         <Link to={`/product/${product.slug}`}>
-                          <h4 className="text-lg lg:text-xl font-bold text-white mb-1 hover:text-amber-400 transition-colors">
+                          <h4 className="text-sm lg:text-xl font-bold text-white mb-0.5 hover:text-amber-400 transition-colors leading-tight">
                             {product.name}
                           </h4>
                         </Link>
-                        <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                        <p className="text-gray-400 text-xs lg:text-sm mb-2 line-clamp-1 lg:line-clamp-2">
                           {product.description}
                         </p>
 
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-center justify-between gap-2">
                           <span
-                            className="text-xl lg:text-2xl font-bold"
+                            className="text-base lg:text-2xl font-bold whitespace-nowrap"
                             style={{ color: selectedStateData.themeColor }}
                           >
                             {product.price}
@@ -530,13 +577,14 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                                 image: product.image,
                                 price: product.price,
                               })}
-                              className="flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-white"
+                              className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-medium text-white text-sm whitespace-nowrap"
                               style={{ backgroundColor: selectedStateData.themeColor }}
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
-                              <ShoppingCart size={16} />
-                              Add to Cart
+                              <ShoppingCart size={15} />
+                              <span className="hidden sm:inline">Add to Cart</span>
+                              <span className="sm:hidden">Add</span>
                             </motion.button>
                           )}
                         </div>
@@ -576,7 +624,9 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+      )}
     </div>
   );
 };

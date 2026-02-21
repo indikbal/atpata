@@ -3,17 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // Components
 import Navbar from '../components/Navbar';
-import AboutSection from '../components/AboutSection';
-import ProductsSection from '../components/ProductsSection';
-
-import GallerySection from '../components/GallerySection';
-import Footer from '../components/Footer';
-import BulkOrderSection from '../components/BulkOrderSection';
 import SplashCursor from '../blocks/Animations/SplashCursor/SplashCursor';
 import IndiaMapExplorer from '../components/IndiaMap/IndiaMapExplorer';
 import { allProducts } from '../data/stateProducts';
-
-import spicesBowl from '../img/spices-bowl.png';
 
 const floatingProductNames = allProducts.slice(0, 15).map((p) => p.name);
 
@@ -29,12 +21,13 @@ const HomePreviewPage = () => {
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [currentLine, setCurrentLine] = useState(0);
   const [lineVisible, setLineVisible] = useState(true);
+  const [isMobile] = useState(() => window.innerWidth < 768);
 
   // Preloader sequencing — always plays on every page load
   useEffect(() => {
-    const DISPLAY_MS = 1400;
-    const FADE_OUT_MS = 400;
-    const LAST_LINE_EXTRA = 600;
+    const DISPLAY_MS = isMobile ? 800 : 1400;
+    const FADE_OUT_MS = isMobile ? 150 : 400;
+    const LAST_LINE_EXTRA = isMobile ? 200 : 600;
 
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -107,7 +100,7 @@ const HomePreviewPage = () => {
             />
 
             {/* Floating spice particles */}
-            {[...Array(20)].map((_, i) => (
+            {[...Array(isMobile ? 5 : 20)].map((_, i) => (
               <motion.div
                 key={`pl-particle-${i}`}
                 className="absolute rounded-full"
@@ -131,19 +124,23 @@ const HomePreviewPage = () => {
               />
             ))}
 
-            {/* Subtle rotating ring */}
-            <motion.div
-              className="absolute rounded-full border border-amber-500/10"
-              style={{ width: 300, height: 300 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-            />
-            <motion.div
-              className="absolute rounded-full border border-orange-500/5"
-              style={{ width: 450, height: 450 }}
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            />
+            {/* Subtle rotating rings — desktop only */}
+            {!isMobile && (
+              <>
+                <motion.div
+                  className="absolute rounded-full border border-amber-500/10"
+                  style={{ width: 300, height: 300 }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                />
+                <motion.div
+                  className="absolute rounded-full border border-orange-500/5"
+                  style={{ width: 450, height: 450 }}
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                />
+              </>
+            )}
 
             {/* Punchline text */}
             <AnimatePresence mode="wait">
@@ -151,9 +148,9 @@ const HomePreviewPage = () => {
                 <motion.div
                   key={currentLine}
                   className="relative z-10 flex flex-col items-center gap-4 px-6"
-                  initial={{ opacity: 0, y: 30, scale: 0.9, filter: 'blur(10px)' }}
-                  animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, y: -20, scale: 1.05, filter: 'blur(6px)' }}
+                  initial={{ opacity: 0, y: isMobile ? 16 : 30, scale: isMobile ? 0.95 : 0.9, ...(isMobile ? {} : { filter: 'blur(10px)' }) }}
+                  animate={{ opacity: 1, y: 0, scale: 1, ...(isMobile ? {} : { filter: 'blur(0px)' }) }}
+                  exit={{ opacity: 0, y: isMobile ? -10 : -20, scale: isMobile ? 1.02 : 1.05, ...(isMobile ? {} : { filter: 'blur(6px)' }) }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {/* Decorative line above */}
@@ -227,22 +224,17 @@ const HomePreviewPage = () => {
 
       {/* ===== MAIN PAGE — only mounts after preloader completes ===== */}
       {preloaderDone && (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="min-h-screen bg-black text-white overflow-x-hidden"
-      >
-      <SplashCursor />
+      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      {!isMobile && <SplashCursor />}
       <Navbar />
 
       {/* ===== HERO SECTION — Spice Discovery Portal ===== */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
 
         {/* Background particles — fewer on mobile */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 opacity-20">
-            {[...Array(15)].map((_, i) => (
+            {[...Array(isMobile ? 4 : 15)].map((_, i) => (
               <motion.div
                 key={i}
                 className="absolute w-40 h-40 rounded-full"
@@ -250,7 +242,6 @@ const HomePreviewPage = () => {
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
                   backgroundColor: ['#FF4500', '#8B0000', '#FF8C00', '#B22222'][Math.floor(Math.random() * 2)],
-                  mixBlendMode: 'color-dodge',
                 }}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{
@@ -283,7 +274,7 @@ const HomePreviewPage = () => {
         <div className="absolute z-[4] pointer-events-none" style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}>
           {/* Core bright glow */}
           <div
-            className="absolute rounded-full w-[250px] h-[250px] md:w-[500px] md:h-[500px]"
+            className="absolute rounded-full w-[500px] h-[500px] md:w-[500px] md:h-[500px]"
             style={{
               left: '50%',
               top: '50%',
@@ -513,12 +504,12 @@ const HomePreviewPage = () => {
 
         {/* Layer 6: Bottom CTA hint */}
         <motion.div
-          className="absolute bottom-8 right-8 z-[7] flex flex-col items-center gap-2 pointer-events-none"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 md:left-auto md:right-8 md:translate-x-0 z-[7] flex flex-col items-center gap-2 pointer-events-none"
           initial={{ opacity: 0 }}
           animate={showContent ? { opacity: 1 } : {}}
           transition={{ delay: 2.5, duration: 1 }}
         >
-          <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-amber-500/60" style={{ fontFamily: 'Outfit, sans-serif' }}>
+          <span className="text-[10px] md:text-xs tracking-[0.4em] uppercase text-amber-500/60 whitespace-nowrap" style={{ fontFamily: 'Outfit, sans-serif' }}>
             Click a state to explore
           </span>
           <motion.div
@@ -540,7 +531,7 @@ const HomePreviewPage = () => {
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         />
       </section>
-    </motion.div>
+    </div>
       )}
     </>
   );

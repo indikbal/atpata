@@ -172,9 +172,11 @@ const TimelineItem = ({ event, index }: { event: typeof TIMELINE_EVENTS[0], inde
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <motion.img 
-                src={event.imageUrl} 
-                alt={event.title} 
+              <motion.img
+                src={event.imageUrl}
+                alt={event.title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 initial={{ scale: 1.2 }}
                 animate={{ scale: isInView ? 1 : 1.2 }}

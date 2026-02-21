@@ -32,7 +32,7 @@ const CartPage = () => {
     return (
       <div className="min-h-screen bg-black text-white overflow-x-hidden">
         <Navbar />
-        <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-20">
+        <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-24">
           <div className="container mx-auto px-4 md:px-8 py-20">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -68,7 +68,7 @@ const CartPage = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <Navbar />
-      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-20">
+      <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-24">
         <div className="container mx-auto px-4 md:px-8 py-20">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
