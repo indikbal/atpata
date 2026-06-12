@@ -7,7 +7,7 @@ import { getProductBySlug } from '../../data/stateProducts';
 const defaultSteps = [
   {
     title: 'Open & Prep',
-    description: 'Prep your main ingredient and open your Atpata premix — no extra masalas needed.',
+    description: 'Prep your main ingredient and open your Atpata premix, no extra masalas needed.',
   },
   {
     title: 'Cook the Mix',
@@ -45,13 +45,13 @@ const DynamicProductPage = () => {
     );
   }
 
-  // Build a richer description for the detail page from the short card blurb.
+  // Prefer the product's regional story; fall back to a generic blurb if missing.
   const detailDescription =
+    product.story ??
     `${product.description}\n\n` +
-    `Atpata's ${product.name} is a ready-to-use premix that brings authentic regional flavour ` +
-    `to your kitchen in just one step — no need to add extra haldi, jeera or masalas. ` +
-    `Crafted for simplicity and made for indulgence, it turns everyday cooking into a home-cooked feast.\n\n` +
-    `Cooking made simple. Flavour made unforgettable.`;
+      `Atpata's ${product.name} is a ready-to-use premix that brings authentic regional flavour ` +
+      `to your kitchen in just one step, no need to add extra haldi, jeera or masalas. ` +
+      `Crafted for simplicity and made for indulgence, it turns everyday cooking into a home-cooked feast.`;
 
   return (
     <ProductPage

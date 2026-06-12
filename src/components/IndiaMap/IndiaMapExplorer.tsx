@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import indiaMap from '@svg-maps/india';
 import { hasProducts, getStateData } from '../../data/stateProducts';
 import { useCart } from '../../contexts/CartContext';
-import jarIcon from '../../img/jar1.png';
 
 interface IndiaMapExplorerProps {
   className?: string;
@@ -415,20 +414,22 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                   />
                 </svg>
 
-                {/* Jar icon on state */}
-                <motion.div
-                  initial={{ scale: 0, y: 20 }}
-                  animate={{ scale: 1, y: 0 }}
-                  transition={{ delay: 0.8, type: 'spring', stiffness: 200 }}
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                >
-                  <img
-                    src={jarIcon}
-                    alt=""
-                    className="w-16 h-20 lg:w-20 lg:h-28 animate-bounce"
-                    style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))', animationDuration: '3s' }}
-                  />
-                </motion.div>
+                {/* Product image on state — dynamic, uses the state's first product */}
+                {selectedStateData.products[0] && (
+                  <motion.div
+                    initial={{ scale: 0, y: 20 }}
+                    animate={{ scale: 1, y: 0 }}
+                    transition={{ delay: 0.8, type: 'spring', stiffness: 200 }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                  >
+                    <img
+                      src={selectedStateData.products[0].image}
+                      alt={selectedStateData.products[0].name}
+                      className="w-16 h-20 lg:w-20 lg:h-28 object-contain animate-bounce"
+                      style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.5))', animationDuration: '3s' }}
+                    />
+                  </motion.div>
+                )}
               </motion.div>
 
               {/* State Info */}
