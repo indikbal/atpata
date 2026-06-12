@@ -4,84 +4,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ShoppingCart, Plus, Minus } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
-
-
-import jar1 from '../img/jar1.png';
-import jar2 from '../img/jar2.png';
-import jar3 from '../img/jar3.png';
-import jar4 from '../img/jar4.png';
-import jar5 from '../img/jar5.png';
-import jar6 from '../img/jar6.png';
-import jar7 from '../img/jar7.png';
-import jar8 from '../img/jar8.png';
-
-
-const products = [
-  {
-    id: 1,
-    name: 'Achari Aloo Dum',
-    description: 'Spice up your potatoes with bold, tangy achari magic — in just one step',
-    image: jar1,
-    color: 'from-amber-500 to-red-500',
-    price: '₹ 299',
-  },
-  {
-    id: 2,
-    name: 'Eggplant Preserve',
-    description: 'Smoky, spiced brinjal pickle that transforms any simple meal.',
-    image: jar2,
-    color: 'from-green-500 to-amber-500',
-    price: '₹ 299',
-  },
-  {
-    id: 3,
-    name: 'Kali Mirch Paneer',
-    description: 'Peppery, creamy paneer — gourmet-style and effortlessly made. ',
-    image:  jar3,
-    color: 'from-red-600 to-red-800',
-    price: '₹ 299',
-    },
-  {
-    id: 4,
-    name: 'Saucy Papad Premix',
-    description: 'Your papad’s spicy, tangy upgrade — ready in seconds! ',
-    image: jar4,
-    color: 'from-amber-400 to-yellow-600',
-    price: '₹ 299',
-      },
-  {
-    id: 5,
-    name: 'Moringa Paneer',
-    description: 'Healthy meets tasty with this moringa-powered paneer blend. ',
-    image: jar5,
-    color: 'from-red-500 to-red-900',
-    price: '₹ 299',
-    },
-  {
-    id: 6,
-    name: 'Bihari Litti Premix',
-    description: 'Authentic litti flavour, no grinding, roasting, or hassle',
-    image: jar6,
-    color: 'from-yellow-500 to-amber-600',
-    price: '₹ 299',
-    },
-  {
-    id: 7,
-    name: 'Bitter Melon Preserve',
-    description: 'Karela like never before — sweet, bitter, bold, and addictive. ',
-    image: jar7,
-    color: 'from-yellow-500 to-amber-600',
-    price: '₹ 299',
-    },
-  {
-    id: 8,
-    name: 'Navratna Kadhi Premix',
-    description: 'Nine spices, one soul-soothing kadhi — comfort in a spoon. ',
-    image: jar8,
-    color: 'from-yellow-500 to-amber-600',
-    price: '₹ 299',
-    },
-];
+import { allProducts as products } from '../data/stateProducts';
 
 const ProductsSection = () => {
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
@@ -147,7 +70,7 @@ const ProductsSection = () => {
               onMouseEnter={() => setActiveProduct(product.id)}
               onMouseLeave={() => setActiveProduct(null)}
             >
-              <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
+              <Link to={`/product/${product.slug}`}>
                 <div className="relative h-64 overflow-hidden">
                   <div 
                     className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-10 mix-blend-multiply`}
@@ -163,7 +86,7 @@ const ProductsSection = () => {
               </Link>
               
               <div className="p-6">
-                <Link to={`/product/${product.name.toLowerCase().replace(/ /g, '-')}`}>
+                <Link to={`/product/${product.slug}`}>
                   <h3 className="text-xl font-bold mb-2 text-white opacity-80 hover:text-amber-400 transition-colors">{product.name}</h3>
                   <p className="text-white text-sm mb-4 opacity-60">{product.description}</p>
                   <p className="text-amber-500 text-xl font-bold mb-4 opacity-60">Price: {product.price}</p>
