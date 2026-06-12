@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import indiaMap from '@svg-maps/india';
 import { hasProducts, getStateData } from '../../data/stateProducts';
 import { useCart } from '../../contexts/CartContext';
+import { CART_ENABLED } from '../../config/features';
 
 interface IndiaMapExplorerProps {
   className?: string;
@@ -539,7 +540,7 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                             {product.price}
                           </span>
 
-                          {getCartQuantity(product.id) > 0 ? (
+                          {CART_ENABLED && (getCartQuantity(product.id) > 0 ? (
                             <div className="flex items-center gap-1 bg-white/10 rounded-lg p-1">
                               <motion.button
                                 onClick={() => updateQuantity(product.id, getCartQuantity(product.id) - 1)}
@@ -587,7 +588,7 @@ const IndiaMapExplorer = ({ className = '' }: IndiaMapExplorerProps) => {
                               <span className="hidden sm:inline">Add to Cart</span>
                               <span className="sm:hidden">Add</span>
                             </motion.button>
-                          )}
+                          ))}
                         </div>
                       </div>
                     </div>

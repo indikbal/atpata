@@ -1,8 +1,9 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import HomePreviewPage from './pages/HomePreviewPage';
 import './index.css';
 import { initializeEmailJS } from './services/emailService';
+import { CART_ENABLED } from './config/features';
 
 // Lazy-load all non-homepage routes so they don't bloat the initial bundle
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -37,8 +38,8 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/ourteam" element={<OurTeamPage />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/order-success" element={<OrderSuccessPage />} />
+        <Route path="/cart" element={CART_ENABLED ? <CartPage /> : <Navigate to="/products" replace />} />
+        <Route path="/order-success" element={CART_ENABLED ? <OrderSuccessPage /> : <Navigate to="/products" replace />} />
         {/* All product detail pages resolve dynamically from the product slug */}
         <Route path="/product/:slug" element={<DynamicProductPage />} />
         {/* Legal & other pages */}

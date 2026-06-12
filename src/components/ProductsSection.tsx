@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import { ShoppingCart, Plus, Minus } from 'lucide-react';
 import { useCart } from '../contexts/CartContext';
 import { allProducts as products } from '../data/stateProducts';
+import { CART_ENABLED } from '../config/features';
 
 const ProductsSection = () => {
   const [activeProduct, setActiveProduct] = useState<number | null>(null);
@@ -100,7 +101,7 @@ const ProductsSection = () => {
                     transition={{ duration: 0.5 }}
                   ></motion.div>
                   
-                  {getCartQuantity(product.id) > 0 ? (
+                  {CART_ENABLED && (getCartQuantity(product.id) > 0 ? (
                     <motion.div
                       initial={{ scale: 0.8, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
@@ -148,7 +149,7 @@ const ProductsSection = () => {
                       <ShoppingCart size={16} />
                       Add to Cart
                     </motion.button>
-                  )}
+                  ))}
                 </div>
               </div>
             </motion.div>

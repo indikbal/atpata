@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import indiaMap from '@svg-maps/india';
 import { getStateData, StateData } from '../../data/stateProducts';
 import { useCart } from '../../contexts/CartContext';
+import { CART_ENABLED } from '../../config/features';
 
 interface StateProductsViewProps {
   stateId: string;
@@ -238,7 +239,7 @@ const StateProductsView = ({ stateId, onBack }: StateProductsViewProps) => {
                           {product.price}
                         </span>
 
-                        {getCartQuantity(product.id) > 0 ? (
+                        {CART_ENABLED && (getCartQuantity(product.id) > 0 ? (
                           <motion.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -282,7 +283,7 @@ const StateProductsView = ({ stateId, onBack }: StateProductsViewProps) => {
                             <ShoppingCart size={18} />
                             Add to Cart
                           </motion.button>
-                        )}
+                        ))}
                       </div>
                     </div>
                   </div>

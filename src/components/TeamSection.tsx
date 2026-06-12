@@ -4,12 +4,14 @@ import team2Image from '../img/team2.jpg';
 import team3Image from '../img/team3.jpg';
 import team8Image from '../img/team8.jpg';
 import team10Image from '../img/team10.jpg';
+import team12Image from '../img/team12.jpeg';
+import team13Image from '../img/team13.jpeg';
 
 
 
 const teamMembers = [
   {
-    name: 'Romi Kulthia',
+    name: 'Romi',
     role: 'Founder & CEO',
     image: team1Image,
   },
@@ -52,6 +54,16 @@ const teamMembers = [
     name: 'Monika',
     role: 'Innovation Specialist',
     image: team10Image,
+  },
+  {
+    name: 'Mazhar',
+    role: 'Public Realtion',
+    image: team12Image,
+  },
+   {
+    name: 'Tanusha',
+    role: 'Executive assistant',
+    image: team13Image,
   }
   
 ];

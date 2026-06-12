@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShoppingCart, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
+import { CART_ENABLED } from '../config/features';
 
 import Logo from '../img/logo.svg';
 
@@ -108,7 +109,7 @@ const Navbar = () => {
               </div>
 
               {/* Cart badge */}
-              {state.totalItems > 0 && !menuOpen && (
+              {CART_ENABLED && state.totalItems > 0 && !menuOpen && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -237,26 +238,28 @@ const Navbar = () => {
                 ))}
 
                 {/* Cart — inline at bottom */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.4 }}
-                  className="mt-8 pt-6 border-t border-white/5"
-                >
-                  <Link
-                    to="/cart"
-                    onClick={() => setMenuOpen(false)}
-                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/20 hover:border-amber-500/50 bg-amber-500/5 hover:bg-amber-500/10 transition-all duration-300 group"
+                {CART_ENABLED && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7, duration: 0.4 }}
+                    className="mt-8 pt-6 border-t border-white/5"
                   >
-                    <ShoppingCart size={18} className="text-amber-500" />
-                    <span className="text-white/80 group-hover:text-white font-medium transition-colors">Cart</span>
-                    {state.totalItems > 0 && (
-                      <span className="bg-gradient-to-r from-amber-500 to-red-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
-                        {state.totalItems}
-                      </span>
-                    )}
-                  </Link>
-                </motion.div>
+                    <Link
+                      to="/cart"
+                      onClick={() => setMenuOpen(false)}
+                      className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-amber-500/20 hover:border-amber-500/50 bg-amber-500/5 hover:bg-amber-500/10 transition-all duration-300 group"
+                    >
+                      <ShoppingCart size={18} className="text-amber-500" />
+                      <span className="text-white/80 group-hover:text-white font-medium transition-colors">Cart</span>
+                      {state.totalItems > 0 && (
+                        <span className="bg-gradient-to-r from-amber-500 to-red-500 text-white text-xs rounded-full px-2 py-0.5 font-bold">
+                          {state.totalItems}
+                        </span>
+                      )}
+                    </Link>
+                  </motion.div>
+                )}
               </div>
 
               {/* Right side — decorative text */}
