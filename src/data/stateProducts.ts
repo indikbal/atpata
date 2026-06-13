@@ -427,9 +427,9 @@ const productStories: Record<string, string> = {
   'madra-curry-premix':
     `High in the hills of Himachal, the festive Dham feast is unthinkable without madra, chickpeas slow simmered in yoghurt and warm, aromatic spices, served on leaf plates at celebrations.\n\nOur Madra Curry Premix brings that creamy, festive mountain flavour straight to your kitchen.`,
   'paneer-chaman-premix':
-    `In the saffron scented kitchens of the Kashmir valley, paneer chaman is a wazwan favourite, soft cubes of cottage cheese in a delicate, fennel and ginger gravy, fragrant and gently spiced.\n\nOur Paneer Chaman Premix carries the warmth of a Kashmiri feast into your everyday cooking.`,
+    `In the saffron scented kitchens of the Kashmir Valley, Paneer Chaman is a cherished delicacy, where soft cubes of paneer are gently simmered in a fragrant gravy infused with fennel and traditional Kashmiri spices.\n\nOur Paneer Chaman Premix brings the comforting warmth and timeless flavours of Kashmir to your everyday cooking.`,
   'sarson-da-saag-premix':
-    `When winter settles over the high north, slow cooked mustard greens, sarson da saag, bubble away on every stove, waiting to be paired with makki di roti and a dollop of white butter.\n\nOur Sarson Da Saag Premix brings that hearty, earthy winter warmth to your table, with none of the long simmering.`,
+    `Amid the dramatic mountains of Ladakh, where long winters and crisp air make wholesome food a necessity, hearty greens have always been valued for their warmth and nourishment. Rich, earthy and deeply satisfying, sarso da saag is the kind of meal that brings comfort after a day in the cold.\n\nOur Sarso Da Saag Premix delivers that slow cooked, homestyle goodness in minutes, bringing a bowl of warmth and mountain comfort straight to your table.`,
   'dal-makhani-premix':
     `On every Punjabi highway the dhaba ritual is sacred, black lentils and rajma simmered overnight over coal, then finished with butter and cream until impossibly rich. Dal makhani is indulgence in a bowl.\n\nAtpata's Dal Makhani Premix recreates that velvety, slow cooked dhaba classic with all the richness and none of the wait.`,
   'chainsoo-premix':
@@ -473,7 +473,7 @@ const productStories: Record<string, string> = {
   'gulab-chai-instant-tea-premix':
     `Across Assam's emerald tea gardens, chai is more than a drink, it's a daily ritual of warmth and welcome. Touched with rose, it becomes something fragrant and a little romantic.\n\nOur Gulab Chai Instant Tea Premix brews that garden fresh, rose kissed comfort in a single cup.`,
   'eromba-premix':
-    `In Manipuri homes, eromba is everyday comfort, boiled vegetables mashed with fermented fish and the searing u morok chilli: smoky, pungent and deeply loved.\n\nOur Eromba Premix brings that bold Meitei kitchen flavour to life, no fuss required.`,
+    `In Manipuri homes, eromba is everyday comfort, boiled vegetables mashed with fiery u morok chilli and traditional seasonings, creating a smoky, pungent flavour that is deeply loved.\n\nOur Eromba Premix brings that bold Meitei kitchen flavour to life, no fuss required.`,
   'tungrymbai-premix':
     `In the cloud wrapped Khasi hills, tungrymbai is a prized delicacy, fermented soybean cooked with black sesame and local spices into a dish of deep, earthy umami.\n\nOur Tungrymbai Premix captures that distinctive Meghalayan flavour, bold and unforgettable.`,
   'mizoram-bai-masala':
@@ -483,7 +483,7 @@ const productStories: Record<string, string> = {
   'momo-chutney-mix':
     `In the mountain towns of Sikkim, a plate of steaming momos is only as good as its chutney, fiery red, tangy and tomato rich, the dip that makes the dumpling.\n\nOur Momo Chutney Mix recreates that perfect Himalayan dipping sauce in seconds.`,
   'berma-chutney-mix':
-    `In Tripura's tribal kitchens, berma, sun dried fermented fish, is the prized base of pungent, umami rich chutneys that define the region's bold, earthy palate.\n\nOur Berma Chutney Mix carries that deep, distinctive Tripuri flavour to the adventurous table.`,
+    `In Tripura's tribal kitchens, bold, pungent chutneys are cherished for their deep umami character and earthy flavours, reflecting the region's rich culinary traditions.\n\nOur Berma Chutney Mix carries that deep, distinctive Tripuri flavour to the adventurous table.`,
   'paneer-lababdar-mix':
     `In the spirited city of Chandigarh, dinner often means paneer lababdar, soft cottage cheese in a luscious, creamy tomato gravy that's rich, mildly sweet and restaurant grand.\n\nOur Paneer Lababdar Mix brings that indulgent, dhaba meets fine dining flavour home.`,
   'jackfruit-coconut-curry-mix':
@@ -748,7 +748,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-blue-900 via-indigo-900 to-sky-900',
     famousFor: ['Paneer Chaman', 'Rogan Josh', 'Kahwa', 'Saffron'],
     products: [p('paneer-chaman-premix')],
-    story: "Kashmir's delicate paneer chaman, simmered in an aromatic gravy, brings the warmth of a Kashmiri wazwan to your table.",
+    story: "A cherished Kashmiri delicacy, Paneer Chaman combines soft paneer with a fragrant traditional gravy, bringing the authentic taste of the Valley to your table.",
     landmarkIcon: '/jammu-kashmir.png',
     labelText: 'Kashmir se',
   },
@@ -964,7 +964,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-sky-900 via-blue-900 to-indigo-900',
     famousFor: ['Sarson da Saag', 'Thukpa', 'Skyu', 'Apricot'],
     products: [p('sarson-da-saag-premix')],
-    story: "Ladakh's cold climate kitchens cherish hearty greens. Our Sarson Da Saag Premix brings the warmth of slow cooked winter saag to the high Himalayas and your home.",
+    story: "Ladakh's rugged mountain landscape calls for hearty, nourishing meals. Our Sarso Da Saag Premix brings a warming blend of mustard greens and traditional spices, perfect for comforting moments in the high Himalayas.",
     landmarkIcon: '/ladakh.png',
     labelText: 'Ladakh se',
   },
