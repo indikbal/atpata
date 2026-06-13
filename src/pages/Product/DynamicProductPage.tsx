@@ -49,9 +49,9 @@ const DynamicProductPage = () => {
   const detailDescription =
     product.story ??
     `${product.description}\n\n` +
-      `Atpata's ${product.name} is a ready-to-use premix that brings authentic regional flavour ` +
+      `Atpata's ${product.name} is a ready to use premix that brings authentic regional flavour ` +
       `to your kitchen in just one step, no need to add extra haldi, jeera or masalas. ` +
-      `Crafted for simplicity and made for indulgence, it turns everyday cooking into a home-cooked feast.`;
+      `Crafted for simplicity and made for indulgence, it turns everyday cooking into a home cooked feast.`;
 
   return (
     <ProductPage

@@ -44,7 +44,7 @@ export const allProducts: Product[] = [
   {
     id: 2,
     name: 'Jhalmuri Masala',
-    description: 'The zesty Kolkata street-style puffed rice seasoning.',
+    description: 'The zesty Kolkata street style puffed rice seasoning.',
     image: '/products/Jhalmuri Masala.png',
     color: 'from-yellow-500 to-orange-600',
     price: PRICE,
@@ -53,7 +53,7 @@ export const allProducts: Product[] = [
   {
     id: 3,
     name: 'Rajma Premix',
-    description: 'Slow-cooked Punjabi-style rajma flavour, ready in minutes.',
+    description: 'Slow cooked Punjabi style rajma flavour, ready in minutes.',
     image: '/products/Rajma Premix.png',
     color: 'from-red-600 to-rose-800',
     price: PRICE,
@@ -62,7 +62,7 @@ export const allProducts: Product[] = [
   {
     id: 4,
     name: 'Chole Premix',
-    description: 'Robust, spicy chole masala for restaurant-style chickpeas.',
+    description: 'Robust, spicy chole masala for restaurant style chickpeas.',
     image: '/products/Chole Premix.png',
     color: 'from-amber-600 to-red-700',
     price: PRICE,
@@ -71,7 +71,7 @@ export const allProducts: Product[] = [
   {
     id: 5,
     name: 'High Protein Buttermilk Masala',
-    description: 'Protein-packed chaas masala for a refreshing, healthy glass.',
+    description: 'Protein packed chaas masala for a refreshing, healthy glass.',
     image: '/products/High Protein Buttermilk Masala.png',
     color: 'from-lime-500 to-emerald-600',
     price: PRICE,
@@ -80,7 +80,7 @@ export const allProducts: Product[] = [
   {
     id: 6,
     name: 'Madra Curry Premix',
-    description: 'Himachali yoghurt-based chickpea curry, festive and aromatic.',
+    description: 'Himachali yoghurt based chickpea curry, festive and aromatic.',
     image: '/products/Madra Curry Premix.png',
     color: 'from-emerald-600 to-teal-500',
     price: PRICE,
@@ -89,7 +89,7 @@ export const allProducts: Product[] = [
   {
     id: 7,
     name: 'Paneer Chaman Premix',
-    description: 'Kashmiri-style paneer in a delicate, aromatic gravy.',
+    description: 'Kashmiri style paneer in a delicate, aromatic gravy.',
     image: '/products/Paneer Chaman Premix.png',
     color: 'from-blue-600 to-indigo-700',
     price: PRICE,
@@ -98,7 +98,7 @@ export const allProducts: Product[] = [
   {
     id: 8,
     name: 'Sarson Da Saag Premix',
-    description: 'Winter-special Punjabi sarson da saag, effortlessly made.',
+    description: 'Winter special Punjabi sarson da saag, effortlessly made.',
     image: '/products/Sarso Da Saag Premix.png',
     color: 'from-green-600 to-lime-700',
     price: PRICE,
@@ -116,7 +116,7 @@ export const allProducts: Product[] = [
   {
     id: 10,
     name: 'Chainsoo Premix',
-    description: 'Earthy Garhwali black-gram dal with smoky mountain flavour.',
+    description: 'Earthy Garhwali black gram dal with smoky mountain flavour.',
     image: '/products/Chainsoo Premix.png',
     color: 'from-green-700 to-emerald-800',
     price: PRICE,
@@ -125,7 +125,7 @@ export const allProducts: Product[] = [
   {
     id: 11,
     name: 'Banarasi Tamatar Chaat Base',
-    description: 'Tangy, spicy Banaras-style tamatar chaat in seconds.',
+    description: 'Tangy, spicy Banaras style tamatar chaat in seconds.',
     image: '/products/Banarasi Tamatar Chaat Base.png',
     color: 'from-red-500 to-orange-600',
     price: PRICE,
@@ -134,7 +134,7 @@ export const allProducts: Product[] = [
   {
     id: 12,
     name: 'Chhattisgarhi Chila Mix',
-    description: 'Wholesome rice-batter chila with earthy spices.',
+    description: 'Wholesome rice batter chila with earthy spices.',
     image: '/products/Chattisgarhi Chila Mix.png',
     color: 'from-green-600 to-amber-600',
     price: PRICE,
@@ -143,7 +143,7 @@ export const allProducts: Product[] = [
   {
     id: 13,
     name: 'Undhiyu Premix',
-    description: 'Surti winter-vegetable medley, rich and festive.',
+    description: 'Surti winter vegetable medley, rich and festive.',
     image: '/products/Undhiyu Premix.png',
     color: 'from-amber-500 to-green-600',
     price: PRICE,
@@ -161,7 +161,7 @@ export const allProducts: Product[] = [
   {
     id: 15,
     name: 'Khaman Dhokla Premix',
-    description: 'Soft, fluffy, melt-in-mouth Gujarati khaman dhokla.',
+    description: 'Soft, fluffy, melt in mouth Gujarati khaman dhokla.',
     image: '/products/Khaman Dhokla Premix.png',
     color: 'from-yellow-400 to-amber-500',
     price: PRICE,
@@ -206,7 +206,7 @@ export const allProducts: Product[] = [
   {
     id: 20,
     name: 'Makhana',
-    description: 'Roasted fox nuts, the guilt-free, crunchy Bihari snack.',
+    description: 'Roasted fox nuts, the guilt free, crunchy Bihari snack.',
     image: '/products/Makhana.png',
     color: 'from-amber-300 to-yellow-500',
     price: PRICE,
@@ -215,7 +215,7 @@ export const allProducts: Product[] = [
   {
     id: 21,
     name: 'Ghugni Masala',
-    description: 'Spiced yellow-pea ghugni, the Jharkhand street favourite.',
+    description: 'Spiced yellow pea ghugni, the Jharkhand street favourite.',
     image: '/products/Ghugni Masala.png',
     color: 'from-amber-600 to-green-700',
     price: PRICE,
@@ -224,7 +224,7 @@ export const allProducts: Product[] = [
   {
     id: 22,
     name: 'Dalma Premix',
-    description: "Odisha's wholesome lentil-and-veg dalma, temple-style.",
+    description: "Odisha's wholesome lentil and veg dalma, temple style.",
     image: '/products/Dalma Premix.png',
     color: 'from-orange-500 to-amber-600',
     price: PRICE,
@@ -242,7 +242,7 @@ export const allProducts: Product[] = [
   {
     id: 24,
     name: 'Cafe Express Instant Coffee',
-    description: 'Rich, aromatic South-Indian style instant coffee.',
+    description: 'Rich, aromatic South Indian style instant coffee.',
     image: '/products/Cafe Express Instant Coffee.png',
     color: 'from-amber-800 to-yellow-900',
     price: PRICE,
@@ -251,7 +251,7 @@ export const allProducts: Product[] = [
   {
     id: 25,
     name: 'Avial Premix',
-    description: 'Coconut-laced Kerala mixed-vegetable avial in minutes.',
+    description: 'Coconut laced Kerala mixed vegetable avial in minutes.',
     image: '/products/Avial Premix.png',
     color: 'from-green-600 to-emerald-700',
     price: PRICE,
@@ -260,7 +260,7 @@ export const allProducts: Product[] = [
   {
     id: 26,
     name: 'Gunpowder Podi',
-    description: 'Fiery Tamil idli-dosa gunpowder podi.',
+    description: 'Fiery Tamil idli dosa gunpowder podi.',
     image: '/products/Gunpowder Podi.png',
     color: 'from-red-700 to-orange-600',
     price: PRICE,
@@ -278,7 +278,7 @@ export const allProducts: Product[] = [
   {
     id: 28,
     name: 'Bamboo Shoot Pickle',
-    description: 'Tangy Arunachali bamboo-shoot pickle with Raja Mircha.',
+    description: 'Tangy Arunachali bamboo shoot pickle with Raja Mircha.',
     image: '/products/Bamboo Shoot Pickle.png',
     color: 'from-green-600 to-yellow-500',
     price: PRICE,
@@ -287,7 +287,7 @@ export const allProducts: Product[] = [
   {
     id: 29,
     name: 'Gulab Chai Instant Tea Premix',
-    description: 'Fragrant rose-kissed instant chai, ready in a cup.',
+    description: 'Fragrant rose kissed instant chai, ready in a cup.',
     image: '/products/Gulab Chai Instant Tea Premix.png',
     color: 'from-rose-500 to-red-600',
     price: PRICE,
@@ -296,7 +296,7 @@ export const allProducts: Product[] = [
   {
     id: 30,
     name: 'Eromba Premix',
-    description: 'Smoky Manipuri mashed-veg eromba with fermented notes.',
+    description: 'Smoky Manipuri mashed veg eromba with fermented notes.',
     image: '/products/Eromba Premix.png',
     color: 'from-orange-600 to-red-500',
     price: PRICE,
@@ -305,7 +305,7 @@ export const allProducts: Product[] = [
   {
     id: 31,
     name: 'Tungrymbai Premix',
-    description: "Meghalaya's bold fermented-soybean chutney mix.",
+    description: "Meghalaya's bold fermented soybean chutney mix.",
     image: '/products/Tungrymbai Premix.png',
     color: 'from-indigo-600 to-blue-700',
     price: PRICE,
@@ -323,7 +323,7 @@ export const allProducts: Product[] = [
   {
     id: 33,
     name: 'King Chilli Chutney',
-    description: "Fiery Naga Bhut Jolokia chutney, not for the faint-hearted.",
+    description: "Fiery Naga Bhut Jolokia chutney, not for the faint hearted.",
     image: '/products/King Chilli Chutney.png',
     color: 'from-red-700 to-orange-500',
     price: PRICE,
@@ -341,7 +341,7 @@ export const allProducts: Product[] = [
   {
     id: 35,
     name: 'Berma Chutney Mix',
-    description: 'Pungent, umami-rich Tripuri fermented-fish chutney.',
+    description: 'Pungent, umami rich Tripuri fermented fish chutney.',
     image: '/products/Berma Chutney Mix.png',
     color: 'from-amber-500 to-orange-600',
     price: PRICE,
@@ -359,7 +359,7 @@ export const allProducts: Product[] = [
   {
     id: 37,
     name: 'Jackfruit Coconut Curry Mix',
-    description: 'Tropical jackfruit-and-coconut curry, island-style.',
+    description: 'Tropical jackfruit and coconut curry, island style.',
     image: '/products/Jackfruit Coconut Curry Mix.png',
     color: 'from-cyan-600 to-teal-500',
     price: PRICE,
@@ -368,7 +368,7 @@ export const allProducts: Product[] = [
   {
     id: 38,
     name: 'Tomato Rice Mix',
-    description: 'Tangy South-Indian tomato rice, French-coast inspired.',
+    description: 'Tangy South Indian tomato rice, French coast inspired.',
     image: '/products/Tomato Rice Mix.png',
     color: 'from-red-500 to-amber-500',
     price: PRICE,
@@ -377,7 +377,7 @@ export const allProducts: Product[] = [
   {
     id: 39,
     name: 'Banana Flower Curry Premix',
-    description: 'Nutritious banana-flower curry with island spices.',
+    description: 'Nutritious banana flower curry with island spices.',
     image: '/products/Banana Flower Curry Premix.png',
     color: 'from-lime-600 to-green-700',
     price: PRICE,
@@ -386,7 +386,7 @@ export const allProducts: Product[] = [
   {
     id: 40,
     name: 'Karela Ka Achaar',
-    description: "Bittersweet, spicy bitter-gourd pickle that's addictive.",
+    description: "Bittersweet, spicy bitter gourd pickle that's addictive.",
     image: '/products/Karela Ka Achaar.png',
     color: 'from-green-700 to-lime-600',
     price: PRICE,
@@ -406,79 +406,79 @@ export const allProducts: Product[] = [
 // Regional, story-driven copy for each product, shown on the product detail page.
 const productStories: Record<string, string> = {
   'achari-aloo-dum':
-    `In the by-lanes of the east, no winter spread is complete without a fiery bowl of achari aloo dum, baby potatoes bathed in the tangy, mustard-kissed punch of pickle spices. It's the flavour of bustling markets and slow Sunday family feasts.\n\nAtpata's Achari Aloo Dum bottles that bold, tangy magic so you can bring the soul of a home-cooked dum to your table in a single, effortless step.`,
+    `In the by lanes of the east, no winter spread is complete without a fiery bowl of achari aloo dum, baby potatoes bathed in the tangy, mustard kissed punch of pickle spices. It's the flavour of bustling markets and slow Sunday family feasts.\n\nAtpata's Achari Aloo Dum bottles that bold, tangy magic so you can bring the soul of a home cooked dum to your table in a single, effortless step.`,
   'jhalmuri-masala':
-    `Picture a Kolkata evening, a paper cone of puffed rice tossed with mustard oil, raw onion, green chilli and that unmistakable masala, handed to you by a street-corner jhalmuri-wala. It's Bengal's favourite anytime snack: crunchy, spicy and impossibly moreish.\n\nOur Jhalmuri Masala captures that exact street-side zing, so every handful tastes like a stroll down Park Street.`,
+    `Picture a Kolkata evening, a paper cone of puffed rice tossed with mustard oil, raw onion, green chilli and that unmistakable masala, handed to you by a street corner jhalmuri wala. It's Bengal's favourite anytime snack: crunchy, spicy and impossibly moreish.\n\nOur Jhalmuri Masala captures that exact street side zing, so every handful tastes like a stroll down Park Street.`,
   'rajma-premix':
-    `Sunday in a North Indian home means one thing, rajma chawal, simmered slow until the kidney beans melt into a thick, soulful gravy. It's comfort food that tastes like family and lazy afternoons.\n\nAtpata's Rajma Premix carries that slow-cooked depth, giving you rich, dhaba-style rajma without the hours of stirring.`,
+    `Sunday in a North Indian home means one thing, rajma chawal, simmered slow until the kidney beans melt into a thick, soulful gravy. It's comfort food that tastes like family and lazy afternoons.\n\nAtpata's Rajma Premix carries that slow cooked depth, giving you rich, dhaba style rajma without the hours of stirring.`,
   'chole-premix':
-    `From the kulcha carts of Old Delhi to wedding buffets across the north, robust, spice-laden chole is the undisputed king of chickpea curries, dark, tangy and gloriously bold.\n\nOur Chole Premix delivers that punchy, street-style flavour in minutes, ready to pair with bhature, kulche or steaming rice.`,
+    `From the kulcha carts of Old Delhi to wedding buffets across the north, robust, spice laden chole is the undisputed king of chickpea curries, dark, tangy and gloriously bold.\n\nOur Chole Premix delivers that punchy, street style flavour in minutes, ready to pair with bhature, kulche or steaming rice.`,
   'high-protein-buttermilk-masala':
-    `In the dairy heartland of Haryana, a tall glass of chaas is the answer to every scorching afternoon, cooling, salty, spiced and endlessly refreshing.\n\nOur High Protein Buttermilk Masala gives that rustic glass a wholesome, protein-rich upgrade, turning everyday buttermilk into a nourishing treat.`,
+    `In the dairy heartland of Haryana, a tall glass of chaas is the answer to every scorching afternoon, cooling, salty, spiced and endlessly refreshing.\n\nOur High Protein Buttermilk Masala gives that rustic glass a wholesome, protein rich upgrade, turning everyday buttermilk into a nourishing treat.`,
   'madra-curry-premix':
-    `High in the hills of Himachal, the festive Dham feast is unthinkable without madra, chickpeas slow-simmered in yoghurt and warm, aromatic spices, served on leaf plates at celebrations.\n\nOur Madra Curry Premix brings that creamy, festive mountain flavour straight to your kitchen.`,
+    `High in the hills of Himachal, the festive Dham feast is unthinkable without madra, chickpeas slow simmered in yoghurt and warm, aromatic spices, served on leaf plates at celebrations.\n\nOur Madra Curry Premix brings that creamy, festive mountain flavour straight to your kitchen.`,
   'paneer-chaman-premix':
-    `In the saffron-scented kitchens of the Kashmir valley, paneer chaman is a wazwan favourite, soft cubes of cottage cheese in a delicate, fennel-and-ginger gravy, fragrant and gently spiced.\n\nOur Paneer Chaman Premix carries the warmth of a Kashmiri feast into your everyday cooking.`,
+    `In the saffron scented kitchens of the Kashmir valley, paneer chaman is a wazwan favourite, soft cubes of cottage cheese in a delicate, fennel and ginger gravy, fragrant and gently spiced.\n\nOur Paneer Chaman Premix carries the warmth of a Kashmiri feast into your everyday cooking.`,
   'sarson-da-saag-premix':
-    `When winter settles over the high north, slow-cooked mustard greens, sarson da saag, bubble away on every stove, waiting to be paired with makki di roti and a dollop of white butter.\n\nOur Sarson Da Saag Premix brings that hearty, earthy winter warmth to your table, with none of the long simmering.`,
+    `When winter settles over the high north, slow cooked mustard greens, sarson da saag, bubble away on every stove, waiting to be paired with makki di roti and a dollop of white butter.\n\nOur Sarson Da Saag Premix brings that hearty, earthy winter warmth to your table, with none of the long simmering.`,
   'dal-makhani-premix':
-    `On every Punjabi highway the dhaba ritual is sacred, black lentils and rajma simmered overnight over coal, then finished with butter and cream until impossibly rich. Dal makhani is indulgence in a bowl.\n\nAtpata's Dal Makhani Premix recreates that velvety, slow-cooked dhaba classic with all the richness and none of the wait.`,
+    `On every Punjabi highway the dhaba ritual is sacred, black lentils and rajma simmered overnight over coal, then finished with butter and cream until impossibly rich. Dal makhani is indulgence in a bowl.\n\nAtpata's Dal Makhani Premix recreates that velvety, slow cooked dhaba classic with all the richness and none of the wait.`,
   'chainsoo-premix':
-    `Deep in the Garhwal hills, chainsoo is mountain soul food, black gram roasted and ground, then slow-cooked into a smoky, protein-rich dal that warms you against the Himalayan cold.\n\nOur Chainsoo Premix carries that rustic, earthy flavour of pahadi kitchens to wherever you call home.`,
+    `Deep in the Garhwal hills, chainsoo is mountain soul food, black gram roasted and ground, then slow cooked into a smoky, protein rich dal that warms you against the Himalayan cold.\n\nOur Chainsoo Premix carries that rustic, earthy flavour of pahadi kitchens to wherever you call home.`,
   'banarasi-tamatar-chaat-base':
-    `On the ghats of Banaras, the tamatar chaat is legendary, tomatoes mashed and spiced in a heavy iron kadhai, piled high with crunch and a tangy, fiery kick that's pure Kashi.\n\nOur Banarasi Tamatar Chaat Base bottles that iconic ghat-side flavour, ready to recreate the magic of the galis at home.`,
+    `On the ghats of Banaras, the tamatar chaat is legendary, tomatoes mashed and spiced in a heavy iron kadhai, piled high with crunch and a tangy, fiery kick that's pure Kashi.\n\nOur Banarasi Tamatar Chaat Base bottles that iconic ghat side flavour, ready to recreate the magic of the galis at home.`,
   'chhattisgarhi-chila-mix':
-    `In the rice bowl of India, the humble chila, a savoury rice-batter pancake, starts countless mornings: simple, wholesome and rooted in tribal kitchens.\n\nOur Chhattisgarhi Chila Mix brings that earthy, comforting taste of central India to your breakfast table in minutes.`,
+    `In the rice bowl of India, the humble chila, a savoury rice batter pancake, starts countless mornings: simple, wholesome and rooted in tribal kitchens.\n\nOur Chhattisgarhi Chila Mix brings that earthy, comforting taste of central India to your breakfast table in minutes.`,
   'undhiyu-premix':
-    `Come winter, Surat and its surrounds come alive with undhiyu, a glorious medley of seasonal vegetables and muthia, slow-cooked with green spices and traditionally steamed in earthen pots buried upside down underground.\n\nOur Undhiyu Premix captures that festive Gujarati feast in all its rich, herby splendour.`,
+    `Come winter, Surat and its surrounds come alive with undhiyu, a glorious medley of seasonal vegetables and muthia, slow cooked with green spices and traditionally steamed in earthen pots buried upside down underground.\n\nOur Undhiyu Premix captures that festive Gujarati feast in all its rich, herby splendour.`,
   'sev-tamatar-premix':
-    `A Kathiawadi classic, sev tamatar nu shaak is the quick, tangy tomato curry crowned with crunchy sev that graces lunchboxes and roadside dhabas across Gujarat.\n\nOur Sev Tamatar Premix gives you that sweet-spicy-tangy comfort in a flash, just add tomatoes and a handful of sev.`,
+    `A Kathiawadi classic, sev tamatar nu shaak is the quick, tangy tomato curry crowned with crunchy sev that graces lunchboxes and roadside dhabas across Gujarat.\n\nOur Sev Tamatar Premix gives you that sweet spicy tangy comfort in a flash, just add tomatoes and a handful of sev.`,
   'khaman-dhokla-premix':
-    `Soft, golden and jiggly, khaman is Gujarat's pride, steamed to a melt-in-the-mouth sponge, tempered with mustard seeds and finished with a squeeze of lime. The perfect anytime snack.\n\nOur Khaman Dhokla Premix makes that fluffy, fermented delight foolproof, every single time.`,
+    `Soft, golden and jiggly, khaman is Gujarat's pride, steamed to a melt in the mouth sponge, tempered with mustard seeds and finished with a squeeze of lime. The perfect anytime snack.\n\nOur Khaman Dhokla Premix makes that fluffy, fermented delight foolproof, every single time.`,
   'poha-seasoning-mix':
     `Mornings in Indore begin with poha, light, lemony flattened rice topped with crunchy sev, jeeravan and a scatter of pomegranate. It's a whole city's beloved breakfast ritual.\n\nOur Poha Seasoning Mix delivers that signature Indori flavour, turning a simple bowl into a taste of Malwa.`,
   'thecha-premix':
-    `In the Maharashtrian countryside, thecha is the fiery soul of every meal, green chillies and garlic pounded coarse in a stone mortar: rough, rustic and gloriously hot.\n\nOur Thecha Premix bottles that village-style heat, ready to fire up your bhakri, rice or any plate that needs a kick.`,
+    `In the Maharashtrian countryside, thecha is the fiery soul of every meal, green chillies and garlic pounded coarse in a stone mortar: rough, rustic and gloriously hot.\n\nOur Thecha Premix bottles that village style heat, ready to fire up your bhakri, rice or any plate that needs a kick.`,
   'lasooni-chutney-powder':
     `From the kitchens of the Deccan comes lasooni chutney, a bold, garlicky dry chutney with coconut and chilli, sprinkled over vada pav and stirred into the humblest of meals.\n\nOur Lasooni Chutney Powder packs that punchy, pungent flavour into a jar you'll reach for again and again.`,
   'saucy-papad-premix':
     `In the desert kitchens of Rajasthan, where fresh vegetables were once scarce, the papad became a canvas for flavour, turned into tangy, spicy curries that are pure ingenuity.\n\nOur Saucy Papad Premix gives your papad a bold, saucy upgrade in seconds, a taste of royal Rajasthani resourcefulness.`,
   'makhana':
-    `From the still ponds of Mithila, where farmers harvest fox nuts by hand, comes makhana, light, crunchy and quietly nourishing. For generations it has been Bihar's favourite guilt-free snack and fasting food.\n\nOur Makhana brings that wholesome, roasted crunch to your day, a healthy handful of heritage.`,
+    `From the still ponds of Mithila, where farmers harvest fox nuts by hand, comes makhana, light, crunchy and quietly nourishing. For generations it has been Bihar's favourite guilt free snack and fasting food.\n\nOur Makhana brings that wholesome, roasted crunch to your day, a healthy handful of heritage.`,
   'ghugni-masala':
-    `On the streets of Jharkhand and across the east, ghugni is the everyday hero, yellow peas simmered with onions and spices, ladled hot into bowls and topped with raw onion and chilli.\n\nOur Ghugni Masala recreates that hearty, soul-warming street snack with effortless ease.`,
+    `On the streets of Jharkhand and across the east, ghugni is the everyday hero, yellow peas simmered with onions and spices, ladled hot into bowls and topped with raw onion and chilli.\n\nOur Ghugni Masala recreates that hearty, soul warming street snack with effortless ease.`,
   'dalma-premix':
     `In the temple town of Puri, dalma is sacred, lentils and vegetables cooked together without onion or garlic, blessed as bhog in the Jagannath kitchen and loved in every Odia home.\n\nOur Dalma Premix carries that subtle, soulful temple flavour to your table.`,
   'pulihora-premix':
-    `Tangy, golden and gloriously aromatic, pulihora is Andhra's festival rice, tamarind, mustard, curry leaf and peanut tossed through every grain, served at temples and celebrations alike.\n\nOur Pulihora Premix nails that perfect sweet-sour-spicy balance in a single easy step.`,
+    `Tangy, golden and gloriously aromatic, pulihora is Andhra's festival rice, tamarind, mustard, curry leaf and peanut tossed through every grain, served at temples and celebrations alike.\n\nOur Pulihora Premix nails that perfect sweet sour spicy balance in a single easy step.`,
   'cafe-express-instant-coffee':
-    `In Karnataka, coffee is a way of life, from the misty estates of Coorg to the steel tumblers of Bengaluru's old cafés, where frothy, aromatic filter coffee fuels every conversation.\n\nOur Cafe Express brings that rich, South Indian coffee-house aroma to your cup, instantly.`,
+    `In Karnataka, coffee is a way of life, from the misty estates of Coorg to the steel tumblers of Bengaluru's old cafés, where frothy, aromatic filter coffee fuels every conversation.\n\nOur Cafe Express brings that rich, South Indian coffee house aroma to your cup, instantly.`,
   'avial-premix':
     `At the heart of the Kerala sadya sits avial, a medley of vegetables bound in coconut and curd, finished with coconut oil and curry leaf. It's harmony on a banana leaf.\n\nOur Avial Premix captures that creamy, coconutty Malabar magic in minutes.`,
   'gunpowder-podi':
     `No Tamil breakfast is complete without milagai podi, the fiery 'gunpowder' of roasted lentils and red chilli, mixed with a drizzle of gingelly oil and scooped up with soft idlis.\n\nOur Gunpowder Podi delivers that addictive, spicy crunch straight from the South Indian tiffin table.`,
   'goa-kokum-mojito-masala':
-    `Under the swaying palms of Goa, kokum is the coast's cooling secret, tangy, ruby-red and endlessly refreshing in sol kadhi and lazy summer coolers.\n\nOur Goa Kokum Mojito Masala gives that beachside tang a zesty mojito twist, sunshine and sea breeze in every sip.`,
+    `Under the swaying palms of Goa, kokum is the coast's cooling secret, tangy, ruby red and endlessly refreshing in sol kadhi and lazy summer coolers.\n\nOur Goa Kokum Mojito Masala gives that beachside tang a zesty mojito twist, sunshine and sea breeze in every sip.`,
   'bamboo-shoot-pickle':
     `In the misty hills of Arunachal, fermented bamboo shoot is a cherished staple, tangy, pungent and fired up with the fearsome Raja Mircha, a flavour as wild as the land itself.\n\nOur Bamboo Shoot Pickle brings that bold, earthy taste of the eastern Himalayas to your plate.`,
   'gulab-chai-instant-tea-premix':
-    `Across Assam's emerald tea gardens, chai is more than a drink, it's a daily ritual of warmth and welcome. Touched with rose, it becomes something fragrant and a little romantic.\n\nOur Gulab Chai Instant Tea Premix brews that garden-fresh, rose-kissed comfort in a single cup.`,
+    `Across Assam's emerald tea gardens, chai is more than a drink, it's a daily ritual of warmth and welcome. Touched with rose, it becomes something fragrant and a little romantic.\n\nOur Gulab Chai Instant Tea Premix brews that garden fresh, rose kissed comfort in a single cup.`,
   'eromba-premix':
-    `In Manipuri homes, eromba is everyday comfort, boiled vegetables mashed with fermented fish and the searing u-morok chilli: smoky, pungent and deeply loved.\n\nOur Eromba Premix brings that bold Meitei kitchen flavour to life, no fuss required.`,
+    `In Manipuri homes, eromba is everyday comfort, boiled vegetables mashed with fermented fish and the searing u morok chilli: smoky, pungent and deeply loved.\n\nOur Eromba Premix brings that bold Meitei kitchen flavour to life, no fuss required.`,
   'tungrymbai-premix':
-    `In the cloud-wrapped Khasi hills, tungrymbai is a prized delicacy, fermented soybean cooked with black sesame and local spices into a dish of deep, earthy umami.\n\nOur Tungrymbai Premix captures that distinctive Meghalayan flavour, bold and unforgettable.`,
+    `In the cloud wrapped Khasi hills, tungrymbai is a prized delicacy, fermented soybean cooked with black sesame and local spices into a dish of deep, earthy umami.\n\nOur Tungrymbai Premix captures that distinctive Meghalayan flavour, bold and unforgettable.`,
   'mizoram-bai-masala':
     `In Mizo homes, bai is the heart of every meal, a gentle stew of seasonal greens, bamboo shoot and herbs: simple, nourishing and quietly soulful.\n\nOur Mizoram Bai Masala brings that soothing, herbal warmth of the hills to your kitchen.`,
   'king-chilli-chutney':
     `From the hills of Nagaland comes the legendary king chilli, the Raja Mircha, or Bhut Jolokia, one of the world's hottest, pounded into a chutney that is pure, fearless fire.\n\nOur King Chilli Chutney bottles that Naga heat for the brave, a little goes a very long way.`,
   'momo-chutney-mix':
-    `In the mountain towns of Sikkim, a plate of steaming momos is only as good as its chutney, fiery red, tangy and tomato-rich, the dip that makes the dumpling.\n\nOur Momo Chutney Mix recreates that perfect Himalayan dipping sauce in seconds.`,
+    `In the mountain towns of Sikkim, a plate of steaming momos is only as good as its chutney, fiery red, tangy and tomato rich, the dip that makes the dumpling.\n\nOur Momo Chutney Mix recreates that perfect Himalayan dipping sauce in seconds.`,
   'berma-chutney-mix':
-    `In Tripura's tribal kitchens, berma, sun-dried fermented fish, is the prized base of pungent, umami-rich chutneys that define the region's bold, earthy palate.\n\nOur Berma Chutney Mix carries that deep, distinctive Tripuri flavour to the adventurous table.`,
+    `In Tripura's tribal kitchens, berma, sun dried fermented fish, is the prized base of pungent, umami rich chutneys that define the region's bold, earthy palate.\n\nOur Berma Chutney Mix carries that deep, distinctive Tripuri flavour to the adventurous table.`,
   'paneer-lababdar-mix':
-    `In the spirited city of Chandigarh, dinner often means paneer lababdar, soft cottage cheese in a luscious, creamy tomato gravy that's rich, mildly sweet and restaurant-grand.\n\nOur Paneer Lababdar Mix brings that indulgent, dhaba-meets-fine-dining flavour home.`,
+    `In the spirited city of Chandigarh, dinner often means paneer lababdar, soft cottage cheese in a luscious, creamy tomato gravy that's rich, mildly sweet and restaurant grand.\n\nOur Paneer Lababdar Mix brings that indulgent, dhaba meets fine dining flavour home.`,
   'jackfruit-coconut-curry-mix':
-    `On the coral islands of Lakshadweep, where coconut palms meet the sea, tender jackfruit simmered in coconut is everyday island fare, mild, fragrant and quietly tropical.\n\nOur Jackfruit Coconut Curry Mix carries those sun-and-sea flavours of the lagoon to your plate.`,
+    `On the coral islands of Lakshadweep, where coconut palms meet the sea, tender jackfruit simmered in coconut is everyday island fare, mild, fragrant and quietly tropical.\n\nOur Jackfruit Coconut Curry Mix carries those sun and sea flavours of the lagoon to your plate.`,
   'tomato-rice-mix':
     `In Puducherry, where French boulevards meet Tamil kitchens, tomato rice is the comforting everyday classic, tangy, spiced and stained a beautiful red, equally at home in a tiffin box or a seaside café.\n\nOur Tomato Rice Mix brings that easy, coastal comfort to your table.`,
   'banana-flower-curry-premix':
@@ -521,7 +521,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-orange-900 to-amber-900',
     famousFor: ['Banarasi Chaat', 'Tamatar Chaat', 'Chaat Masala', 'Awadhi Spices'],
     products: [p('banarasi-tamatar-chaat-base')],
-    story: 'Uttar Pradesh, the land of Awadhi and Banarasi flavours, brings you the iconic tangy-spicy tamatar chaat of the ghats, now a ready base for that authentic street-side taste at home.',
+    story: 'Uttar Pradesh, the land of Awadhi and Banarasi flavours, brings you the iconic tangy spicy tamatar chaat of the ghats, now a ready base for that authentic street side taste at home.',
     landmarkIcon: '/uttar pradesh.png',
     labelText: 'Uttar Pradesh se',
   },
@@ -533,7 +533,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-amber-900 via-orange-900 to-red-900',
     famousFor: ['Thecha', 'Lasooni Chutney', 'Kolhapuri Masala', 'Goda Masala'],
     products: [p('thecha-premix'), p('lasooni-chutney-powder')],
-    story: "Maharashtra's bold, fiery palate shines through its thecha and garlic chutneys. Our premixes capture that rustic Western-Ghats heat in a single spoon.",
+    story: "Maharashtra's bold, fiery palate shines through its thecha and garlic chutneys. Our premixes capture that rustic Western Ghats heat in a single spoon.",
     landmarkIcon: '/Maharastra.png',
     labelText: 'Maharashtra se',
   },
@@ -545,7 +545,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-rose-900 to-pink-900',
     famousFor: ['Dal Makhani', 'Tandoori Spices', 'Makkhani Masala', 'Butter & Cream'],
     products: [p('dal-makhani-premix')],
-    story: 'Punjab, the land of butter and cream, gives you the dhaba-style dal makhani, slow-cooked richness made effortless with our premix.',
+    story: 'Punjab, the land of butter and cream, gives you the dhaba style dal makhani, slow cooked richness made effortless with our premix.',
     landmarkIcon: '/punjab.png',
     labelText: 'Punjab se',
   },
@@ -581,7 +581,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-orange-900 via-red-900 to-amber-900',
     famousFor: ['Makhana', 'Sattu', 'Litti Chokha', 'Thekua'],
     products: [p('makhana')],
-    story: "Bihar's nutrient-rich makhana (fox nuts) from the ponds of Mithila are a guilt-free, crunchy snack loved across India, wholesome goodness in every handful.",
+    story: "Bihar's nutrient rich makhana (fox nuts) from the ponds of Mithila are a guilt free, crunchy snack loved across India, wholesome goodness in every handful.",
     landmarkIcon: '/bihar.png',
     labelText: 'Bihar se',
   },
@@ -617,7 +617,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-rose-900 via-red-900 to-amber-900',
     famousFor: ['Jhalmuri', 'Achari Aloo Dum', 'Panch Phoron', 'Mustard Oil'],
     products: [p('achari-aloo-dum'), p('jhalmuri-masala')],
-    story: "West Bengal's streets come alive with tangy aloo dum and zesty jhalmuri. Our premixes bottle that Kolkata street-food magic for your kitchen.",
+    story: "West Bengal's streets come alive with tangy aloo dum and zesty jhalmuri. Our premixes bottle that Kolkata street food magic for your kitchen.",
     landmarkIcon: '/west-bengal.png',
     labelText: 'West Bengal se',
   },
@@ -653,7 +653,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-emerald-900 via-green-900 to-teal-900',
     famousFor: ['Avial', 'Coconut', 'Curry Leaves', 'Black Pepper'],
     products: [p('avial-premix')],
-    story: "Kerala's iconic avial, a medley of vegetables in coconut and curd, is now a one-step delight with our authentic Malabar-style premix.",
+    story: "Kerala's iconic avial, a medley of vegetables in coconut and curd, is now a one step delight with our authentic Malabar style premix.",
     landmarkIcon: '/kerala.png',
     labelText: 'Kerala se',
   },
@@ -665,7 +665,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-rose-900 to-orange-900',
     famousFor: ['Rajma', 'Chole', 'Chaat', 'Mughlai'],
     products: [p('rajma-premix'), p('chole-premix')],
-    story: "Delhi's comfort food runs on rajma-chawal and chole-bhature. Our premixes recreate those hearty, robust capital-city classics with ease.",
+    story: "Delhi's comfort food runs on rajma chawal and chole bhature. Our premixes recreate those hearty, robust capital city classics with ease.",
     landmarkIcon: '/delhi.png',
     labelText: 'Delhi se',
   },
@@ -677,7 +677,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-lime-900 via-green-900 to-amber-900',
     famousFor: ['Ghugni', 'Dhuska', 'Rugra', 'Handia'],
     products: [p('ghugni-masala')],
-    story: "Jharkhand's favourite street snack, spiced yellow-pea ghugni, gets its hearty, earthy flavour from our masala. Comfort food, simplified.",
+    story: "Jharkhand's favourite street snack, spiced yellow pea ghugni, gets its hearty, earthy flavour from our masala. Comfort food, simplified.",
     landmarkIcon: '/jharkhand.png',
     labelText: 'Jharkhand se',
   },
@@ -689,7 +689,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-violet-900 via-purple-900 to-indigo-900',
     famousFor: ['Filter Coffee', 'Bisi Bele Bath', 'Mysore Pak', 'Ragi'],
     products: [p('cafe-express-instant-coffee')],
-    story: "Karnataka's legendary filter coffee culture inspires our Cafe Express, rich, aromatic and ready in an instant. A South-Indian café in your cup.",
+    story: "Karnataka's legendary filter coffee culture inspires our Cafe Express, rich, aromatic and ready in an instant. A South Indian café in your cup.",
     landmarkIcon: '/karnataka.png',
     labelText: 'Karnataka se',
   },
@@ -701,7 +701,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-orange-900 to-yellow-900',
     famousFor: ['Pulihora', 'Gongura', 'Guntur Chilli', 'Pesarattu'],
     products: [p('pulihora-premix')],
-    story: "Andhra Pradesh's tangy tamarind rice, pulihora, is a festive favourite. Our premix delivers that perfectly balanced sweet-sour-spicy taste effortlessly.",
+    story: "Andhra Pradesh's tangy tamarind rice, pulihora, is a festive favourite. Our premix delivers that perfectly balanced sweet sour spicy taste effortlessly.",
     landmarkIcon: '/andhra-pradesh.png',
     labelText: 'Andhra Pradesh se',
   },
@@ -725,7 +725,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-green-900 via-emerald-900 to-lime-900',
     famousFor: ['Chila', 'Fara', 'Bafauri', 'Bore Baasi'],
     products: [p('chhattisgarhi-chila-mix')],
-    story: "Chhattisgarh's tribal cuisine is rooted in simplicity. Our Chila Mix brings the earthy, wholesome taste of traditional rice-batter pancakes.",
+    story: "Chhattisgarh's tribal cuisine is rooted in simplicity. Our Chila Mix brings the earthy, wholesome taste of traditional rice batter pancakes.",
     landmarkIcon: '/chhattisgarh.png',
     labelText: 'Chhattisgarh se',
   },
@@ -749,7 +749,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-amber-900 via-yellow-900 to-orange-900',
     famousFor: ['Buttermilk', 'Churma', 'Bajra Khichdi', 'Ghee'],
     products: [p('high-protein-buttermilk-masala')],
-    story: "Haryana, the land of dairy, inspires our High Protein Buttermilk Masala, turning a humble glass of chaas into a refreshing, protein-rich treat.",
+    story: "Haryana, the land of dairy, inspires our High Protein Buttermilk Masala, turning a humble glass of chaas into a refreshing, protein rich treat.",
     landmarkIcon: '/haryana.png',
     labelText: 'Haryana se',
   },
@@ -761,7 +761,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-teal-900 via-emerald-900 to-green-900',
     famousFor: ['Madra', 'Siddu', 'Dham', 'Anardana'],
     products: [p('madra-curry-premix')],
-    story: "Himachal Pradesh's Dham feast is legendary, slow-cooked in yoghurt and aromatic spices, our Madra Curry Premix brings festive hill flavours home.",
+    story: "Himachal Pradesh's Dham feast is legendary, slow cooked in yoghurt and aromatic spices, our Madra Curry Premix brings festive hill flavours home.",
     landmarkIcon: '/himachal-pradesh.png',
     labelText: 'Himachal se',
   },
@@ -773,7 +773,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-green-900 via-emerald-900 to-lime-900',
     famousFor: ['Chainsoo', 'Kafuli', 'Bhatt ki Dal', 'Jhangora'],
     products: [p('chainsoo-premix')],
-    story: "Uttarakhand's hearty chainsoo, a roasted black-gram dal, carries the smoky, earthy soul of Garhwali kitchens. Our premix makes it effortless.",
+    story: "Uttarakhand's hearty chainsoo, a roasted black gram dal, carries the smoky, earthy soul of Garhwali kitchens. Our premix makes it effortless.",
     landmarkIcon: '/uttarakhand.png',
     labelText: 'Uttarakhand se',
   },
@@ -785,7 +785,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-orange-900 to-yellow-900',
     famousFor: ['Tea', 'Masor Tenga', 'Khar', 'Bhut Jolokia'],
     products: [p('gulab-chai-instant-tea-premix')],
-    story: "Assam, India's tea capital, inspires our fragrant Gulab Chai, a rose-kissed instant tea premix that brings garden-fresh comfort to every cup.",
+    story: "Assam, India's tea capital, inspires our fragrant Gulab Chai, a rose kissed instant tea premix that brings garden fresh comfort to every cup.",
     landmarkIcon: '/assam.png',
     labelText: 'Assam se',
   },
@@ -797,7 +797,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-orange-900 via-red-900 to-amber-900',
     famousFor: ['Eromba', 'Singju', 'Kangshoi', 'U-morok Chilli'],
     products: [p('eromba-premix')],
-    story: "Manipur's cuisine is a fiery celebration of local herbs and the legendary U-morok chilli. Our Eromba Premix brings the smoky, pungent magic of Meitei kitchens.",
+    story: "Manipur's cuisine is a fiery celebration of local herbs and the legendary U morok chilli. Our Eromba Premix brings the smoky, pungent magic of Meitei kitchens.",
     landmarkIcon: '/manipur.png',
     labelText: 'Manipur se',
   },
@@ -809,7 +809,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-indigo-900 via-blue-900 to-violet-900',
     famousFor: ['Tungrymbai', 'Jadoh', 'Doh Khlieh', 'Ki Kpu'],
     products: [p('tungrymbai-premix')],
-    story: "Meghalaya's Khasi kitchens bring bold, earthy flavours to the table. Our Tungrymbai-inspired fermented-soybean chutney mix captures that distinctive umami depth.",
+    story: "Meghalaya's Khasi kitchens bring bold, earthy flavours to the table. Our Tungrymbai inspired fermented soybean chutney mix captures that distinctive umami depth.",
     landmarkIcon: '/meghalaya.png',
     labelText: 'Meghalaya se',
   },
@@ -845,7 +845,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-emerald-900 via-green-900 to-teal-900',
     famousFor: ['Momo Chutney', 'Gundruk', 'Phagshapa', 'Dalle Khursani'],
     products: [p('momo-chutney-mix')],
-    story: "Sikkim's mountain momos are incomplete without their fiery red chutney. Our Momo Chutney Mix delivers that perfect spicy-tangy dip in seconds.",
+    story: "Sikkim's mountain momos are incomplete without their fiery red chutney. Our Momo Chutney Mix delivers that perfect spicy tangy dip in seconds.",
     landmarkIcon: '/sikkim.png',
     labelText: 'Sikkim se',
   },
@@ -857,7 +857,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-amber-900 via-orange-900 to-yellow-900',
     famousFor: ['Berma', 'Muya Awandru', 'Chakhwi', 'Wahan Mosdeng'],
     products: [p('berma-chutney-mix')],
-    story: "Tripura's tribal cuisine celebrates fermented ingredients. Our Berma Chutney Mix brings the umami-rich, pungent depth of traditional Tripuri condiments.",
+    story: "Tripura's tribal cuisine celebrates fermented ingredients. Our Berma Chutney Mix brings the umami rich, pungent depth of traditional Tripuri condiments.",
     landmarkIcon: '/tripura.png',
     labelText: 'Tripura se',
   },
@@ -869,19 +869,19 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-green-900 via-lime-900 to-emerald-900',
     famousFor: ['Bamboo Shoot', 'Raja Mircha', 'Thukpa', 'Pika Pila'],
     products: [p('bamboo-shoot-pickle')],
-    story: "Arunachal Pradesh's cuisine is deeply connected to nature, our tangy bamboo-shoot pickle with fiery Raja Mircha captures its bold, earthy flavours.",
+    story: "Arunachal Pradesh's cuisine is deeply connected to nature, our tangy bamboo shoot pickle with fiery Raja Mircha captures its bold, earthy flavours.",
     landmarkIcon: '/arunachal-pradesh.png',
     labelText: 'Arunachal se',
   },
   'py': {
     id: 'py',
     name: 'Puducherry',
-    tagline: 'French-Indian Fusion Flavors',
+    tagline: 'French Indian Fusion Flavors',
     themeColor: '#2563EB',
     bgGradient: 'from-blue-900 via-indigo-900 to-cyan-900',
     famousFor: ['Tomato Rice', 'Creole Curry', 'Tamarind Rice', 'Curry Leaf'],
     products: [p('tomato-rice-mix')],
-    story: "Puducherry's Franco-Tamil kitchen turns the humble tomato rice into something special. Our mix brings that tangy, coastal comfort to your plate.",
+    story: "Puducherry's Franco Tamil kitchen turns the humble tomato rice into something special. Our mix brings that tangy, coastal comfort to your plate.",
     landmarkIcon: '/puducherry.png',
     labelText: 'Puducherry se',
   },
@@ -893,7 +893,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-red-900 via-rose-900 to-orange-900',
     famousFor: ['Paneer Lababdar', 'Chole Bhature', 'Tandoori', 'Lassi'],
     products: [p('paneer-lababdar-mix')],
-    story: "Chandigarh's love for rich, creamy gravies shines in paneer lababdar. Our mix delivers that luscious, restaurant-style tomato-paneer indulgence at home.",
+    story: "Chandigarh's love for rich, creamy gravies shines in paneer lababdar. Our mix delivers that luscious, restaurant style tomato paneer indulgence at home.",
     landmarkIcon: '/chandigarh.png',
     labelText: 'Chandigarh se',
   },
@@ -953,7 +953,7 @@ export const stateProductsMap: Record<string, StateData> = {
     bgGradient: 'from-sky-900 via-blue-900 to-indigo-900',
     famousFor: ['Sarson da Saag', 'Thukpa', 'Skyu', 'Apricot'],
     products: [p('sarson-da-saag-premix')],
-    story: "Ladakh's cold-climate kitchens cherish hearty greens. Our Sarson Da Saag Premix brings the warmth of slow-cooked winter saag to the high Himalayas and your home.",
+    story: "Ladakh's cold climate kitchens cherish hearty greens. Our Sarson Da Saag Premix brings the warmth of slow cooked winter saag to the high Himalayas and your home.",
     landmarkIcon: '/ladakh.png',
     labelText: 'Ladakh se',
   },
