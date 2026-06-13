@@ -401,6 +401,15 @@ export const allProducts: Product[] = [
     price: PRICE,
     slug: 'baigan-ka-achaar',
   },
+  {
+    id: 42,
+    name: 'Bihari Litti Premix',
+    description: 'Earthy roasted sattu litti, the soul of Bihari kitchens.',
+    image: '/products/Bihari Litti Premix.png',
+    color: 'from-amber-600 to-orange-700',
+    price: PRICE,
+    slug: 'bihari-litti-premix',
+  },
 ];
 
 // Regional, story-driven copy for each product, shown on the product detail page.
@@ -487,6 +496,8 @@ const productStories: Record<string, string> = {
     `In the coastal kitchens of the western belt, even the humble bitter gourd earns a place of pride, sliced, spiced and pickled into a bittersweet, fiery achaar that wakes up any meal.\n\nOur Karela Ka Achaar turns that beloved bitterness into an addictive, tangy delight.`,
   'baigan-ka-achaar':
     `In Telangana, the table isn't set without a jar of achaar, smoky brinjal cooked down with mustard, chilli and oil into a tangy, spicy pickle that lifts the simplest plate of rice.\n\nOur Baigan Ka Achaar bottles that bold, homestyle Telugu flavour for every meal.`,
+  'bihari-litti-premix':
+    `Across the plains of Bihar, no feast feels complete without litti, balls of dough stuffed with roasted sattu, ajwain and pickle spices, baked over glowing coal until smoky and crisp, then drowned in ghee and paired with chokha. It is the proud, rustic heart of Bihari cooking.\n\nOur Bihari Litti Premix carries that earthy, sattu rich flavour of the heartland, so you can savour an authentic litti without the hours of grinding and roasting.`,
 };
 
 // Attach each story to its product.
@@ -580,7 +591,7 @@ export const stateProductsMap: Record<string, StateData> = {
     themeColor: '#F97316',
     bgGradient: 'from-orange-900 via-red-900 to-amber-900',
     famousFor: ['Makhana', 'Sattu', 'Litti Chokha', 'Thekua'],
-    products: [p('makhana')],
+    products: [p('makhana'), p('bihari-litti-premix')],
     story: "Bihar's nutrient rich makhana (fox nuts) from the ponds of Mithila are a guilt free, crunchy snack loved across India, wholesome goodness in every handful.",
     landmarkIcon: '/bihar.png',
     labelText: 'Bihar se',
