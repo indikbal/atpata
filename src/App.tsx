@@ -12,7 +12,8 @@ const DynamicProductPage = lazy(() => import('./pages/Product/DynamicProductPage
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const Products = lazy(() => import('./pages/Product/Products'));
 const StoryPage = lazy(() => import('./pages/Story'));
-const GalleryPage = lazy(() => import('./pages/Gallery'));
+// Gallery hidden for now — to be redesigned later.
+// const GalleryPage = lazy(() => import('./pages/Gallery'));
 const ContactPage = lazy(() => import('./pages/Contact'));
 const TermsAndConditions = lazy(() => import('./pages/TermsAndConditions'));
 const CancellationRefundPolicy = lazy(() => import('./pages/CancellationRefundPolicy'));
@@ -35,7 +36,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/products" element={<Products />} />
         <Route path="/story" element={<StoryPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
+        {/* Gallery hidden for now — to be redesigned later. Redirects to home. */}
+        <Route path="/gallery" element={<Navigate to="/" replace />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/ourteam" element={<OurTeamPage />} />
         <Route path="/cart" element={CART_ENABLED ? <CartPage /> : <Navigate to="/products" replace />} />
