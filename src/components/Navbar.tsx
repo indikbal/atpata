@@ -12,7 +12,7 @@ const navLinks: { href: string; label: string; num: string; highlight?: boolean 
   { href: '/about', label: 'About', num: '02' },
   { href: '/products', label: 'Products', num: '03' },
   { href: '/story', label: 'Story', num: '04' },
-  { href: '/ourteam', label: 'The brains behind atpata', num: '05' },
+  //{ href: '/ourteam', label: 'The brains behind atpata', num: '05' },
   // Gallery hidden for now — to be redesigned later.
   // { href: '/gallery', label: 'Gallery', num: '06' },
   { href: '/contact', label: 'Contact', num: '06' },
