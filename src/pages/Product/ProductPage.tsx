@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 
@@ -44,7 +45,7 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, steps }) => {
 
   return (
     <div className="bg-black">
-      <Navbar />
+      <Navbar showBack />
 
       {/* Inner Banner Section */}
       <section className="relative pt-40 pb-20 bg-gray-900/50 flex items-center justify-center text-white overflow-hidden">
@@ -64,9 +65,9 @@ const ProductPage: React.FC<ProductPageProps> = ({ product, steps }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span>Home</span>
+            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
             <ChevronRight size={18} />
-            <span>Products</span>
+            <Link to="/products" className="hover:text-amber-400 transition-colors">Products</Link>
             <ChevronRight size={18} />
             <span className="text-amber-500">{product.name}</span>
           </motion.div>

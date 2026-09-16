@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ShoppingCart, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../contexts/CartContext';
 import { CART_ENABLED } from '../config/features';
 
@@ -18,11 +18,28 @@ const navLinks: { href: string; label: string; num: string; highlight?: boolean 
   { href: '/contact', label: 'Contact', num: '06' },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  /** Show a back button in the header (used on product detail pages). */
+  showBack?: boolean;
+}
+
+const Navbar = ({ showBack = false }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredLink, setHoveredLink] = useState<number | null>(null);
   const { state } = useCart();
+  const navigate = useNavigate();
+
+  // Go back to where the user came from (state view, products list, ...).
+  // If the page was opened directly there is nothing to go back to, so go home.
+  const handleBack = () => {
+    const idx = (window.history.state as { idx?: number } | null)?.idx ?? 0;
+    if (idx > 0) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
 
   useEffect(() => {
     let ticking = false;
@@ -64,6 +81,24 @@ const Navbar = () => {
                 <img src={Logo} alt="Atpata Logo" className="w-24 md:w-32" />
               </Link>
             </motion.div>
+
+            <div className="flex items-center gap-3">
+            {/* Back button (product pages) */}
+            {showBack && !menuOpen && (
+              <motion.button
+                type="button"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+                onClick={handleBack}
+                aria-label="Go back"
+                title="Back"
+                className="w-11 h-11 flex items-center justify-center rounded-full border border-white/15 hover:border-amber-500/40 text-gray-200 hover:text-amber-400 transition-all duration-300"
+                style={{ background: 'rgba(255,255,255,0.03)' }}
+              >
+                <ArrowLeft size={20} />
+              </motion.button>
+            )}
 
             {/* Custom Animated Menu Button */}
             <motion.button
@@ -128,6 +163,7 @@ const Navbar = () => {
                 }}
               />
             </motion.button>
+            </div>
           </div>
         </div>
       </nav>
