@@ -16,15 +16,21 @@ const preloaderLines = [
   'Welcome to Atpata',
 ];
 
+// Remembers that the intro already played. Lives for the lifetime of the loaded
+// bundle: survives in-app navigation, resets on first visit and on every refresh.
+let preloaderPlayed = false;
+
 const HomePreviewPage = () => {
-  const [showContent, setShowContent] = useState(false);
-  const [preloaderDone, setPreloaderDone] = useState(false);
+  const [showContent, setShowContent] = useState(preloaderPlayed);
+  const [preloaderDone, setPreloaderDone] = useState(preloaderPlayed);
   const [currentLine, setCurrentLine] = useState(0);
   const [lineVisible, setLineVisible] = useState(true);
   const [isMobile] = useState(() => window.innerWidth < 768);
 
-  // Preloader sequencing — always plays on every page load
+  // Preloader sequencing — plays on first visit / refresh, skipped on return navigation
   useEffect(() => {
+    if (preloaderPlayed) return;
+
     const DISPLAY_MS = isMobile ? 800 : 1400;
     const FADE_OUT_MS = isMobile ? 150 : 400;
     const LAST_LINE_EXTRA = isMobile ? 200 : 600;
@@ -33,6 +39,7 @@ const HomePreviewPage = () => {
 
     const advanceLine = (index: number) => {
       if (index >= preloaderLines.length) {
+        preloaderPlayed = true;
         setPreloaderDone(true);
         return;
       }
